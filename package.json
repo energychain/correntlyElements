@@ -1,0 +1,31 @@
+{
+  "name": "correntlyelements",
+  "version": "1.0.0",
+  "description": "Jquery/Javascript Elements to easy protype in Corrently Ecosystem",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/energychain/correntlyElements.git"
+  },
+  "keywords": [
+    "stromdao"
+  ],
+  "author": "STROMDAO GmbH <kontakt@stromdao.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/energychain/correntlyElements/issues"
+  },
+  "homepage": "https://github.com/energychain/correntlyElements#readme",
+  "dependencies": {
+    "esdoc": "^1.1.0",
+    "esdoc-standard-plugin": "^1.0.0"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-minify": "^3.1.0"
+  }
+}
