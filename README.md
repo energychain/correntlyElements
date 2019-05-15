@@ -1,2 +1,5 @@
 # correntlyElements
-Jquery/Javascript Elements to easy protype in Corrently Ecosystem
+Jquery/Javascript Elements to easy prototype in Corrently Ecosystem
+
+## Documentation
+https://elements.corrently.io/
