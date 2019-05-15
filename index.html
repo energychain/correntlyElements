@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Corrently GrünstromIndex</title>
+    <title>Corrently Elements</title>
     <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
     <link rel="stylesheet" href="/assets/css/Footer-Basic.css">
@@ -17,7 +17,7 @@
 <body>
     <div class="shadow-lg" style="margin-bottom: 20px;">
         <nav class="navbar navbar-light navbar-expand-md navigation-clean" style="background-color: #ffffff;margin-bottom: 25px;">
-            <div class="container"><a class="navbar-brand" style="color: #ffa700;font-family: Roboto, sans-serif;" href="#"><img style="filter: brightness(100%) contrast(102%) saturate(100%) sepia(0%);" src="/assets/img/corrently_logo.png"></a><button data-toggle="collapse" class="navbar-toggler"
+            <div class="container"><a class="navbar-brand" style="color: #ffa700;font-family: Roboto, sans-serif;" href="/"><img style="filter: brightness(100%) contrast(102%) saturate(100%) sepia(0%);" src="/assets/img/corrently_logo.png"></a><button data-toggle="collapse" class="navbar-toggler"
                     data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                     <form action="/" method="GET">
                     <div class="form-group text-center">
@@ -35,47 +35,59 @@
         </nav>
     </div>
     <div class="container">
-        <div class="card-deck" style="margin-bottom: 25px;">
             <div class="card shadow-lg">
                 <div class="card-header text-dark bg-dark">
-                    <h3 class="text-truncate text-light">GrünstromIndex <span id="fortext"></span></h3>
+                    <h3 class="text-truncate text-light">elements.corrently.io</h3>
                 </div>
                 <div class="card-body" id="gsi_card">
-
+<p>Auf dieser Seite werden Methoden vorgestellt, um möglichst einfach mit dem Corrently Ökosystem arbeiten zu können. </p>
+<p>Soweit möglich, setzen die Beispiele auf JQuery auf und sind ohne weitere Anpassungen nutzbar. Dennoch sind es nur Beispiele für die Nutzung der eigentlichen RESP-API und sollen zur Eigenentwicklung anregen. Um die Zeit für eine Einarbeitung gering zu halten, wurde auf Hintergrundinformationen zu Prozessen der Energiewirtschaft verzichtet.</p>
+<p>Die Beispiele unterliegen generell der <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache 2.0 Lizenz</a>. Die im Hintergrund genutzte Corrently RESP-API unterliegt denen mit der <strong>STROM</strong>DAO vereinbarten Nutzungsbedingungen.</p>
                 </div>
                 <div class="card-footer text-center">
-                      API Endpunkt: <code>https://api.corrently.io/core/gsi</code><br/>
+                        Fragen? Die <a href="https://stromdao.com/kontakt/">STROMDAO hilft gerne</a>.
                 </div>
             </div>
-        </div>
-        <div class="card shadow-lg">
-          <div class="card-header text-dark bg-light">
-              <h3 class="text-truncate text-dark">Nutzung als Widget</h3>
-          </div>
-            <div class="card-body">
-                <strong>Benötigte Scripte</strong>
-                <pre><code>
-&lt;script src="https://elements.corrently.io/assets/js/jquery.min.js"&lt;/script&gt;
-&lt;script src="https://elements.corrently.io/dist/correntlyElements-min.js"&lt;/script&gt;
-                </code></pre>
+            <div class="card shadow-lg">
+                <div class="card-header text-dark bg-dark">
+                    <h3 class="text-truncate text-light">GrünstromIndex</h3>
+                </div>
+                <div class="card-body" id="gsi_card">
+                      <p>Abrufen des GrünstromIndex für einen gewählten Ort (Postleitzahl) in Deutschland</p>
+                </div>
+                <div class="card-footer text-center">
+                        <a href="./gsi.html" class="btn btn-success">öffnen</a>
+                </div>
             </div>
-        </div>
+            <div class="card-deck">
+            <div class="card shadow-lg">
+                <div class="card-header text-dark bg-dark">
+                    <h3 class="text-truncate text-light">Zählerstände (Tabelle)</h3>
+                </div>
+                <div class="card-body" id="gsi_card">
+                      <p>Abruf der virtuellen Unterzähler für die Abrechnung des GrünstromIndex an einer Messstelle.</p>
+                </div>
+                <div class="card-footer text-center">
+                        <a href="./reading.html" class="btn btn-success">öffnen</a>
+                </div>
+            </div>
+            <div class="card shadow-lg">
+                <div class="card-header text-dark bg-dark">
+                    <h3 class="text-truncate text-light">Zählerstände (MSCONS)</h3>
+                </div>
+                <div class="card-body" id="gsi_card">
+                      <p>Ausgabe der virtuellen Unterzähler als kombinierte UN/EDIFACT MSCONS Nachricht.</p>
+                </div>
+                <div class="card-footer text-center">
+                        <a href="./mscons.html" class="btn btn-success">öffnen</a>
+                </div>
+            </div>
+          </div>
     </div>
 
     <script src="/assets/js/jquery.min.js"></script>
     <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="/dist/correntlyElements-min.js"></script>
-    <script>
-    /* Funktionaler Code für dieses Beispiel */
-    $(document).ready( function() {
-      /* Fallunterscheidung für Eingabefeld Postleitzahl */
-      if($.getUrlVar("q") == null) {
-        $('#gsi_card').correntlyGSI(); // GSI basierend auf GEOIp
-      } else {
-        $('#gsi_card').correntlyGSI($.getUrlVar("q") ); // GSI basierend auf Übergabewert
-      }
-    });
-    </script>
 </body>
 
 </html>

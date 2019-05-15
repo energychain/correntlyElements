@@ -8,7 +8,7 @@
       if(this.attr("data-plz")!=null) url+"?plz="+this.attr("data-plz"); else
       if(this.attr("data-zip")!=null) url+"?plz="+this.attr("data-zip");
       const parent = this;
-
+      parent.html("<span class='text-muted'>wird geladen...</span>");
       const refreshGSI = function() {
         if(parent.attr('data-refresh')!=null) {
           if(parent.attr('data-refresh')>new Date().getTime()) {
@@ -62,12 +62,13 @@
         return (n/1000).toFixed(3).replace('.',',');
       }
       const parent = this;
+      parent.html("<span class='text-muted'>wird geladen...</span>");
       const refreshReading = function() {
           $.getJSON("https://api.corrently.io/core/reading?&history=3600000&account="+q,function(data) {
             let html = "<div class='table-responsive'><table class='table table-sm'>";
             html+="<tr><th>&nbsp;</th><th>Obis Code</th><th title='"+q+"'>Übernahme<br/>Zählerstand</th><th>Belieferung<br/>Zählerstand</th><th>Diffferenz</th><th>Letzte Ablesung</th></tr>";
             html+="<tr>";
-            html+="<td colspan=3>"+q+"</td>";        
+            html+="<td colspan=3>"+q+"</td>";
             html+="<td>"+new Date(data.firstReading.timeStamp).toLocaleString()+"</td>";
             html+="<td>"+((data.timeStamp-data.firstReading.timeStamp)/86400000).toFixed(1).replace('.',',')+" Tage</td>";
             html+="<td>"+new Date(data.timeStamp).toLocaleString()+"</td>";

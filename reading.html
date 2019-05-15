@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Corrently GrünstromIndex</title>
+    <title>Corrently Zählerstände</title>
     <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
     <link rel="stylesheet" href="/assets/css/Footer-Basic.css">
@@ -17,13 +17,13 @@
 <body>
     <div class="shadow-lg" style="margin-bottom: 20px;">
         <nav class="navbar navbar-light navbar-expand-md navigation-clean" style="background-color: #ffffff;margin-bottom: 25px;">
-            <div class="container"><a class="navbar-brand" style="color: #ffa700;font-family: Roboto, sans-serif;" href="#"><img style="filter: brightness(100%) contrast(102%) saturate(100%) sepia(0%);" src="/assets/img/corrently_logo.png"></a><button data-toggle="collapse" class="navbar-toggler"
+            <div class="container"><a class="navbar-brand" style="color: #ffa700;font-family: Roboto, sans-serif;" href="/"><img style="filter: brightness(100%) contrast(102%) saturate(100%) sepia(0%);" src="/assets/img/corrently_logo.png"></a><button data-toggle="collapse" class="navbar-toggler"
                     data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                     <form action="./reading.html" method="GET">
                     <div class="form-group text-center">
                           <div class="input-group rounded">
                             <div class="input-group-prepend"><span class="input-group-text">Account</span></div>
-                            <input id="zip" class="form-control" type="text" name="a">
+                            <input id="account" class="form-control" type="text" name="a">
                             <div class="input-group-append">
                               <button
                                   class="btn btn-warning text-center" type="submit" id="checkBtn">öffnen</button>
@@ -53,10 +53,14 @@
                 <h3 class="text-truncate text-dark">Nutzung als Widget</h3>
             </div>
             <div class="card-body">
-                <strong>Benötigte Scripte</strong>
+                <strong>Benötigte Scripte  im HEAD</strong>
                 <pre><code>
 &lt;script src="https://elements.corrently.io/assets/js/jquery.min.js"&lt;/script&gt;
 &lt;script src="https://elements.corrently.io/dist/correntlyElements-min.js"&lt;/script&gt;
+                </code></pre>
+                <strong>jQuery Erweiterung</strong>
+                <pre><code>
+ $(element).correntlyReadingTable([account]);
                 </code></pre>
             </div>
         </div>
