@@ -49,7 +49,7 @@
                     </div>
                     <div class="form-group">
                       <label for="secret">Passwort</label>
-                      <input type="password" class="form-control" id="secret" name="secret" placeholder="Password">
+                      <input type="password" class="form-control" id="secret" name="secret" placeholder="(Passwort frei wählbar bei der ersten Nutzung">
                     </div>
                     <div class="form-group">
                       <label for="plz">Postleitzahl</label>
@@ -60,7 +60,7 @@
                       <input type="number" step="0.001"  name="readingKWH" class="form-control" id="readingKWH" placeholder="">
                       <input type="hidden" name="1.8.0" id="reading"/>
                     </div>
-                    <button type="submit" class="btn btn-warning">Übermitteln</button>
+                    <button type="submit" class="btn btn-warning" id="btn_submit">Übermitteln</button>
                   </form>
                 </div>
                 <div class="card-footer text-center">
@@ -78,10 +78,16 @@
 &lt;script src="https://elements.corrently.io/assets/js/jquery.min.js"&lt;/script&gt;
 &lt;script src="https://elements.corrently.io/dist/correntlyElements-min.js"&lt;/script&gt;
                 </code></pre>
-                <strong>jQuery Erweiterung</strong>
-                <pre><code>
- $(element).correntlyReadingTable([account]);
-                </code></pre>
+                <p><strong>Formular POST Target</strong><br/>
+                <code>https://api.corrently.io/core/reading</code></p>
+                <p><strong>Formular Feldnamen</strong>
+                <ul>
+                  <li><code>externalAccount</code><br/> hier Email, ansonsten Zählernummer, Kundennummer, etc..</li>
+                  <li><code>secret</code><br/> Passwort für Aktualisierungen des externalAccount angegebenen Zählers</li>
+                  <li><code>zip</code><br/> Postleitzahl für Ermittlung Grün/Graustrom</li>
+                  <li><code>1.8.0</code><br/> Zählerstand in Kilo-Watt-Stunden</li>
+                </ul>
+              </p>
             </div>
         </div>
     </div>
@@ -96,8 +102,12 @@
         $('#reading').val($('#readingKWH').val()*1000);
       })
       $('#readingForm').ajaxForm(function(dl,el) {
-          location.href="./reading.html?a="+dl.account;
+        if(typeof dl.account == "undefined") {
           console.log(dl);
+          alert("Passwort oder Zählernummer ungültig");
+        } else {
+          location.href="./reading.html?a="+dl.account;
+        }        
        });
     });
     </script>
