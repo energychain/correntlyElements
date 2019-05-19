@@ -298,21 +298,26 @@
           let html="<table class='table table-condensed'>";
           html+="<tr>";
           html+="<th>Produkt</th>";
-          html+="<th>Quittung</th>";
+          html+="<th>Digitales Asset</th>";
           html+="<th>Eingang</th>";
           html+="<th>Lieferung</th>";
           html+="</tr>";
-          console.log(data);
+
           for(let i=0;i<data.length;i++) {
             html+="<tr>";
-            html+="<td><a href='./contracts.html?a="+data[i].product+"'>"+data[i].product+"</a></td>";
-            html+="<td>"+data[i].quitance+"</td>";
+            html+="<td><a href='./contracts.html?a="+data[i].product+"' class='pLabel_"+data[i].product+"'>"+data[i].product+"</a></td>";
+            html+="<td><a href='./contracts.html?a="+data[i].quitance+"'>"+data[i].quitance+"</a></td>";
             html+="<td>"+new Date(data[i].commissioning*1).toLocaleString()+"</td>";
             html+="<td>"+new Date(data[i].delivered*1).toLocaleString()+"</td>";
             html+="</tr>";
           }
           html+"</table>";
           parent.html(html);
+          for(let i=0;i<data.length;i++) {
+              $.getJSON("https://api.corrently.io/core/contract?account="+data[i].product,function(data2) {
+                $(".pLabel_"+data2.account).html(data2.name);
+              });
+          }
       });
     }
     $.fn.correntlyContract=function(account) {
@@ -325,9 +330,10 @@
       if(q == null) q="0xcf74487007Ed9eD579b2eb5498cb719d46bb9Ab4";
 
       $.getJSON("https://api.corrently.io/core/contract?account="+q,function(data) {
-        console.log(data);
+          if(data.type == "dealitem") data.type="Digitales Asset";
+          if(data.type == "product") data.type="Produkt/Vertrag";
           let html="";
-          html+= "<h2>"+data.name+" ("+data.type+")</h2>";
+          html+= "<h2>"+data.name+"</h2> <span class='text-muted'>("+data.type+")</span>";
           html+= "<p>"+data.description+"</p>";
           parent.html(html);
       });
@@ -512,6 +518,37 @@
       refreshReading();
       setInterval(refreshReading,60000);
     }
+}( jQuery ));
+
+(function ( $ ) {
+  /**
+   * Ausgabe der Zählerstände eines Corrently Account als  HTML Tabelle
+   */
+    $.fn.correntlySKOBalance=function(account) {
+      let q = account;
+      if(this.attr("data-account") != null ) q=this.attr("data-account");
+      if(this.attr("account") != null ) q=this.attr("account");
+
+      if(q == null) q = $.getUrlVar('a');
+      if(q == null) q="0x9d28463d51aC40662865D2462e80825D4DBB41d5";
+      const parent = this;
+      const refreshReading = function() {
+         $.getJSON("https://api.corrently.io/core/stromkonto?account="+q,function(data) {
+           /*
+           $($(parent).find("#soll")[0]).html(data.result.soll_eur);
+           $($(parent).find("#haben")[0]).html(data.result.haben_eur);
+           $($(parent).find("#balance")[0]).html(data.result.balance_eur);
+           */
+           $('#soll_eur').html(data.result.soll_eur.toFixed(2).replace('.',','));
+           $('#haben_eur').html(data.result.haben_eur.toFixed(2).replace('.',','));
+           $('#balance_eur').html(data.result.balance_eur.toFixed(2).replace('.',','));
+
+        });
+      }
+      refreshReading();
+      setInterval(refreshReading,60000);
+    }
+
 }( jQuery ));
 
 (function ( $ ) {
