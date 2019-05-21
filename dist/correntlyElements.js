@@ -311,7 +311,7 @@
             html+="<td>"+new Date(data[i].commissioning*1).toLocaleString()+"</td>";
             html+="<td title='"+data[i].delivery+"'>"+new Date(data[i].delivered*1).toLocaleString()+"</td>";
             if(data[i].product=="0x59E45255CC3F33e912A0f2D7Cc36Faf4B09e7e22") {
-                html+="<td><a href='./reading.html?a="+data[i].delivery+"' class='btn btn-sm btn-secondary'>#</a></td>"
+                html+="<td><a href='./reading.html?a="+data[i].quitance+"' class='btn btn-sm btn-secondary'>#</a></td>"
             } else if(data[i].product=="0x8dd8eddF4f8133f468867c551C17ad7324B411C6") {
                 html+="<td><a href='./stromkonto.html?a="+data[i].quitance+"' class='btn btn-sm btn-secondary'>#</a></td>"
             } else {
