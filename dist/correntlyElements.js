@@ -5,7 +5,7 @@
   /**
    * Ausgabe der Zählerstände eines Corrently Account als  HTML Tabelle
    */
-    $.fn.correntlyReadingChart=function(account) {
+    $.fn.correntlyReadingChart=function(account,cb_no_reading) {
       let q = account;
       if(this.attr("data-account") != null ) q=this.attr("data-account");
       if(this.attr("account") != null ) q=this.attr("account");
@@ -47,7 +47,11 @@
             let data_1_8_0 = [];
             let data_9_99_0 = [];
             let previous_ts=0;
-
+            if((typeof data.history == "undefined") || (data.history == null)) {
+                if(cb_no_reading != null) {
+                  cb_no_reading();
+                }
+            }
             for(var i=1;i<data.history.length;i++) {
               if(previous_ts<data.history[i].timeStamp) {
                 if((data.history[i]["1.8.0"]!=null)&&(data.history[i]["1.8.0"]-data.history[i-1]["1.8.0"]>0)) {
@@ -303,16 +307,17 @@
           html+="<th>Lieferung</th>";
           html+="</tr>";
 
-          for(let i=0;i<data.length;i++) {
-            console.log(data);
+          for(let i=0;i<data.length;i++) {            
             html+="<tr>";
             html+="<td title='"+data[i].product+"'><a href='./contracts.html?a="+data[i].product+"' class='pLabel_"+data[i].product+"'>"+data[i].product+"</a></td>";
             html+="<td><a href='./contracts.html?a="+data[i].quitance+"'>"+data[i].quitance+"</a></td>";
             html+="<td>"+new Date(data[i].commissioning*1).toLocaleString()+"</td>";
             html+="<td title='"+data[i].delivery+"'>"+new Date(data[i].delivered*1).toLocaleString()+"</td>";
             if(data[i].product=="0x59E45255CC3F33e912A0f2D7Cc36Faf4B09e7e22") {
+                window.ce_meter = data[i].quitance;
                 html+="<td><a href='./reading.html?a="+data[i].quitance+"' class='btn btn-sm btn-secondary'>#</a></td>"
             } else if(data[i].product=="0x8dd8eddF4f8133f468867c551C17ad7324B411C6") {
+                window.ce_sko = data[i].quitance;
                 html+="<td><a href='./stromkonto.html?a="+data[i].quitance+"' class='btn btn-sm btn-secondary'>#</a></td>"
             } else {
               html+="<td></td>";
@@ -353,7 +358,7 @@
   /**
    * Ausgabe der Zählerstände eines Corrently Account als  HTML Tabelle
    */
-    $.fn.correntlyReadingTable=function(account) {
+    $.fn.correntlyReadingTable=function(account,) {
       let q = account;
       if(this.attr("data-account") != null ) q=this.attr("data-account");
       if(this.attr("account") != null ) q=this.attr("account");
@@ -580,11 +585,13 @@
          $.getJSON("https://api.corrently.io/core/depot?account="+q,function(data) {
            let html = "<table class='table'>";
            html+="<tr><th>Anlage</th><th>Anteile (kWh/Jahr)</th></tr>";
-           for(let i=0;i<data.assets.length;i++) {
-              html+="<tr>";
-              html+="<td>"+data.assets[i].asset_title+"</td>";
-              html+="<td>"+data.assets[i].shares+"</td>";
-              html+="</tr>";
+           if((typeof data.assets != "undefined") && (data.assets!=null)) {
+               for(let i=0;i<data.assets.length;i++) {
+                  html+="<tr>";
+                  html+="<td>"+data.assets[i].asset_title+"</td>";
+                  html+="<td>"+data.assets[i].shares+"</td>";
+                  html+="</tr>";
+               }
            }
            html+="</table>";
            parent.html(html);
