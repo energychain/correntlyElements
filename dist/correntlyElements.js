@@ -48,7 +48,7 @@
             let data_9_99_0 = [];
             let previous_ts=0;
             if((typeof data.history == "undefined") || (data.history == null) || (data.history.length == 0)) {
-              console.log("No Reading");
+                console.log("No Reading");
                 if(cb_no_reading != null) {
                   cb_no_reading();
                 }
@@ -93,13 +93,13 @@
               grey,
             ];
             // Render in html Elements
-            $('.usageKwh').filter('[data-account="'+ctx.attr('data-account')+'"]').html((totalConsumption/1000).toFixed(3).replace('.',','));
-            $('.greenKwh').filter('[data-account="'+ctx.attr('data-account')+'"]').html((l1/1000).toFixed(3).replace('.',','));
-            $('.greyKwh').filter('[data-account="'+ctx.attr('data-account')+'"]').html((l2/1000).toFixed(3).replace('.',','));
-            $('.totalReading').filter('[data-account="'+ctx.attr('data-account')+'"]').html((data["1.8.0"]/1000).toFixed(3).replace('.',','));
-            $('.greenReading').filter('[data-account="'+ctx.attr('data-account')+'"]').html((data["1.8.1"]/1000).toFixed(3).replace('.',','));
-            $('.greyReading').filter('[data-account="'+ctx.attr('data-account')+'"]').html((data["1.8.2"]/1000).toFixed(3).replace('.',','));
-            $('.timeReading').filter('[data-account="'+ctx.attr('data-account')+'"]').html(new Date(data.timeStamp).toLocaleString());
+            $('.usageKwh').html((totalConsumption/1000).toFixed(3).replace('.',','));
+            $('.greenKwh').html((l1/1000).toFixed(3).replace('.',','));
+            $('.greyKwh').html((l2/1000).toFixed(3).replace('.',','));
+            $('.totalReading').html((data["1.8.0"]/1000).toFixed(3).replace('.',','));
+            $('.greenReading').html((data["1.8.1"]/1000).toFixed(3).replace('.',','));
+            $('.greyReading').html((data["1.8.2"]/1000).toFixed(3).replace('.',','));
+            $('.timeReading').html(new Date(data.timeStamp).toLocaleString());
             if((ctype=="line")||(ctype=='bar')) {
               let myChart = new Chart(ctx, {
                   type: ctype,
