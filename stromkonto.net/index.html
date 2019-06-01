@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Corrently Stromkonto</title>
+    <meta property="og:image" content="assets/img/corrently_logo.png?h=7528b31dd0513a632852819413303938">
+    <meta property="og:type" content="website">
+    <meta name="author" content="Corrently Corp ">
+    <meta name="keywords" content="Stromkonto, STROMDAO, Blockchain, Corrently">
+    <meta name="description" content="Stromkonto der STROMDAO">
+    <link rel="icon" type="image/png" sizes="98x42" href="assets/img/corrently_logo.png?h=7528b31dd0513a632852819413303938">
+    <link rel="icon" type="image/png" sizes="98x42" href="assets/img/corrently_logo.png?h=7528b31dd0513a632852819413303938">
+    <link rel="icon" type="image/png" sizes="98x42" href="assets/img/corrently_logo.png?h=7528b31dd0513a632852819413303938">
+    <link rel="icon" type="image/png" sizes="98x42" href="assets/img/corrently_logo.png?h=7528b31dd0513a632852819413303938">
+    <link rel="icon" type="image/png" sizes="98x42" href="assets/img/corrently_logo.png?h=7528b31dd0513a632852819413303938">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css?h=3d2f01c84cac47153104644c0b3f9e7e">
+    <link rel="manifest" href="manifest.json?h=31f7115f15cc00817ed1f531182f3cae">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="assets/css/styles.min.css?h=800e7b47b55056a8b52a09613895ab56">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-41810193-9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-41810193-9');
+</script>
+<link rel="manifest" href="/manifest.json" />
+<link rel="shortcut icon"  type="image/x-icon"  href="/favicon.ico">
+
+</head>
+
+<body style="margin: 0 0 145px 0">
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean shadow-lg">
+        <div class="container"><a class="navbar-brand" href="https://corrently.de/"><img alt="" src="assets/img/corrently_logo.png?h=7528b31dd0513a632852819413303938">&nbsp;</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div
+                class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link text-black-50" id="reload_link" href="https://stromtarif.shop/" target="_blank"><strong>Stromtarif</strong></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-dark" id="reload_link" href="#"><strong>Stromkonto</strong></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-nowrap text-black-50" id="reload_link" href="https://corrently.blog" target="_blank"><strong>Blog</strong></a></li>
+                </ul>
+        </div>
+        </div>
+    </nav>
+    <div class="container" style="margin-bottom: 25px;margin-top: 25px;">
+        <div class="row" style="margin-bottom: 25px;">
+            <div class="col">
+                <div class="card shadow-lg">
+                    <div class="card-header bg-dark text-light">
+                        <h3>Vorhersage GrünstromIndex</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="gsi_vorhersage"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 25px;">
+            <div class="col">
+                <div class="card shadow-lg">
+                    <div class="card-header bg-dark text-light">
+                        <h3>Kontostand</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="stromkonto_overview"></div>
+                        <div class="row">
+                            <div class="col" id="soll">
+                                <p class="text-secondary">Soll</p>
+                                <h1><span id="soll_eur">-&nbsp;</span><span>€</span></h1>
+                            </div>
+                            <div class="col" id="soll">
+                                <p class="text-secondary">Haben</p>
+                                <h1><span id="haben_eur">-&nbsp;</span><span>€</span></h1>
+                            </div>
+                            <div class="col" id="soll">
+                                <p class="text-secondary">Saldo</p>
+                                <h1><span id="balance_eur">-&nbsp;</span><span>€</span></h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <p class="text-center text-muted">Eigenerzeugung aus Corrently Anlagen:&nbsp;<span id="p_2_8_0">-</span><span>&nbsp;kWh</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 25px;">
+            <div class="col">
+                <div class="card shadow-lg">
+                    <div class="card-header bg-dark text-light">
+                        <h3>Grünstromzähler</h3>
+                    </div>
+                    <div class="card-body"><div class="row" id="has_meter">
+    <div class="col col-sm-8">
+        <canvas class="usageChart" width="600" height="400"  data-chart="line" id="usageChart"></canvas>
+    </div>
+    <div class="col col-sm-4">
+        <canvas width="276" height="184" id="donutChart" data-chart="donut"  class="usageChart chartjs-render-monitor" data-resolution="3600000" style="display: block; width: 276px; height: 184px;"></canvas>
+        
+        <table class="table table-striped"><tbody>
+            <tr><td>Stromverbrauch</td><td><span class="usageKwh">-</span>&nbsp; kWh</td></tr>
+            <tr><td>&nbsp;davon grün</td><td><span class="greenKwh" >-</span>&nbsp; kWh</td></tr>
+            <tr><td>&nbsp;davon grau</td><td><span class="greyKwh" >-</span>&nbsp; kWh</td></tr>
+        </tbody></table>
+    </div>
+</div>
+<div class="row" id="no_meter" style="display:none">
+    <div class="col">
+    <h3>Kein Grünstromzähler vorhanden</h3>
+    <p>Mit einem intelligten Grünstromzähler kann der Bonus genauer berechnet werden und fällt garantiert höher aus, da die tatsächlichen Verbrauchszeiten berücksichtigt werden.</p>.
+    <a href="https://stromdao.com/kontakt/" class="btn btn-warning">Kontakt zur <strong>STROM</strong>DAO</a>
+    </div>
+</div></div>
+                    <div id="lastReadingTable"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 25px;">
+            <div class="col">
+                <div class="card shadow-lg">
+                    <div class="card-header bg-dark text-light">
+                        <h3>Corrently Erzeugung</h3>
+                    </div>
+                    <div class="card-body">
+                        <h4>Bestand</h4>
+                        <div id="deport_overview"></div>
+                        <h4>Verfügbar / Marktplatz</h4>
+                        <div id="market"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><footer id="footer" style="margin-top:25px;padding-top:25px;">
+    <div style= "background: black; text-align: center; margin: 0px; padding:10px">
+        <p style= "color:grey; font-family: raleway" id="bcstatus">(c) 2019 <a href="https://stromdao.de/"><strong>STROM</strong>DAO</a> | <a href="https://stromdao.de/impressum/">Impressum &amp; Datenschutz</a> | <a href="http://corrently.blog">Blog</a> |  <a href="https://scan.corrently.io">Konsens</a> </p>
+    </div>
+</footer>
+<script>
+        (function(w,d,u){
+                var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/60000|0);
+                var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);
+        })(window,document,'https://cdn.bitrix24.de/b9364995/crm/site_button/loader_1_ykcyn2.js');
+</script>
+    <script src="assets/js/jquery.min.js?h=1dd785e1de9a32e236b624ae268bb803"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js?h=63715b63ee49d5fe4844c2ecae071373"></script>
+    <script src="https://elements.corrently.io/assets/js/Chart.bundle.min.js"></script>
+    <script src="https://elements.corrently.io/dist/correntlyElements-min.js"></script>
+    <script src="assets/js/script.min.js?h=609dc976fe2abad0c9d012c0f8334c6c"></script>
+</body>
+
+</html>
