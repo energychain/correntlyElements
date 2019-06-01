@@ -276,7 +276,7 @@
           html+="<th>Bezeichnung</th>";
           html+="<th>Emitent</th>";
           html+="<th>Erzeugung bis<br/><span class='text-muted'>Vertrag gültig bis mindestens</span></th>";
-          html+="<th>Benötigter Grünstrom<br/><span class='text-muted'>für die Erzeugung von 1 kWh/Jahr</span></th>";
+          html+="<th colspan='2'>Grünstrom<br/><span class='text-muted'>für die Erzeugung von 1 kWh/Jahr</span></th>";
           html+="</tr>";
           for(let i=0;i<data.results.length;i++) {
             html+="<tr>";
@@ -284,6 +284,7 @@
             html+="<td>"+data.results[i].emitent+"</td>";
             html+="<td>"+data.results[i].decom+"</td>";
             html+="<td>"+data.results[i].cori+" kWh</td>";
+            html+="<td>"+(data.results[i].cori*0.02).toFixed(2).replace('.',',')+" €</td>";
             html+="</tr>";
           }
           html+"</table>";
@@ -308,7 +309,7 @@
           html+="<th>Lieferung</th>";
           html+="</tr>";
 
-          for(let i=0;i<data.length;i++) {            
+          for(let i=0;i<data.length;i++) {
             html+="<tr>";
             html+="<td title='"+data[i].product+"'><a href='./contracts.html?a="+data[i].product+"' class='pLabel_"+data[i].product+"'>"+data[i].product+"</a></td>";
             html+="<td><a href='./contracts.html?a="+data[i].quitance+"'>"+data[i].quitance+"</a></td>";
