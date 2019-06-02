@@ -325,9 +325,13 @@
                       }
                     }
                   }
+                  html+="<button class='btn btn-success' id='applySelection'>übernehmen</button>";
                   parent.html(html);
                   let cnt_sel=0;
 
+                  $('#applySelection').click(function() {
+                        console.log($('div[selected="selected"]'));
+                  });
 
                   const updateSelStats = function() {
                     $('#selected_fields').html(cnt_sel);
