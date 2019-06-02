@@ -40,13 +40,13 @@
                 class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav ml-auto">
                     <li class="nav-item" role="presentation"><a class="nav-link text-black-50" id="reload_link" href="https://stromtarif.shop/" target="_blank"><strong>Stromtarif</strong></a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link text-dark" id="reload_link" href="#"><strong>Stromkonto</strong></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-dark" id="reload_link" href="?logout=now"><strong>Stromkonto</strong></a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link text-nowrap text-black-50" id="reload_link" href="https://corrently.blog" target="_blank"><strong>Blog</strong></a></li>
                 </ul>
         </div>
         </div>
     </nav>
-    <div class="container" style="margin-bottom: 25px;margin-top: 25px;">
+    <div class="container" id="app_container" style="margin-bottom: 25px;margin-top: 25px;">
         <div class="row" style="margin-bottom: 25px;">
             <div class="col">
                 <div class="card shadow-lg">
@@ -69,12 +69,12 @@
                         <div id="stromkonto_overview"></div>
                         <div class="row">
                             <div class="col" id="soll">
-                                <p class="text-secondary">Eingelöst</p>
-                                <h1><span id="soll_eur">-&nbsp;</span><span>€</span></h1>
-                            </div>
-                            <div class="col" id="soll">
                                 <p class="text-secondary">Gesammelt</p>
                                 <h1><span id="haben_eur">-&nbsp;</span><span>€</span></h1>
+                            </div>
+                            <div class="col" id="soll">
+                                <p class="text-secondary">Bereits Eingelöst</p>
+                                <h1><span id="soll_eur">-&nbsp;</span><span>€</span></h1>
                             </div>
                             <div class="col" id="soll">
                                 <p class="text-secondary">Verfügbar</p>
@@ -92,7 +92,7 @@
             <div class="col">
                 <div class="card shadow-lg">
                     <div class="card-header bg-dark text-light">
-                        <h3>Grünstromzähler</h3>
+                        <h3>Corrently GrünstromZähler</h3>
                     </div>
                     <div class="card-body"><div class="row" id="has_meter">
     <div class="col col-sm-8">
@@ -134,6 +134,27 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="container" id="login_container" style="margin-top: 25px;">
+        <div class="row" style="margin-bottom: 25px;">
+            <div class="col">
+                <div class="card shadow-lg">
+                    <div class="card-header bg-dark text-light">
+                        <h3>Anmeldung zu Ihrem Stromkonto</h3>
+                    </div>
+                    <div class="card-body">
+                        <form id="loginfrm" method="get" action="https://api.corrently.io/token/login">
+                            <div class="alert alert-success d-none" role="alert" id="login_ok"><span><strong>Mail versendet.</strong> Bitte das Email Postfach prüfen, dort sollte bereits Mail mit dem Anmeldelink eingegangen sein.</span></div>
+                            <div class="alert alert-danger d-none" role="alert" id="login_fail"><span><strong>Fehler!</strong>&nbsp;Der Versand hat leider nicht geklappt. Bitte noch einmal probieren und unseren Service kontaktieren.</span></div><label>Ihre Corrently Email:</label><input class="form-control" type="email"
+                                placeholder="name@domain.de" name="mail">
+                            <p class="text-center" style="margin-top: 15px;"><button class="btn btn-warning" id="submitbutton" type="submit">Zugang per Mail anfordern&nbsp;</button></p>
+                            <hr>
+                            <p class="text-center" style="margin-top: 15px;"><a class="btn btn-danger" role="button" href="?a=0x69aa1d252Cbb992Fc3fbBED4ddb71840c225dC72">Demo Konto öffnen</a><a class="btn btn-success" role="button" href="produktauswahl.html">Neues Stromkonto einrichten</a></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div><footer id="footer" style="margin-top:25px;padding-top:25px;">
     <div style= "background: black; text-align: center; margin: 0px; padding:10px">
         <p style= "color:grey; font-family: raleway" id="bcstatus">(c) 2019 <a href="https://stromdao.de/"><strong>STROM</strong>DAO</a> | <a href="https://stromdao.de/impressum/">Impressum &amp; Datenschutz</a> | <a href="http://corrently.blog">Blog</a> |  <a href="https://scan.corrently.io">Konsens</a> </p>
@@ -149,7 +170,7 @@
     <script src="assets/bootstrap/js/bootstrap.min.js?h=63715b63ee49d5fe4844c2ecae071373"></script>
     <script src="https://elements.corrently.io/assets/js/Chart.bundle.min.js"></script>
     <script src="https://elements.corrently.io/dist/correntlyElements-min.js"></script>
-    <script src="assets/js/script.min.js?h=ed57be58b15c5b327812538251c9e1af"></script>
+    <script src="assets/js/script.min.js?h=ec89036b18b3ecb9e4ac54c89f8d6816"></script>
 </body>
 
 </html>

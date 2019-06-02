@@ -1,1 +1,1 @@
-cmd: gulp
+cmd: gulp ; git add -A ; git commit -m "Auto" -a ; git push origin master
