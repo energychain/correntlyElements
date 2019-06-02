@@ -349,6 +349,7 @@
                     if(nmb<0) nmb=0;
 
                     console.log("Buy for",q);
+                    console.log("Of Asset",a);
                     console.log("Cells",allocation);
                     console.log("Existing",existing_ownership);
                     console.log("Required",cnt_sel);
