@@ -298,11 +298,11 @@
           let html="";
           for(let i=0;i<data.results.length;i++) {
             if(data.results[i].asset==a) {
-              let fields = data.results[i].totalSupply;              
+              let fields = data.results[i].totalSupply;
               let l=0;
               html+="<div style='width:750px'>";
               for(let j=0;j<fields;j++) {
-                html+="<div class='field' id='cell_"+j+"'></div>";
+                html+="<div class='field' id='cell_"+j+"' title='Zelle "+j+"'></div>";
               }
               html+="</div>";
             }
