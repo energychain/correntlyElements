@@ -308,14 +308,18 @@
             }
           }
           parent.html(html);
+          let cnt_sel=0;
           $('.field').click(function(el) {
               if($(el.currentTarget).attr('selected')) {
                 $(el.currentTarget).css("background-color", "#c0c0c0");
                 $(el.currentTarget).removeAttr('selected');
+                cnt_sel--;
               } else {
                 $(el.currentTarget).css("background-color", "red");
                 $(el.currentTarget).attr('selected','selected');
+                cnt_sel++;
               }
+              $('#selected_fields').html(cnt_sel);
           });
       });
     },
