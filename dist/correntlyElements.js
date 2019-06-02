@@ -309,7 +309,13 @@
           }
           parent.html(html);
           $('.field').click(function(el) {
-              $(el.currentTarget).css("background-color", "red");
+              if($(el.currentTarget).attr('selected')) {
+                $(el.currentTarget).css("background-color", "#c0c0c0");
+                $(el.currentTarget).removeAttr('selected');
+              } else {
+                $(el.currentTarget).css("background-color", "red");
+                $(el.currentTarget).attr('selected','selected');
+              }
           });
       });
     },
