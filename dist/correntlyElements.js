@@ -310,14 +310,20 @@
             let balance_eur = data.result.balance_eur;
               $.getJSON("https://api.corrently.io/core/market",function(data) {
                   let html="";
+                  let cnt_sel=0;
                   for(let i=0;i<data.results.length;i++) {
                     if(data.results[i].asset==a) {
                       $('#asset_title').html(data.results[i].title);
                       let fields = data.results[i].totalSupply;
                       let l=0;
                       html+="<div style='width:750px;float:none'>";
-                      for(let j=0;j<fields;j++) {
-                        html+="<div class='field' id='cell_"+j+"' title='Zelle "+j+"'></div>";
+                      for(let j=0;j<data.results[i].allocations.length;j++) {
+                        if(data.results[i].allocations[j]=="0x0000000000000000000000000000000000000000") {
+                          html+="<div class='field' id='cell_"+j+"' title='Zelle "+j+"'></div>";
+                        } else if(data.results[i].allocations[j]==q) {
+                          html+="<div class='field' id='cell_"+j+"' title='Zelle "+j+"' selected='selected' style='background-color:red'></div>";
+                          cnt_sel++;
+                        }
                       }
                       html+="</div>";
                       if(balance_eur>0) {
@@ -327,7 +333,7 @@
                   }
                   html+="<button class='btn btn-success btn-lg' style='margin:5px;' id='applySelection'>übernehmen</button>";
                   parent.html(html);
-                  let cnt_sel=0;
+
 
                   $('#applySelection').click(function() {
                         console.log($('div[selected="selected"]'));
