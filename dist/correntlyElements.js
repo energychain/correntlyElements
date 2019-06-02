@@ -321,8 +321,10 @@
                         if(data.results[i].allocations[j]=="0x0000000000000000000000000000000000000000") {
                           html+="<div class='field' id='cell_"+j+"' title='Zelle "+j+"'></div>";
                         } else if(data.results[i].allocations[j]==q) {
-                          html+="<div class='field' id='cell_"+j+"' title='Zelle "+j+"' selected='selected' style='background-color:red'></div>";
+                          html+="<div class='field' id='cell_"+j+"' title='Zelle "+j+"' selected='selected' style='background-color:black'></div>";
                           cnt_sel++;
+                        } else {
+                          html+="<div class='field' id='cell_"+j+"' title='Zelle "+j+" von "+data.results[i].allocations[j]+"' owned='true' style='background-color:yellow'></div>";
                         }
                       }
                       html+="</div>";
@@ -346,16 +348,17 @@
                   }
 
                   $('.field').click(function(el) {
-
-                      if($(el.currentTarget).attr('selected')) {
-                        $(el.currentTarget).css("background-color", "#c0c0c0");
-                        $(el.currentTarget).removeAttr('selected');
-                        cnt_sel--;
-                      } else {
-                        if(cnt_sel<selectable_fields) {
-                          $(el.currentTarget).css("background-color", "red");
-                          $(el.currentTarget).attr('selected','selected');
-                          cnt_sel++;
+                      if(!$(el.currentTarget).attr('owned')) {
+                        if($(el.currentTarget).attr('selected')) {
+                          $(el.currentTarget).css("background-color", "#c0c0c0");
+                          $(el.currentTarget).removeAttr('selected');
+                          cnt_sel--;
+                        } else {
+                          if(cnt_sel<selectable_fields) {
+                            $(el.currentTarget).css("background-color", "black");
+                            $(el.currentTarget).attr('selected','selected');
+                            cnt_sel++;
+                          }
                         }
                       }
                       updateSelStats();
