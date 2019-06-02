@@ -53,9 +53,23 @@
                 <div class="card-header text-dark bg-dark">
                     <h3 class="text-truncate text-light">Zellenauswahl - <span id="asset_title"></span> </h3>
                 </div>
-                Ausgewählt: <span id="selected_fields"></span>
-                <div class="card-body" id="reading_card">
+                Ausgewählt:
+                <div class="card-body">
+                  <table class="table">
+                    <tr class="bg-dark text-light">
+                      <th>Auswählbar</th>
+                      <th>Gewählt</th>
+                      <th>Verbleibend</th>
+                    </tr>
+                    <tr>
+                      <td id="selectable_fields">-</td>
+                      <td id="selected_fields">-</td>
+                      <td id="remain_fields">-</td>
+                    </tr>
+                  </table>
 
+                  <div id="reading_card">
+                  </div>
                 </div>
                 <div class="card-footer text-center">
                       API Endpunkt: <code>https://api.corrently.io/core/market</code><br/>
