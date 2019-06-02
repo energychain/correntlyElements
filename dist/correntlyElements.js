@@ -331,7 +331,12 @@
                       }
                       html+="</div>";
                       if(balance_eur>0) {
+                        console.log("Pre Sel Fields",selectable_fields);
                         selectable_fields+=Math.floor(balance_eur/(data.results[i].cori*0.02));
+                        console.log("Sel Fields",selectable_fields);
+                        console.log("Balance",balance_eur);
+                        console.log("CORI",data.results[i].cori);
+
                       }
                     }
                   }
