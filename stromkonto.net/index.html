@@ -106,7 +106,8 @@
             <tr><td>&nbsp;davon grün</td><td><span class="greenKwh" >-</span>&nbsp; kWh</td></tr>
             <tr><td>&nbsp;davon grau</td><td><span class="greyKwh" >-</span>&nbsp; kWh</td></tr>
         </tbody></table>
-    </div>
+        <button type="button" style="float:none" onclick="$('#lastReadingTable').toggle();" class="btn btn-warning">Details</button>
+    </div>    
 </div>
 <div class="row" id="no_meter" style="display:none">
     <div class="col">
@@ -114,8 +115,9 @@
     <p>Mit einem intelligten Grünstromzähler kann der Bonus genauer berechnet werden und fällt garantiert höher aus, da die tatsächlichen Verbrauchszeiten berücksichtigt werden.</p>.
     <a href="https://stromdao.com/kontakt/" class="btn btn-warning">Kontakt zur <strong>STROM</strong>DAO</a>
     </div>
-</div></div>
-                    <div id="lastReadingTable"></div>
+</div>
+                        <div id="lastReadingTable" style="display: none;margin-top: 5px;"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -123,12 +125,21 @@
             <div class="col">
                 <div class="card shadow-lg">
                     <div class="card-header bg-dark text-light">
-                        <h3>Corrently Erzeugung</h3>
+                        <h3>Bestand Corrently Erzeugung</h3>
                     </div>
                     <div class="card-body">
-                        <h4>Bestand</h4>
                         <div id="deport_overview"></div>
-                        <h4>Verfügbar / Marktplatz</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 25px;">
+            <div class="col">
+                <div class="card shadow-lg">
+                    <div class="card-header bg-dark text-light">
+                        <h3>Corrently Erzeugungs Marktplatz</h3>
+                    </div>
+                    <div class="card-body">
                         <div id="market"></div>
                     </div>
                 </div>
@@ -144,8 +155,8 @@
                     </div>
                     <div class="card-body">
                         <form id="loginfrm" method="get" action="https://api.corrently.io/token/login">
-                            <div class="alert alert-success d-none" role="alert" id="login_ok"><span><strong>Mail versendet.</strong> Bitte das Email Postfach prüfen, dort sollte bereits Mail mit dem Anmeldelink eingegangen sein.</span></div>
-                            <div class="alert alert-danger d-none" role="alert" id="login_fail"><span><strong>Fehler!</strong>&nbsp;Der Versand hat leider nicht geklappt. Bitte noch einmal probieren und unseren Service kontaktieren.</span></div><label>Ihre Corrently Email:</label><input class="form-control" type="email"
+                            <div class="alert alert-success" role="alert" id="login_ok" style="display:none"><span><strong>Mail versendet.</strong> Bitte das Email Postfach prüfen, dort sollte bereits Mail mit dem Anmeldelink eingegangen sein.</span></div>
+                            <div class="alert alert-danger" role="alert" id="login_fail" style="display:none"><span><strong>Fehler!</strong>&nbsp;Der Versand hat leider nicht geklappt. Bitte noch einmal probieren und unseren Service kontaktieren.</span></div><label>Ihre Corrently Email:</label><input class="form-control" type="email"
                                 placeholder="name@domain.de" name="mail">
                             <p class="text-center" style="margin-top: 15px;"><button class="btn btn-warning" id="submitbutton" type="submit">Zugang per Mail anfordern&nbsp;</button></p>
                             <hr>
@@ -170,7 +181,7 @@
     <script src="assets/bootstrap/js/bootstrap.min.js?h=63715b63ee49d5fe4844c2ecae071373"></script>
     <script src="https://elements.corrently.io/assets/js/Chart.bundle.min.js"></script>
     <script src="https://elements.corrently.io/dist/correntlyElements-min.js"></script>
-    <script src="assets/js/script.min.js?h=ec89036b18b3ecb9e4ac54c89f8d6816"></script>
+    <script src="assets/js/script.min.js?h=0f6202058328d0f4a5af6b05265f086c"></script>
 </body>
 
 </html>
