@@ -354,6 +354,12 @@
                     console.log("Existing",existing_ownership);
                     console.log("Required",cnt_sel);
                     console.log("New",nmb);
+                    let query="";
+                    query+="&account="+q;
+                    query+="&asset="+a;
+                    query+="&amount="+nmb;
+                    query+="&allocations="+allocation.join(',');
+                    console.log(query);
                   });
 
                   const updateSelStats = function() {
