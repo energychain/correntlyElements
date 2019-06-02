@@ -291,6 +291,25 @@
           parent.html(html);
       });
     },
+    $.fn.correntlyBoard=function(a) {
+      const parent = this;
+
+      $.getJSON("https://api.corrently.io/core/market",function(data) {
+          let html="";
+          for(let i=0;i<data.results.length;i++) {
+            if(data.results[i].asset==a) {
+              let fields = data.results[i].totalSupply;              
+              let l=0;
+              html+="<div style='width:750px'>";
+              for(let j=0;j<fields;j++) {
+                html+="<div class='field' id='cell_"+j+"'></div>";
+              }
+              html+="</div>";
+            }
+          }
+          parent.html(html);
+      });
+    },
     $.fn.correntlyCommisioning=function(account) {
       const parent = this;
       let q = account;
