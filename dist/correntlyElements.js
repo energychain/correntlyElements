@@ -308,6 +308,9 @@
             }
           }
           parent.html(html);
+          $('.field').click(function(el) {
+              $(el.currentTarget).css("background-color", "red");
+          });
       });
     },
     $.fn.correntlyCommisioning=function(account) {
