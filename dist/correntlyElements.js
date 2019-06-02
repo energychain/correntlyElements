@@ -301,9 +301,11 @@
 
       $.getJSON("https://api.corrently.io/core/depot?account="+q,function(data) {
           let selectable_fields=0;
+          let existing_ownership=0;
           for(let i=0;i<data.assets.length;i++) {
             if(data.assets[i].account==a) {
               selectable_fields=data.assets[i].shares*1;
+              existing_ownership=selectable_fields;
             }
           }
           $.getJSON("https://api.corrently.io/core/stromkonto?account="+q,function(data) {
@@ -343,7 +345,12 @@
                     for(let i=0;i<selected.length;i++) {
                         allocation.push($(selected[i]).attr('id').substr(5));
                     }
-                    console.log(allocation);
+                    let nmb=existing_ownership-cnt_sel;
+                    if(nmb<0) nmb=0;
+                    
+                    console.log("Buy for",q);
+                    console.log("Cells",allocation);
+                    console.log("Tx",nmb);
                   });
 
                   const updateSelStats = function() {
