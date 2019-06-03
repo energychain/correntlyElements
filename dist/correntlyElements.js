@@ -297,7 +297,7 @@
       if(this.attr("data-account") != null ) q=this.attr("data-account");
       if(this.attr("account") != null ) q=this.attr("account");
       let q="0x504ec8497EBD02369550f6586EB32b26f088F25B";
-      if($.getUrlVar('a')!=null) q = $.getUrlVar('a');
+      if($.getUrlVar('c')!=null) q = $.getUrlVar('c');
       if($.getUrlVar('asset')!=null) a = $.getUrlVar('asset');
 
       if(q==null) {
@@ -307,7 +307,7 @@
             for(let i=0;i<data.length;i++) {
               if(data[i].product=="0x8dd8eddF4f8133f468867c551C17ad7324B411C6") {
                 // location.href="./board.html?a="+data[i].quitance+"&asset="+a;
-                console.log("./board.html?a="+data[i].quitance+"&asset="+a);
+                console.log("./board.html?c="+data[i].quitance+"&asset="+a);
               }
             }
           });
