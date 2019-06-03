@@ -299,14 +299,14 @@
       let q="0x504ec8497EBD02369550f6586EB32b26f088F25B";
       if($.getUrlVar('a')!=null) q = $.getUrlVar('a');
       if($.getUrlVar('asset')!=null) a = $.getUrlVar('asset');
-      
+
       if(q==null) {
         q=window.localStorage.getItem("account");
         if(a!=null) {
           $.getJSON("https://api.corrently.io/core/commissioning?account="+q, function(data) {
             for(let i=0;i<data.length;i++) {
               if(data[i].product=="0x8dd8eddF4f8133f468867c551C17ad7324B411C6") {
-                location.href="./board.html?a="+data[i].quitance+"&asset="+$.getUrlVar('asset');
+                location.href="./board.html?a="+data[i].quitance+"&asset="+a;
               }
             }
           });
