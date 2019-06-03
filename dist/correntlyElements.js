@@ -365,7 +365,11 @@
                     query+="&asset="+a;
                     query+="&amount="+nmb;
                     query+="&allocations="+allocation.join(',');
-                    console.log(query);
+                    $.getJSON("https://api.corrently.io/core/transaction?"+query,function(data) {
+                          html="";
+                          html="<h3>Bitte Email Posteingang prüfen</h3>";
+                          $('#reading_card').html(html);
+                    });
                   });
 
                   const updateSelStats = function() {
