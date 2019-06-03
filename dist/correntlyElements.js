@@ -375,7 +375,7 @@
                   $('#applySelection').click(function() {
                     $('#applySelection').attr('disabled','disabled');
                     $('#applySelection').removeClass('btn-success');
-                    
+
                     console.log("- preparing Transaction");
                     let selected = $('div[selected="selected"]');
                     let allocation=[];
@@ -393,7 +393,7 @@
                     $.getJSON("https://api.corrently.io/core/transaction?"+query,function(data) {
                           html="";
                           html="<h3>Bitte Email Posteingang prüfen</h3>";
-                          $('#reading_card').html(html);
+                          $('#board_card').html(html);
                     });
                   });
 
