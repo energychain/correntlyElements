@@ -302,7 +302,7 @@
 
       if(q==null) {
         q=window.localStorage.getItem("account");
-        if(a!=null) {
+        if(q!=null) {
           $.getJSON("https://api.corrently.io/core/commissioning?account="+q, function(data) {
             for(let i=0;i<data.length;i++) {
               if(data[i].product=="0x8dd8eddF4f8133f468867c551C17ad7324B411C6") {
