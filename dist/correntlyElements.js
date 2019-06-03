@@ -373,6 +373,9 @@
                   html+="<button class='btn btn-success btn-lg' style='margin:5px;' id='applySelection'>übernehmen</button>";
                   parent.html(html);
                   $('#applySelection').click(function() {
+                    $('#applySelection').attr('disabled','disabled');
+                    $('#applySelection').removeClass('btn-success');
+                    
                     console.log("- preparing Transaction");
                     let selected = $('div[selected="selected"]');
                     let allocation=[];
