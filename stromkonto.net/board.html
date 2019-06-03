@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Stromkonto - Produktwahl</title>
+    <meta property="og:image" content="assets/img/corrently_logo.png?h=7528b31dd0513a632852819413303938">
+    <meta property="og:type" content="website">
+    <meta name="description" content="Auswahl eines Stromproduktes für die Nutzung mit dem Stromkonto">
+    <link rel="icon" type="image/png" sizes="98x42" href="assets/img/corrently_logo.png?h=7528b31dd0513a632852819413303938">
+    <link rel="icon" type="image/png" sizes="98x42" href="assets/img/corrently_logo.png?h=7528b31dd0513a632852819413303938">
+    <link rel="icon" type="image/png" sizes="98x42" href="assets/img/corrently_logo.png?h=7528b31dd0513a632852819413303938">
+    <link rel="icon" type="image/png" sizes="98x42" href="assets/img/corrently_logo.png?h=7528b31dd0513a632852819413303938">
+    <link rel="icon" type="image/png" sizes="98x42" href="assets/img/corrently_logo.png?h=7528b31dd0513a632852819413303938">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css?h=3d2f01c84cac47153104644c0b3f9e7e">
+    <link rel="manifest" href="manifest.json?h=31f7115f15cc00817ed1f531182f3cae">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="assets/css/styles.min.css?h=800e7b47b55056a8b52a09613895ab56">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-41810193-9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-41810193-9');
+</script>
+<link rel="manifest" href="/manifest.json" />
+<style>
+.field {
+    float: left;
+    width: 10px;
+    height: 10px;
+    background-color: #c6c6c6;
+    border:1px solid #909090;
+    font-size:4px;
+    text-align:center;
+    display: table-cell;
+    vertical-align:middle;
+}
+</style>
+</head>
+
+<body class="text-center">
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean shadow-lg">
+        <div class="container"><a class="navbar-brand" href="/"><img alt="" src="assets/img/corrently_logo.png?h=7528b31dd0513a632852819413303938">&nbsp;</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div
+                class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav ml-auto"></ul>
+        </div>
+        </div>
+    </nav>
+    <div style="margin-top: 50px;">
+        <div class="container">
+            <h1 class="text-left text-secondary">Corrently Erzeugung - Zellenauswahl</h1>  <div class="card-deck" style="margin-bottom: 25px;">
+            <div class="card shadow-lg">
+                <div class="card-header text-dark bg-dark">
+                    <h3 class="text-truncate text-light">Zellenbelegung - <span id="asset_title"></span> </h3>
+                </div>
+                <div class="card-body">
+                  <table class="table table-condensed">
+                    <tr class="bg-dark text-light">
+                      <th>Auswählbar</th>
+                      <th>Gewählt</th>
+                      <th>Verbleibend</th>
+                    </tr>
+                    <tr>
+                      <td id="selectable_fields">-</td>
+                      <td id="selected_fields">-</td>
+                      <td id="remain_fields">-</td>
+                    </tr>
+                  </table>
+
+                  <div id="board_card">
+                  </div>
+                </div>
+                <div class="card-footer text-center">
+                     Auswahl muss per Email freigegeben werden!
+                </div>
+            </div>
+        </div>
+</div>
+    </div><footer id="footer" style="margin-top:25px;padding-top:25px;">
+    <div style= "background: black; text-align: center; margin: 0px; padding:10px">
+        <p style= "color:grey; font-family: raleway" id="bcstatus">(c) 2019 <a href="https://stromdao.de/"><strong>STROM</strong>DAO</a> | <a href="https://stromdao.de/impressum/">Impressum &amp; Datenschutz</a> | <a href="http://corrently.blog">Blog</a> | Konsens # <a href="https://scan.corrently.io">{{ blocknumber }}</a> <span id='webuser' class="text-muted"></span> </p>
+    </div>
+</footer>
+<script>
+        (function(w,d,u){
+                var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/60000|0);
+                var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);
+        })(window,document,'https://cdn.bitrix24.de/b9364995/crm/site_button/loader_1_ykcyn2.js');
+</script>
+    <script src="assets/js/jquery.min.js?h=1dd785e1de9a32e236b624ae268bb803"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js?h=63715b63ee49d5fe4844c2ecae071373"></script>
+    <script src="https://elements.corrently.io/assets/js/Chart.bundle.min.js"></script>
+    <script src="https://elements.corrently.io/dist/correntlyElements-min.js"></script>
+    <script src="assets/js/script.min.js?h=7ddec6e2c21402ae3aecc33de6e8e7a8"></script>
+</body>
+
+</html>
