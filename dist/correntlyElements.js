@@ -332,30 +332,24 @@
                       html+="</div>";
                       html+="</div>";
                       if(balance_eur>0) {
-                        console.log("Pre Sel Fields",selectable_fields);
                         selectable_fields+=Math.floor(balance_eur/(data.results[i].cori*0.02));
-                        console.log("Sel Fields",selectable_fields);
-                        console.log("Balance",balance_eur);
-                        console.log("CORI",data.results[i].cori);
-
                       }
                     }
                   }
                   html+="<div class='col-md-3'>";
                     html+="<div class='row'>";
-                    html+="<div class='field' style='background-color:black;width:20px;height:20px;'></div> Ausgewählt"
+                    html+="<div class='field' style='background-color:black;width:20px;height:20px;'></div>&nbsp;Ausgewählt"
                     html+="</div>";
                     html+="<div class='row'>";
-                    html+="<div class='field' style='background-color:#c6c6c6;width:20px;height:20px;'></div> Verfügbar"
+                    html+="<div class='field' style='background-color:#c6c6c6;width:20px;height:20px;'></div>&nbsp;Verfügbar"
                     html+="</div>";
                     html+="<div class='row'>";
-                    html+="<div class='field' style='background-color:yellow;width:20px;height:20px;'></div> Vergeben"
+                    html+="<div class='field' style='background-color:yellow;width:20px;height:20px;'></div>&nbsp;Vergeben"
                     html+="</div>";
                   html+="</div>";
                   html+="</div>";
                   html+="<button class='btn btn-success btn-lg' style='margin:5px;' id='applySelection'>übernehmen</button>";
                   parent.html(html);
-
 
                   $('#applySelection').click(function() {
                     let selected = $('div[selected="selected"]');
@@ -366,12 +360,6 @@
                     let nmb=cnt_sel-existing_ownership;
                     if(nmb<0) nmb=0;
 
-                    console.log("Buy for",q);
-                    console.log("Of Asset",a);
-                    console.log("Cells",allocation);
-                    console.log("Existing",existing_ownership);
-                    console.log("Required",cnt_sel);
-                    console.log("New",nmb);
                     let query="";
                     query+="&account="+q;
                     query+="&asset="+a;
