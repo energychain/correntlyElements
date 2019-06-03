@@ -340,7 +340,6 @@
                       let fields = data.results[i].totalSupply;
                       let l=0;
                       html+="<div class='row'><div class='col-md-9'><div style='width:750px;float:none'>";
-                      console.log("Fields",data.results[i].allocations.length);
                       for(let j=0;j<data.results[i].allocations.length;j++) {
                         if(data.results[i].allocations[j]=="0x0000000000000000000000000000000000000000") {
                           html+="<div class='field' id='cell_"+j+"' title='Zelle "+j+"'></div>";
@@ -358,6 +357,7 @@
                       }
                     }
                   }
+                  console.log(html);
                   html+="<div class='col-md-3'>";
                     html+="<div class='row'>";
                     html+="<div class='field' style='background-color:black;width:20px;height:20px;'></div>&nbsp;Ausgewählt"
