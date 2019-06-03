@@ -298,6 +298,7 @@
       let q="0x504ec8497EBD02369550f6586EB32b26f088F25B";
       if($.getUrlVar('a')) q = $.getUrlVar('a');
 
+      console.log("HERE");
 
       $.getJSON("https://api.corrently.io/core/depot?account="+q,function(data) {
           let selectable_fields=0;
@@ -308,7 +309,7 @@
               existing_ownership=selectable_fields;
             }
           }
-          console.log("HERE");
+
           $.getJSON("https://api.corrently.io/core/stromkonto?account="+q,function(data) {
             let balance_eur = data.result.balance_eur;
               $.getJSON("https://api.corrently.io/core/market",function(data) {
