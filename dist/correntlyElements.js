@@ -357,7 +357,7 @@
                       }
                     }
                   }
-                  console.log(html);
+
                   html+="<div class='col-md-3'>";
                     html+="<div class='row'>";
                     html+="<div class='field' style='background-color:black;width:20px;height:20px;'></div>&nbsp;Ausgewählt"
@@ -372,7 +372,7 @@
                   html+="</div>";
                   html+="<button class='btn btn-success btn-lg' style='margin:5px;' id='applySelection'>übernehmen</button>";
                   parent.html(html);
-
+                  console.log(html);
                   $('#applySelection').click(function() {
                     let selected = $('div[selected="selected"]');
                     let allocation=[];
