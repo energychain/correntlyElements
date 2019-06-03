@@ -318,7 +318,7 @@
                       $('#asset_title').html(data.results[i].title);
                       let fields = data.results[i].totalSupply;
                       let l=0;
-                      html+="<div style='width:750px;float:none'>";
+                      html+="<div style='width:100%;float:none'>";
                       for(let j=0;j<data.results[i].allocations.length;j++) {
                         if(data.results[i].allocations[j]=="0x0000000000000000000000000000000000000000") {
                           html+="<div class='field' id='cell_"+j+"' title='Zelle "+j+"'></div>";
