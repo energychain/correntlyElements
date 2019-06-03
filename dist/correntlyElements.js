@@ -285,7 +285,7 @@
             html+="<td>"+data.results[i].decom+"</td>";
             html+="<td>"+data.results[i].cori+" kWh</td>";
             html+="<td>"+(data.results[i].cori*0.02).toFixed(2).replace('.',',')+" €</td>";
-            html+="<td><a href='./board.html?asset="+data.results[i].account+"' class='btn btn-sm btn-success'>Auswahl</a></td>";
+            html+="<td><a href='./board.html?asset="+data.results[i].asset+"' class='btn btn-sm btn-success'>Auswahl</a></td>";
             html+="</tr>";
           }
           html+"</table>";
