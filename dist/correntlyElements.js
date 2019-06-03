@@ -296,9 +296,9 @@
       if(this.attr("data-account") != null ) q=this.attr("data-account");
       if(this.attr("account") != null ) q=this.attr("account");
       let q="0x504ec8497EBD02369550f6586EB32b26f088F25B";
-      if($.getUrlVar('a')) q = $.getUrlVar('a');
+      //if($.getUrlVar('a')) q = $.getUrlVar('a');
 
-      console.log("HERE");
+      console.log("HERE",q);
 
       $.getJSON("https://api.corrently.io/core/depot?account="+q,function(data) {
           let selectable_fields=0;
