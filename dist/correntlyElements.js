@@ -238,7 +238,7 @@
           $('#fortext').html("für "+data.location.city);
           let daterow="<tr><td class='small'>Datum</td>";
           let timerow="<tr><td class='small'>Zeit</td>";
-          let barrow="<tr><td class='small'>Preisniveau</td>";
+          let barrow="<tr><td class='small'>Regionaler Grünstrom</td>";
           let inforow="<tr><td title='Anteil der Erzeugungskosten am Arbeitspreis' class='small'>örtlicher&nbsp;Energiepreis</td>";
 
           for(var i=0;i<data.forecast.length;i++) {
