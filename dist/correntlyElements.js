@@ -700,6 +700,7 @@
            }
            $.getJSON("https://api.corrently.io/core/exd?account="+account,function(data) {
              if(typeof data["2.8.0"] != "undefined") {
+               console.log("2.8.0",data["2.8.0"]);
                $('#p_2_8_0').html((data["2.8.0"]/1000).toFixed(3).replace('.',','));
              }
 
