@@ -239,7 +239,7 @@
           let daterow="<tr><td class='small'>Datum</td>";
           let timerow="<tr><td class='small'>Zeit</td>";
           let barrow="<tr><td class='small'>Regionaler Grünstrom</td>";
-          let inforow="<tr><td title='Anteil der Erzeugungskosten am Arbeitspreis' class='small'>örtlicher&nbsp;Energiepreis</td>";
+          let inforow="<tr><td title='Anteil der Erzeugungskosten am Arbeitspreis' class='small'>Örtlicher&nbsp;Energiepreis</td>";
 
           for(var i=0;i<data.forecast.length;i++) {
               let date = new Date(data.forecast[i].timeStamp);
