@@ -691,8 +691,11 @@
            $($(parent).find("#balance")[0]).html(data.result.balance_eur);
            */
            $('#soll_eur').html(data.result.soll_eur.toFixed(2).replace('.',','));
+           $('#soll_eur').attr('title',data.result.soll_eur);
            $('#haben_eur').html(data.result.haben_eur.toFixed(2).replace('.',','));
+           $('#haben_eur').attr('title',data.result.haben_eur);
            $('#balance_eur').html(data.result.balance_eur.toFixed(2).replace('.',','));
+           $('#balance_eur').attr('title',data.result.balance_eur);
            if(typeof data.result.link != "undefined") {
              $.getJSON("https://api.corrently.io/core/dispatcher?account="+data.result.link,function(data) {
 
