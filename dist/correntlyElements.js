@@ -235,6 +235,8 @@
           }
         }
         $.getJSON(url,function(data) {
+          document.gsi_info = data;
+
           $('#fortext').html("für "+data.location.city);
           let daterow="<tr><td class='small'>Datum</td>";
           let timerow="<tr><td class='small'>Zeit</td>";
@@ -259,6 +261,9 @@
           inforow+="</tr>";
           parent.html("<table class='table table-sm table-responsive'>"+barrow+daterow+timerow+inforow+"</table>");
           parent.attr('data-refresh',data.forecast[0].timeStamp);
+          if(typeof cb_location != "undefined") {
+            cb_location();
+          }
         });
       }
       refreshGSI();
