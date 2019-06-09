@@ -226,7 +226,7 @@
     const parent = this;
     parent.html("<span class='text-muted'>wird geladen...</span>");
     $.getJSON(url,function(data) {
-        let html="<table class='table table-sm table-responsive'>";
+        let html="<table class='table table-responsive'>";
         html+="<tr><th colspan='2'>Herkunft von</th><th colspan='2'>Lieferung nach</th></tr>";
         for(let i=0;((i<data.sources.values.length)||(i<data.targets.values.length));i++) {
           html+="<tr>";
