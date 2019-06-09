@@ -231,7 +231,7 @@
         for(let i=0;((i<data.sources.values.length)||(i<data.targets.values.length));i++) {
           html+="<tr>";
           html+="<td>";
-          if(i<data.source.values.length) html+=data.sources.values[i].city;
+          if(i<data.sources.values.length) html+=data.sources.values[i].city;
           html+="</td>";
           html+="<td>";
           if(i<data.targets.values.length) html+=data.targets.values[i].city;
