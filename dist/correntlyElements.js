@@ -218,10 +218,31 @@
 }( jQuery ));
 
 (function ( $ ) {
-    /**
-    * Ausgabe des GrünstromIndex als HTML Tabelle für die angegeben Postleitzahl (oder via GeoIP, wenn keine angegeben wurde)
-    */
-    $.fn.correntlyGSI=function(zipcode) {
+  $.fn.correntlyGSIDispatch=function(zipcode) {
+    let url="https://api.corrently.io/core/srcgraph";
+    if(zipcode!=null) url+="?zip="+zipcode; else
+    if(this.attr("data-plz")!=null) url+"?zip="+this.attr("data-plz"); else
+    if(this.attr("data-zip")!=null) url+"?zip="+this.attr("data-zip");
+    const parent = this;
+    parent.html("<span class='text-muted'>wird geladen...</span>");
+    $.getJSON(url,function(data) {
+        let html="<table class='table table-sm table-responsive'>";
+        html+="<tr><th>Herkunft ("+data.sources.values.length+")</th><th>Empfänger ("+data.targets.values.length+")</th></tr>";
+        for(let i=0;((i<data.sources.values.length)||(i<data.targets.values.length));i++) {
+          html+="<tr>";
+          html+="<td>";
+          if(i<data.source.values.length) html+=data.sources.values[i].city;
+          html+="</td>";
+          html+="<td>";
+          if(i<data.targets.values.length) html+=data.targets.values[i].city;
+          html+="</td>";
+          html+="</tr>";
+        }
+        html+="</table>";
+        parent.html(html);
+    });
+  },
+  $.fn.correntlyGSI=function(zipcode) {
       let url="https://api.corrently.io/core/gsi"
       if(zipcode!=null) url+="?plz="+zipcode; else
       if(this.attr("data-plz")!=null) url+"?plz="+this.attr("data-plz"); else
@@ -234,9 +255,17 @@
             return;
           }
         }
-        $.getJSON(url,function(data) {
+        $.ajax({
+        url: url,
+        dataType: 'json',
+        timeout: 29000,
+        error: function(jqXHR, status, errorThrown){   //the status returned will be "timeout"
+           setTimeout(function() {
+             refreshGSI();
+           },500);
+        },
+        success: function(data) {
           document.gsi_info = data;
-
           $('#fortext').html("für "+data.location.city);
           let daterow="<tr><td class='small'>Datum</td>";
           let timerow="<tr><td class='small'>Zeit</td>";
@@ -264,7 +293,9 @@
           if(typeof cb_location != "undefined") {
             cb_location(data.location);
           }
-        });
+      }
+    });
+
       }
       refreshGSI();
       setInterval(refreshGSI,60000);
