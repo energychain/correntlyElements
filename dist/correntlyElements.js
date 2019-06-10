@@ -235,8 +235,8 @@
           }
           return 0;
         }
-        data.sources.values = data.sources.values.sort(compare);
-        data.targets.values = data.targets.values.sort(compare);
+        data.sources.values = data.sources.values.sort(compare).reverse();
+        data.targets.values = data.targets.values.sort(compare).reverse();
         let sum_from = 0;
         let sum_to = 0;
         for(let i=0;i<data.sources.values.length;i++) {
