@@ -246,7 +246,8 @@
           sum_to+=data.targets.values[i].energy;
         }
         let html="<table class='table table-striped'>";
-        html+="<thead><tr class='bg-dark text-light'><th colspan='4'><h3>Energiebilanz (nur Grünstrom): <strong>"+(sum_to-sum_from)+"</strong></h3></th></tr><tr><th colspan='2'>Grünstrom Import</th><th colspan='2'>Grünstrom Export</th></tr><thead><tbody>";
+        //html+="<thead><tr class='bg-dark text-light'><th colspan='4'><h3>Energiebilanz (nur Grünstrom): <strong>"+(sum_to-sum_from)+"</strong></h3></th></tr>";
+        html+="<thead><tr><th colspan='2'>Grünstrom Import</th><th colspan='2'>Grünstrom Export</th></tr></thead><tbody>";
         for(let i=0;((i<data.sources.values.length)||(i<data.targets.values.length));i++) {
           html+="<tr>";
           html+="<td>";
@@ -264,6 +265,17 @@
           html+="</tr>";
         }
         html+="</tbody></table>";
+        html+="<p class='text-muted' style='align:center'>";
+        if(sum_from>sum_to) {
+          if(sum_to>0) {
+            html+="Es wird "+(((sum_from/sum_to)*100)-100).toFixed(1).replace('.',',')+"% mehr Strom aus anderen Orten bezogen, als in andere Orte geliefert.";
+            }
+        } else {
+          if(sum_from>0) {
+            html+="Es wird "+(((sum_to/sum_from)*100)-100).toFixed(1).replace('.',',')+"% mehr Strom aus anderen Orten bezogen, als in andere Orte geliefert.";
+          }
+        }
+        html+="</p>";
         parent.html(html);
     });
   },
