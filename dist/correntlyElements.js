@@ -266,6 +266,7 @@
         }
         html+="</tbody></table>";
         html+="<p class='text-muted' style='align:center'>";
+        console.log(sum_from,sum_to);
         if(sum_from>sum_to) {
           if(sum_to>0) {
             html+="Es wird "+(((sum_from/sum_to)*100)-100).toFixed(1).replace('.',',')+"% mehr Strom aus anderen Orten bezogen, als in andere Orte geliefert.";
