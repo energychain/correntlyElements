@@ -226,8 +226,16 @@
     const parent = this;
     parent.html("<span class='text-muted'>wird geladen...</span>");
     $.getJSON(url,function(data) {
+        let sum_from = 0;
+        let sum_to = 0;
+        for(let i=0;i<data.sources.values.length;i++) {
+          sum_from+=data.sources.values[i].energy;
+        }
+        for(let i=0;i<data.targets.values.length;i++) {
+          sum_to+=data.targets.values[i].energy;
+        }
         let html="<table class='table table-striped'>";
-        html+="<thead><tr><th colspan='2'>Herkunft von</th><th colspan='2'>Lieferung nach</th></tr><thead><tbody>";
+        html+="<thead><tr><th colspan='2'>Grünstrom aus</th><th colspan='2'>Grünstrom nach</th></tr><thead><tbody>";
         for(let i=0;((i<data.sources.values.length)||(i<data.targets.values.length));i++) {
           html+="<tr>";
           html+="<td>";
