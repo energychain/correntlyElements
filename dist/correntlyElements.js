@@ -267,13 +267,13 @@
         html+="</tbody></table>";
         html+="<p class='text-muted' style='align:center'>";
         console.log(sum_from,sum_to);
-        if(sum_from>sum_to) {
+        if((sum_from+sum_to)>0) {
           if(sum_to>0) {
-            html+="Es wird "+(((sum_from/sum_to)*100)-100).toFixed(1).replace('.',',')+"% mehr Strom aus anderen Orten bezogen, als in andere Orte geliefert.";
+            html+="Es wird "+(((sum_to/(sum_from+sum_to))*100)-100).toFixed(1).replace('.',',')+"% mehr Strom aus anderen Orten bezogen, als in andere Orte geliefert.";
             }
         } else {
           if(sum_from>0) {
-            html+="Es wird "+(((sum_to/sum_from)*100)-100).toFixed(1).replace('.',',')+"% mehr Strom an anderen Orten geliefert, als aus anderen Orte bezogent.";
+            html+="Es wird "+(((sum_from/(sum_from+sum_to))*100)-100).toFixed(1).replace('.',',')+"% mehr Strom an anderen Orten geliefert, als aus anderen Orte bezogent.";
           }
         }
         html+="</p>";
