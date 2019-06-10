@@ -246,7 +246,7 @@
           sum_to+=data.targets.values[i].energy;
         }
         let html="<table class='table table-striped'>";
-        html+="<thead><tr class='bg-dark text-light'><th colspan='4'>Grünstrom Eigenleistung: <strong>"+(sum_to-sum_from)+"</strong></th></tr><tr><th colspan='2'>Grünstrom Import</th><th colspan='2'>Grünstrom Export</th></tr><thead><tbody>";
+        html+="<thead><tr class='bg-dark text-light'><th colspan='4'><h3>Grünstrom Eigenleistung: <strong>"+(sum_to-sum_from)+"</strong></h3></th></tr><tr><th colspan='2'>Grünstrom Import</th><th colspan='2'>Grünstrom Export</th></tr><thead><tbody>";
         for(let i=0;((i<data.sources.values.length)||(i<data.targets.values.length));i++) {
           html+="<tr>";
           html+="<td>";
