@@ -253,7 +253,7 @@
           if(i<data.sources.values.length) html+=data.sources.values[i].energy;
           html+="</td>";
           html+="<td>";
-          if(i<data.sources.values.length) html+=data.sources.values[i].city;
+          if(i<data.sources.values.length) html+="<a href='?q="+data.sources.values[i].zip+"'>"+data.sources.values[i].city+"</a>";
           html+="</td>";
           html+="<td>";
           if(i<data.targets.values.length) html+=data.targets.values[i].energy;
