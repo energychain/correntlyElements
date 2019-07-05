@@ -44,7 +44,7 @@
                 <div class="card-body" id="reading_card">
 
                 </div>
-                <div id="odometer" class="odometer"></div>
+                <span  id="odometer" class="odometer"></span>
                 <div class="card-footer text-center">
                       API Endpunkt: <code>https://api.corrently.io/core/reading</code><br/>
                 </div>
@@ -72,9 +72,14 @@
     <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="/dist/correntlyElements-min.js"></script>
     <script>
-    window.odometerOptions = {
-      format: '( ddd),ddd'
-    }
+
+    var $container = $('#odometer').eq(0),
+	    odometer = new Odometer({
+	        el: $container.get(0),
+          format:'(.ddd),ddd'
+	    });
+
+
 
     /* Funktionaler Code für dieses Beispiel */
     $(document).ready( function() {
