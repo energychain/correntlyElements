@@ -43,7 +43,7 @@
                 </div>
                 <div class="card-body" id="reading_card">
 
-                </div>                
+                </div>
                 <div class="card-footer text-center">
                       API Endpunkt: <code>https://api.corrently.io/core/reading</code><br/>
                 </div>
@@ -56,12 +56,13 @@
             <div class="card-body">
                 <strong>Benötigte Scripte  im HEAD</strong>
                 <pre><code>
+&lt;link rel="stylesheet" href="/assets/css/odometer-theme-car.css"&gt;
 &lt;script src="https://elements.corrently.io/assets/js/jquery.min.js"&lt;/script&gt;
 &lt;script src="https://elements.corrently.io/dist/correntlyElements-min.js"&lt;/script&gt;
                 </code></pre>
                 <strong>jQuery Erweiterung</strong>
                 <pre><code>
- $(element).correntlyReadingTable([account]);
+ $(element).correntlyOdoMeter([account]);
                 </code></pre>
             </div>
         </div>
