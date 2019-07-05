@@ -593,8 +593,7 @@
     parent.html(html);
 
     const refreshReading = function() {
-        $.getJSON("https://api.corrently.io/core/reading?&history=3600000&account="+q,function(data) {
-            console.log(data);
+        $.getJSON("https://api.corrently.io/core/reading?&history=3600000&account="+q,function(data) {            
             $('#1_8_0').html(data["1.8.0"]/1000);
             $('#1_8_0').attr('title',new Date(data.timeStamp).toLocaleString());
             $('#1_8_1').html(data["1.8.1"]/1000);
