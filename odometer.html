@@ -73,21 +73,14 @@
     <script src="/dist/correntlyElements-min.js"></script>
     <script>
 
-    var $container = $('#odometer').eq(0),
-	    odometer = new Odometer({
-	        el: $container.get(0),
-          format:'(.ddd),ddd'
-	    });
-
-
 
     /* Funktionaler Code für dieses Beispiel */
     $(document).ready( function() {
       /* Fallunterscheidung für Eingabefeld Account */
       if($.getUrlVar("a") == null) {
-        $('#reading_card').correntlyReadingTable("0x3aDF31ff01369C2Bf1D64b8608DA0B7BA4268772"); // Beispielzähler
+        $('#reading_card').correntlyOdoMeter("0x3aDF31ff01369C2Bf1D64b8608DA0B7BA4268772"); // Beispielzähler
       } else {
-        $('#reading_card').correntlyReadingTable($.getUrlVar("a") ); // Zählerstand für eingegebenen Zähler
+        $('#reading_card').correntlyOdoMeter($.getUrlVar("a") ); // Zählerstand für eingegebenen Zähler
       }
     });
     </script>
