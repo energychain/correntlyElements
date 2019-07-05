@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/assets/css/header.css">
     <link rel="stylesheet" href="/assets/css/Navigation-Clean.css">
     <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/odometer-theme-car.css">
 </head>
 
 <body>
@@ -43,6 +44,7 @@
                 <div class="card-body" id="reading_card">
 
                 </div>
+                <div id="odometer" class="odometer"></div>
                 <div class="card-footer text-center">
                       API Endpunkt: <code>https://api.corrently.io/core/reading</code><br/>
                 </div>
@@ -70,6 +72,10 @@
     <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="/dist/correntlyElements-min.js"></script>
     <script>
+    window.odometerOptions = {
+      format: '( ddd),ddd'
+    }
+
     /* Funktionaler Code für dieses Beispiel */
     $(document).ready( function() {
       /* Fallunterscheidung für Eingabefeld Account */
