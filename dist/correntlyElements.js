@@ -617,7 +617,7 @@
               format:'(.ddd),ddd'
           });
       refreshReading();
-
+      setInterval(refreshReading,60000);
   },
   /**
    * Ausgabe der Zählerstände eines Corrently Account als  HTML Tabelle
