@@ -587,7 +587,7 @@
     let html="";
     html+="<table class='table table-condensed'>";
     html+="<tr><td>Bezugszähler</td><td style='float:right'><div class='odometer' id='1_8_0'></div></td></tr>";
-    html+="<tr><td> Grünstrom</td><td style='float:right'><div class='odometer' id='1_8_1'></div></td></tr>";
+    html+="<tr><td> Grünstrom</td><td><div style='float:right' class='odometer' id='1_8_1'></div></td></tr>";
     html+="<tr><td> Graustrom</td><td style='float:right'><div class='odometer' id='1_8_2'></div></td></tr>";
     html+="</table>";
     parent.html(html);
