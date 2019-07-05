@@ -600,14 +600,13 @@
             $('#1_8_2').html(data["1.8.2"]);
         });
     }
-/*
-    var $container = parent.eq(0),
+
+    var $container = $('.odometer').eq(0),
       odometer = new Odometer({
           el: $container.get(0),
           format:'(.ddd),ddd'
       });
       refreshReading();
-*/
 
   },
   /**
