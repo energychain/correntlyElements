@@ -44,6 +44,9 @@
                 <div class="card-body" id="reading_card">
 
                 </div>
+                <div class="card-body" id="msb_card">
+
+                </div>
                 <div class="card-footer text-center">
                       API Endpunkt: <code>https://api.corrently.io/core/reading</code><br/>
                 </div>
@@ -80,6 +83,7 @@
       if($.getUrlVar("a") == null) {
         $('#reading_card').correntlyLogin(); // Beispielzähler
       } else {
+        $('#msb_card').correntlyMsb($.getUrlVar("a"));
         $('#reading_card').correntlyOdoMeter($.getUrlVar("a") ); // Zählerstand für eingegebenen Zähler
       }
     });
