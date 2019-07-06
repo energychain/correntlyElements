@@ -386,7 +386,7 @@
       const parent = this;
       $.getJSON("https://api.corrently.io/core/msb?account="+q,function(data) {
         console.log(data);
-        let html ="<iframe src='"+data.token+"' class='embed-responsive'></iframe>";
+        let html ="<iframe src='"+data.token+"' class='embed-responsive' height='800'></iframe>";
         parent.html(html);
       });
     }
