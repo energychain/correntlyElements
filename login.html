@@ -79,7 +79,9 @@
       /* Fallunterscheidung für Eingabefeld Account */
       if($.getUrlVar("a") == null) {
         $('#reading_card').correntlyLogin(); // Beispielzähler
-      } 
+      } else {
+        $('#reading_card').correntlyOdoMeter($.getUrlVar("a") ); // Zählerstand für eingegebenen Zähler
+      }
     });
     </script>
 </body>
