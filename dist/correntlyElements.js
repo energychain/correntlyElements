@@ -384,7 +384,7 @@
       if(q == null) q="0x26D53FC47581E8F9f94Eadf71eFd7F57C931b9D9";
 
       const parent = this;
-      $.getJSON("https://api.corrently.io/core/msb?a="+q,function(data) {
+      $.getJSON("https://api.corrently.io/core/msb?account="+q,function(data) {
         console.log(data);
         let html ="<iframe src='"+data.token+"' class='embed-responsive'></iframe>";
         parent.html(html);
