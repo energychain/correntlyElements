@@ -858,6 +858,7 @@
       const refreshReading = function() {
          $.getJSON("https://api.corrently.io/core/stromkonto?account="+q,function(data) {
            if(typeof data.errorMessage != "undefined") {
+             console.log("try errCB()");
              if(typeof errCB == "function") {
                errCB();
              }
