@@ -847,7 +847,7 @@
   /**
    * Ausgabe der Zählerstände eines Corrently Account als  HTML Tabelle
    */
-    $.fn.correntlySKOBalance=function(account) {
+    $.fn.correntlySKOBalance=function(account,errCB) {
       let q = account;
       if(this.attr("data-account") != null ) q=this.attr("data-account");
       if(this.attr("account") != null ) q=this.attr("account");
@@ -857,6 +857,11 @@
       const parent = this;
       const refreshReading = function() {
          $.getJSON("https://api.corrently.io/core/stromkonto?account="+q,function(data) {
+           if(typeof data.errorMessage != "undefined") {
+             if(typeof errCB == "function") {
+               errCB();
+             }
+           }
            /*
            $($(parent).find("#soll")[0]).html(data.result.soll_eur);
            $($(parent).find("#haben")[0]).html(data.result.haben_eur);
