@@ -357,8 +357,8 @@
       html+='<form id="loginfrm" method="get" action="https://api.corrently.io/token/login">';
       html+='<input type="hidden" name="deliverable" value="0x59E45255CC3F33e912A0f2D7Cc36Faf4B09e7e22">';
       html+='<input type="hidden" name="target" value="'+location.href+'">';
-      html+='<div class="alert alert-success" role="alert" id="login_ok" style="display:none"><span><strong>Mail versendet.</strong> Bitte das Email Postfach prüfen, dort sollte bereits Mail mit dem Anmeldelink eingegangen sein.</span></div>';
-      html+='<div class="alert alert-danger" role="alert" id="login_fail" style="display:none"><span><strong>Fehler!</strong>&nbsp;Der Versand hat leider nicht geklappt. Bitte noch einmal probieren und unseren Service kontaktieren.</span></div><label>Ihre Email:</label><input class="form-control" type="email" placeholder="name@domain.de" name="mail">';
+      html+='<div class="alert alert-success" role="alert" id="login_ok" style="display:none"><span><strong>Mail versendet.</strong> Bitte das Email Postfach prüfen, dort sollte bereits eine Mail mit dem Anmeldelink eingegangen sein.</span></div>';
+      html+='<div class="alert alert-danger" role="alert" id="login_fail" style="display:none"><span><strong>Fehler!</strong>&nbsp;Der Versand hat leider nicht geklappt. Bitte noch einmal probieren und unseren Service kontaktieren.</span></div><label>Anmeldung für Kunden mit intelligentem Stromzähler</label><input class="form-control" type="email" placeholder="name@domain.de" name="mail">';
       html+='<p class="text-center" style="margin-top: 15px;"><button class="btn btn-warning" id="submitbutton" type="submit">Zugang per Mail anfordern&nbsp;</button></p>';
       html+='</form>';
       let parent = this;
@@ -619,7 +619,35 @@
 }( jQuery ));
 
 (function ( $ ) {
+  $.fn.correntlyReadingCompact=function(account) {
+    let q = account;
+    if(this.attr("data-account") != null ) q=this.attr("data-account");
+    if(this.attr("account") != null ) q=this.attr("account");
 
+    if(q == null) q = $.getUrlVar('a');
+    if(q == null) q="0x26D53FC47581E8F9f94Eadf71eFd7F57C931b9D9";
+
+    const parent = this;
+    let html="";
+    html+="<table class='table table-condensed' style='width:250px;'>";
+    html+="<tr><td>Bezugszähler</td><td><div style='float:right' class='odometer' id='1_8_0'></div></td></tr>";
+    html+="<tr><td> Grünstrom</td><td><div style='float:right' class='odometer' id='1_8_1'></div></td></tr>";
+    html+="<tr><td> Graustrom</td><td><div style='float:right' class='odometer' id='1_8_2'></div></td></tr>";
+    html+="</table>";
+    parent.html(html);
+
+    const refreshReading = function() {
+        $.getJSON("https://api.corrently.io/core/reading?&history=3600000&account="+q,function(data) {
+            $('#1_8_0').html(data["1.8.0"]/1000);
+            $('#1_8_0').attr('title',new Date(data.timeStamp).toLocaleString());
+            $('#1_8_1').html(data["1.8.1"]/1000);
+            $('#1_8_2').html(data["1.8.2"]/1000);
+        });
+    }
+
+    refreshReading();
+    setInterval(refreshReading,60000);
+  },
   $.fn.correntlyOdoMeter=function(account) {
     let q = account;
     if(this.attr("data-account") != null ) q=this.attr("data-account");
@@ -638,7 +666,7 @@
     parent.html(html);
 
     const refreshReading = function() {
-        $.getJSON("https://api.corrently.io/core/reading?&history=3600000&account="+q,function(data) {            
+        $.getJSON("https://api.corrently.io/core/reading?&history=3600000&account="+q,function(data) {
             $('#1_8_0').html(data["1.8.0"]/1000);
             $('#1_8_0').attr('title',new Date(data.timeStamp).toLocaleString());
             $('#1_8_1').html(data["1.8.1"]/1000);
