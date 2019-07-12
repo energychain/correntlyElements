@@ -73,27 +73,27 @@
                                 <h1><span id="haben_kwh">-&nbsp;</span><span class="text-muted">kWh</span></h1><button class="btn btn-success btn-sm" id="checkout" type="button">GrünstromBonus kaufen (100 kWh = 12,00€)</button></div>
                             <div class="col" id="soll">
                                 <p class="text-secondary">Bereits Eingelöst</p>
-                                <h1><span id="soll_kwh">-&nbsp;</span><span class="text-muted">kWh</span></h1>
-                            </div>
-                            <div class="col" id="soll">
+                                <h1><span id="soll_kwh">-&nbsp;</span><span class="text-muted">kWh</span></h1><a class="btn btn-danger btn-sm" role="button" id="no_tarif" href="https://corrently.energy/" target="_blank" style="display:none">Tarif nicht hinterlegt</a></div>
+                            <div
+                                class="col" id="soll">
                                 <p class="text-secondary">Verfügbar</p>
                                 <h1><span id="balance_kwh">-&nbsp;</span><span class="text-muted">kWh</span></h1>
-                            </div>
                         </div>
                     </div>
-                    <div class="card-footer">
-                        <p class="text-center text-muted">Eigenerzeugung aus Corrently Anlagen:&nbsp;<span id="p_2_8_0">-</span><span>&nbsp;kWh</span></p>
-                    </div>
+                </div>
+                <div class="card-footer">
+                    <p class="text-center text-muted">Eigenerzeugung aus Corrently Anlagen:&nbsp;<span id="p_2_8_0">-</span><span>&nbsp;kWh</span></p>
                 </div>
             </div>
         </div>
-        <div class="row" style="margin-bottom: 25px;">
-            <div class="col">
-                <div class="card shadow-lg">
-                    <div class="card-header bg-dark text-light">
-                        <h3>Corrently GrünstromZähler</h3>
-                    </div>
-                    <div class="card-body"><div class="row" id="has_meter">
+    </div>
+    <div class="row" style="margin-bottom: 25px;">
+        <div class="col">
+            <div class="card shadow-lg">
+                <div class="card-header bg-dark text-light">
+                    <h3>Corrently GrünstromZähler</h3>
+                </div>
+                <div class="card-body"><div class="row" id="has_meter">
     <div class="col col-sm-8">
         <canvas class="usageChart" width="600" height="400"  data-chart="line" id="usageChart"></canvas>
     </div>
@@ -113,35 +113,35 @@
     <p>Mit einem intelligten Grünstromzähler kann der Bonus genauer berechnet werden und fällt garantiert höher aus, da die tatsächlichen Verbrauchszeiten berücksichtigt werden.</p>.
     <a href="https://stromdao.com/kontakt/" class="btn btn-warning">Kontakt zur <strong>STROM</strong>DAO</a>
 </div>
-                        <div id="lastReadingTable" style="display: none;margin-top: 5px;"></div>
-                    </div>
+                    <div id="lastReadingTable" style="display: none;margin-top: 5px;"></div>
                 </div>
             </div>
         </div>
-        <div class="row" style="margin-bottom: 25px;">
-            <div class="col">
-                <div class="card shadow-lg">
-                    <div class="card-header bg-dark text-light">
-                        <h3>Bestand Corrently Erzeugung</h3>
-                    </div>
-                    <div class="card-body">
-                        <div id="deport_overview"></div>
-                    </div>
+    </div>
+    <div class="row" style="margin-bottom: 25px;">
+        <div class="col">
+            <div class="card shadow-lg">
+                <div class="card-header bg-dark text-light">
+                    <h3>Bestand Corrently Erzeugung</h3>
+                </div>
+                <div class="card-body">
+                    <div id="deport_overview"></div>
                 </div>
             </div>
         </div>
-        <div class="row" style="margin-bottom: 25px;">
-            <div class="col">
-                <div class="card shadow-lg">
-                    <div class="card-header bg-dark text-light">
-                        <h3>Corrently Erzeugungs Marktplatz</h3>
-                    </div>
-                    <div class="card-body">
-                        <div id="market"></div>
-                    </div>
+    </div>
+    <div class="row" style="margin-bottom: 25px;">
+        <div class="col">
+            <div class="card shadow-lg">
+                <div class="card-header bg-dark text-light">
+                    <h3>Corrently Erzeugungs Marktplatz</h3>
+                </div>
+                <div class="card-body">
+                    <div id="market"></div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <div class="container" id="login_container" style="margin-top: 25px;">
         <div class="row" style="margin-bottom: 25px;">
@@ -179,7 +179,7 @@
     <script src="https://elements.corrently.io/assets/js/Chart.bundle.min.js"></script>
     <script src="https://elements.corrently.io/dist/correntlyElements-min.js"></script>
     <script src="https://js.stripe.com/v3/"></script>
-    <script src="assets/js/script.min.js?h=b121aa26c7e4ebde7d610f60722a1991"></script>
+    <script src="assets/js/script.min.js?h=7aedbedfdbdffbbf0c4bf980c1e123be"></script>
 </body>
 
 </html>

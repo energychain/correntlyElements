@@ -629,7 +629,7 @@
 
     const parent = this;
     let html="";
-    html+="<table class='table table-condensed' style='width:250px;'>";
+    html+="<table class='table table-condensed' style='width:450px;'>";
     html+="<tr><td>Bezugszähler</td><td><div style='float:right' class='odometer' id='1_8_0'></div></td></tr>";
     html+="<tr><td> Grünstrom</td><td><div style='float:right' class='odometer' id='1_8_1'></div></td></tr>";
     html+="<tr><td> Graustrom</td><td><div style='float:right' class='odometer' id='1_8_2'></div></td></tr>";
@@ -638,10 +638,11 @@
 
     const refreshReading = function() {
         $.getJSON("https://api.corrently.io/core/reading?&history=3600000&account="+q,function(data) {
-            $('#1_8_0').html(data["1.8.0"]/1000);
+            $('#1_8_0').html(((data["1.8.0"]/1000)+"").replace('.',',')+" kWh");
             $('#1_8_0').attr('title',new Date(data.timeStamp).toLocaleString());
-            $('#1_8_1').html(data["1.8.1"]/1000);
-            $('#1_8_2').html(data["1.8.2"]/1000);
+            let greenproz=Math.round((data["1.8.1"]/(data["1.8.1"]+data["1.8.2"]))*100);
+            $('#1_8_1').html(((data["1.8.1"]/1000)+"").replace('.',',')+" kWh ("+greenproz+"%)");
+            $('#1_8_2').html(((data["1.8.2"]/1000)+"").replace('.',',')+" kWh ("+(100-greenproz)+"%)");
         });
     }
 
