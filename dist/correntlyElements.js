@@ -334,6 +334,8 @@
           timerow+="</tr>";
           barrow+="</tr>";
           inforow+="</tr>";
+          if(typeof parent.attr('noinfo') != "undefined") inforow="";
+          
           parent.html("<table class='table table-sm table-responsive'>"+barrow+daterow+timerow+inforow+"</table>");
           parent.attr('data-refresh',data.forecast[0].timeStamp);
           if(typeof cb_location != "undefined") {
