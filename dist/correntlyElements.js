@@ -322,7 +322,7 @@
           let timerow="<tr><td class='small'>&#128336;</td>";
           let barrow="<tr><td class='small'>&nbsp;</td>";
           let inforow="<tr><td title='Anteil der Erzeugungskosten am Arbeitspreis' class='small'>Örtlicher Energiepreis</td>";
-          let idxrow="<tr><td class='small'>&#8960;</td>";
+          let idxrow="<tr><td class='small'>&#9989;</td>";
           for(var i=0;i<data.forecast.length;i++) {
               let date = new Date(data.forecast[i].timeStamp);
               if((i==0)||(date.getHours()==0)) {
