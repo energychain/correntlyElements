@@ -225,7 +225,7 @@
     if(this.attr("data-zip")!=null) url+"?zip="+this.attr("data-zip");
     const parent = this;
     if(($('.gsiDataGiven').length==0)&&(  parent.html().length < 100)) {
-      parent.html("<span class='text-muted'>wird geladen...</span>");
+      parent.html("<span class='text-muted'>wird geladen...- Einen Augenblick</span>");
     }
     $.getJSON(url,function(data) {
       function compare( a, b ) {
