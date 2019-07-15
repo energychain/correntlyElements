@@ -224,7 +224,7 @@
     if(this.attr("data-plz")!=null) url+"?zip="+this.attr("data-plz"); else
     if(this.attr("data-zip")!=null) url+"?zip="+this.attr("data-zip");
     const parent = this;
-    if($('.gsiDataGiven').length==0) {
+    if(($('.gsiDataGiven').length==0)&&(  parent.html().length < 100)) {
       parent.html("<span class='text-muted'>wird geladen...</span>");
     }
     $.getJSON(url,function(data) {
