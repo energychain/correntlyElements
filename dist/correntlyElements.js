@@ -642,9 +642,11 @@
     if(this.attr("data-account") != null ) q=this.attr("data-account");
     if(this.attr("account") != null ) q=this.attr("account");
 
-    if(q == null) q = $.getUrlVar('a');
-    if(q == null) q="0x26D53FC47581E8F9f94Eadf71eFd7F57C931b9D9";
-
+    if(q == null) {
+      if((typeof  $.getUrlVar('a') != "undefined ")&&(q == null)) q = $.getUrlVar('a');
+      if((window.localStorage.getItem("ce_account") != null)&&(q == null)) q = window.localStorage.getItem("ce_account");
+      if(q == null) q="0x26D53FC47581E8F9f94Eadf71eFd7F57C931b9D9";
+    }
     const parent = this;
     let html="";
     html+="<table class='table table-condensed' style='width:450px;'>";
@@ -671,10 +673,11 @@
     let q = account;
     if(this.attr("data-account") != null ) q=this.attr("data-account");
     if(this.attr("account") != null ) q=this.attr("account");
-
-    if(q == null) q = $.getUrlVar('a');
-    if(q == null) q="0x26D53FC47581E8F9f94Eadf71eFd7F57C931b9D9";
-
+    if(q == null) {
+      if((typeof  $.getUrlVar('a') != "undefined ")&&(q == null)) q = $.getUrlVar('a');
+      if((window.localStorage.getItem("ce_account") != null)&&(q == null)) q = window.localStorage.getItem("ce_account");
+      if(q == null) q="0x26D53FC47581E8F9f94Eadf71eFd7F57C931b9D9";
+    }
     const parent = this;
     let html="";
     html+="<table class='table table-condensed'>";
@@ -719,8 +722,11 @@
       if(this.attr("data-account") != null ) q=this.attr("data-account");
       if(this.attr("account") != null ) q=this.attr("account");
 
-      if(q == null) q = $.getUrlVar('a');
-      if(q == null) q="0x26D53FC47581E8F9f94Eadf71eFd7F57C931b9D9";
+      if(q == null) {
+        if((typeof  $.getUrlVar('a') != "undefined ")&&(q == null)) q = $.getUrlVar('a');
+        if((window.localStorage.getItem("ce_account") != null)&&(q == null)) q = window.localStorage.getItem("ce_account");
+        if(q == null) q="0x26D53FC47581E8F9f94Eadf71eFd7F57C931b9D9";
+      }
       const tokWh = function(n) {
         return (n/1000).toFixed(3).replace('.',',');
       }
@@ -1670,4 +1676,9 @@ $.extend({
    getUrlVar: function(name){
      return $.getUrlVars()[name];
    }
+});
+$(document).ready(function() {
+  if(typeof $.getUrlVar("a") != "undefined") {
+    window.localStorage.setItem("ce_account",$.getUrlVar("a"));
+  }
 });
