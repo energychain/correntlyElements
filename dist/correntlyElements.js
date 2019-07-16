@@ -1675,6 +1675,17 @@ $.extend({
    },
    getUrlVar: function(name){
      return $.getUrlVars()[name];
+   },
+   qcode:function(qcode) {
+      return new Promise(async function(resolve,rejext) {
+        $.getJSON("https://api.corrently.io/core/qcode?qcode="+qcode,function(data) {
+          if(typeof data.account != "undefined") {
+          resolve(data.account);
+          } else {
+          reject("");  
+          }
+        })
+      });
    }
 });
 $(document).ready(function() {
