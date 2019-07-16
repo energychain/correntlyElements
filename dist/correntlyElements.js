@@ -1680,6 +1680,7 @@ $.extend({
       return new Promise(async function(resolve,rejext) {
         $.getJSON("https://api.corrently.io/core/qcode?qcode="+qcode,function(data) {
           if(typeof data.account != "undefined") {
+              window.localStorage.setItem("ce_qcode",qcode);
               window.localStorage.setItem("ce_account",data.account);
               resolve(data.account);
           } else {
@@ -1692,5 +1693,8 @@ $.extend({
 $(document).ready(function() {
   if(typeof $.getUrlVar("a") != "undefined") {
     window.localStorage.setItem("ce_account",$.getUrlVar("a"));
+  }
+  if(typeof $.getUrlVar("qcode") != "undefined") {
+    window.localStorage.setItem("ce_qcode",$.getUrlVar("qcode"));
   }
 });
