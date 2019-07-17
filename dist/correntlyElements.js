@@ -394,11 +394,24 @@
       });
     },
     $.fn.correntlyQLogin=function() {
+      const trylogin = function(q) {
+        $.getJSON("https://api.corrently.io/core/qcode?qcode="+q,function(data) {
+          if(typeof data.account != "undefined") {
+            window.localStorage.setItem("ce_qcode",q);
+            location.href="?a="+data.account;
+          } else {
+            window.localStorage.removeItem("ce_qcode");
+          }
+      });
+      }
 
       let html="";
       let qcodevalue = "";
       if(typeof $.getUrlVar("qcode") != "undefined") {
           qcodevalue=$.getUrlVar("qcode");
+      }
+      if(window.localStorage.getItem("ce_qcode")!=null)  {
+          trylogin(window.localStorage.getItem("ce_qcode"));
       }
       html+='<form id="loginfrm" method="get" action="https://api.corrently.io/token/login">';
       html+='<input type="hidden" name="deliverable" value="0x59E45255CC3F33e912A0f2D7Cc36Faf4B09e7e22">';
@@ -413,11 +426,7 @@
       let parent = this;
       parent.html(html);
       $('#submitbutton2').click(function() {
-          $.getJSON("https://api.corrently.io/core/qcode?qcode="+$('#qcode').val(),function(data) {
-              if(typeof data.account != "undefined") {
-                location.href="?a="+data.account;
-              }
-          });
+          tryLogin($('#qcode').val());
       });
       $('#loginfrm').ajaxForm(function(dl) {
           $('#submitbutton').removeAttr('disabled');
