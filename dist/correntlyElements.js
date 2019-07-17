@@ -426,7 +426,7 @@
       let parent = this;
       parent.html(html);
       $('#submitbutton2').click(function() {
-          tryLogin($('#qcode').val());
+          trylogin($('#qcode').val());
       });
       $('#loginfrm').ajaxForm(function(dl) {
           $('#submitbutton').removeAttr('disabled');
