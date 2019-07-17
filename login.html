@@ -81,7 +81,7 @@
     $(document).ready( function() {
       /* Fallunterscheidung für Eingabefeld Account */
       if($.getUrlVar("a") == null) {
-        $('#reading_card').correntlyLogin(); // Beispielzähler
+        $('#reading_card').correntlyQLogin(); // Beispielzähler
       } else {
         $('#msb_card').correntlyMsb($.getUrlVar("a"));
         $('#reading_card').correntlyOdoMeter($.getUrlVar("a") ); // Zählerstand für eingegebenen Zähler
