@@ -353,7 +353,7 @@
           window.ce_city = data.location.city;
           window.localStorage.setItem("zipcode",data.location.zip);
           window.localStorage.setItem("city",data.location.city);
-
+          
           if(typeof cb_location != "undefined") {
             cb_location(data.location);
           }
@@ -692,7 +692,7 @@
     if(q == null) {
       if((typeof  $.getUrlVar('a') != "undefined ")&&(q == null)) q = $.getUrlVar('a');
       if((window.localStorage.getItem("ce_account") != null)&&(q == null)) q = window.localStorage.getItem("ce_account");
-      if(q == null) q="0x3aDF31ff01369C2Bf1D64b8608DA0B7BA4268772";
+      if(q == null) q="0xc5f16A89F132f014CD27cCCa46F911976c183536";
     }
     const parent = this;
     let html="";
@@ -723,7 +723,7 @@
     if(q == null) {
       if((typeof  $.getUrlVar('a') != "undefined ")&&(q == null)) q = $.getUrlVar('a');
       if((window.localStorage.getItem("ce_account") != null)&&(q == null)) q = window.localStorage.getItem("ce_account");
-      if(q == null) q="0x3aDF31ff01369C2Bf1D64b8608DA0B7BA4268772";
+      if(q == null) q="0xc5f16A89F132f014CD27cCCa46F911976c183536";
     }
     const parent = this;
     let html="";
