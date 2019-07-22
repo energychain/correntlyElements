@@ -1738,10 +1738,12 @@ $.extend({
    }
 });
 $(document).ready(function() {
-  if(typeof $.getUrlVar("a") != "undefined") {
-    window.localStorage.setItem("ce_account",$.getUrlVar("a"));
-  }
-  if(typeof $.getUrlVar("qcode") != "undefined") {
-    window.localStorage.setItem("ce_qcode",$.getUrlVar("qcode"));
+  if(typeof  $.getUrlVar != "undefined") {
+    if(typeof $.getUrlVar("a") != "undefined") {
+      window.localStorage.setItem("ce_account",$.getUrlVar("a"));
+    }
+    if(typeof $.getUrlVar("qcode") != "undefined") {
+      window.localStorage.setItem("ce_qcode",$.getUrlVar("qcode"));
+    }
   }
 });
