@@ -437,13 +437,20 @@
       });
       $('#loginfrm').ajaxForm(function(dl) {
           $('#submitbutton').removeAttr('disabled');
-           console.log(dl);
           if(dl.err==null) {
+            if(typeof cb_login_ok != "undefined") {
+              cb_login_ok();
+            } else {
               $('#login_ok').show();
               $('#login_fail').hide();
+            }
           } else {
+            if(typeof cb_login_fail != "undefined") {
+              cb_login_fail();
+            } else {
               $('#login_ok').hide();
               $('#login_fail').show();
+            }
           }
       });
     },
