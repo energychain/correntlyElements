@@ -719,7 +719,7 @@ $.extend({
     let html="";
     html+="<table class='table table-condensed' style='width:450px;'>";
     html+="<tr><td>Bezugszähler</td><td><div style='float:right' class='odometer' id='1_8_0'></div></td></tr>";
-    html+="<tr><td> Grünstrom</td><td><div style='float:right' class='odometer' id='1_8_1'></div></td></tr>";
+    html+="<tr><td> Grünstrom (aus der Region)</td><td><div style='float:right' class='odometer' id='1_8_1'></div></td></tr>";
     html+="<tr><td> Reststrom (Ökostrom)</td><td><div style='float:right' class='odometer' id='1_8_2'></div></td></tr>";
     html+="</table>";
     parent.html(html);
@@ -750,7 +750,7 @@ $.extend({
     let html="";
     html+="<table class='table table-condensed'>";
     html+="<tr><td>Bezugszähler</td><td><div style='float:right' class='odometer' id='1_8_0'></div></td></tr>";
-    html+="<tr><td> Grünstrom</td><td><div style='float:right' class='odometer' id='1_8_1'></div></td></tr>";
+    html+="<tr><td> Grünstrom (aus der Region)</td><td><div style='float:right' class='odometer' id='1_8_1'></div></td></tr>";
     html+="<tr><td> Reststrom (Ökostrom)</td><td><div style='float:right' class='odometer' id='1_8_2'></div></td></tr>";
     html+="</table>";
     parent.html(html);
@@ -826,7 +826,7 @@ $.extend({
             html+="<td>"+tokWh(data["1.8.0"])+"</td>";
             html+="</tr>";
             html+="<tr>";
-            html+="<td>Grünstrom</td>";
+            html+="<td>Grünstrom (aus der Region)</td>";
             html+="<td>1.8.1</td>";
             html+="<td>&nbsp;</td>";
             if(typeof data.firstReading != "undefined") {
@@ -893,11 +893,11 @@ $.extend({
                 html+="<tr class='bg-dark text-light'><td colspan='4'><h4>Energie</h4></td></tr>";
                 html+="<tr class='bg-secondary text-light'><th>Belieferungsbeginn</th><td style='text-align:right'>"+new Date(data.firstReading.timeStamp*1).toLocaleString()+"</td><td>("+((data.timeStamp-data.firstReading.timeStamp)/86400000).toFixed(1).replace('.',',')+" Tage)</td><td>&nbsp;</td></tr>";
                 html+="<tr><td>&nbsp;Zählerstand</td><td style='text-align:right'>"+tokWh(data.firstReading["1.8.0"])+"</td><td>&nbsp;</td><td class='text-muted'>kWh</td></tr>";
-                html+="<tr><td>&nbsp;~ Grünstrom</td><td style='text-align:right'>"+tokWh(data.firstReading["1.8.1"])+"</td><td>&nbsp;</td><td class='text-muted'>kWh</td></tr>";
+                html+="<tr><td>&nbsp;~ Grünstrom (aus der Region)</td><td style='text-align:right'>"+tokWh(data.firstReading["1.8.1"])+"</td><td>&nbsp;</td><td class='text-muted'>kWh</td></tr>";
                 html+="<tr><td>&nbsp;~ Reststrom (Ökostrom)</td><td style='text-align:right'>"+tokWh(data.firstReading["1.8.2"])+"</td><td>&nbsp;</td><td class='text-muted'>kWh</td></tr>";
                 html+="<tr class='bg-secondary text-light'><th>Aktuell</th><td style='text-align:right'>"+new Date(data.timeStamp).toLocaleString()+"</td><td>&nbsp;</td><td>&nbsp;</td></tr>";
                 html+="<tr><td>&nbsp;Zählerstand</td><td style='text-align:right'>"+tokWh(data["1.8.0"])+"</td><td>("+tokWh(data["1.8.0"]-data.firstReading["1.8.0"])+")</td><td class='text-muted'>kWh</td></tr>";
-                html+="<tr><td>&nbsp;~ Grünstrom</td><td style='text-align:right'>"+tokWh(data["1.8.1"])+"</td><td>("+tokWh(data["1.8.1"]-data.firstReading["1.8.1"])+")</td><td class='text-muted'>kWh</td></tr>";
+                html+="<tr><td>&nbsp;~ Grünstrom (aus der Region)</td><td style='text-align:right'>"+tokWh(data["1.8.1"])+"</td><td>("+tokWh(data["1.8.1"]-data.firstReading["1.8.1"])+")</td><td class='text-muted'>kWh</td></tr>";
                 html+="<tr><td>&nbsp;~ Reststrom (Ökostrom)</td><td style='text-align:right'>"+tokWh(data["1.8.2"])+"</td><td>("+tokWh(data["1.8.2"]-data.firstReading["1.8.2"])+")</td><td class='text-muted'>kWh</td></tr>";
                 html+="<tr><td colspan='3'>&nbsp;</td></tr>";
                 html+="<tr class='bg-dark text-light'><td colspan='4'><h4>Geld</h4></td></tr>";
@@ -908,7 +908,7 @@ $.extend({
                 html+="<tr><td>&nbsp;+ Grundgebühr</td><td style='text-align:right'>"+gp.toFixed(4).replace('.',',')+"</td><td>&nbsp;</td><td class='text-muted'>EUR</td></tr>";
                 html+="<tr><td>&nbsp;+ Energiekosten</td><td style='text-align:right'>"+ap.toFixed(4).replace('.',',')+"</td><td>&nbsp;</td><td class='text-muted'>EUR</td></tr>";
                 html+="<tr><td>= Bezugskosten</td><td style='text-align:right'>"+(gp+ap).toFixed(4).replace('.',',')+"</td><td>&nbsp;</td><td class='text-muted'>EUR</td></tr>";
-                html+="<tr><td>&nbsp;- Corrently Grünstrom Bonus</td><td style='text-align:right'>"+bp.toFixed(4).replace('.',',')+"</td><td>&nbsp;</td><td class='text-muted'>EUR</td></tr>";
+                html+="<tr><td>&nbsp;- Corrently Grünstrom (aus der Region) Bonus</td><td style='text-align:right'>"+bp.toFixed(4).replace('.',',')+"</td><td>&nbsp;</td><td class='text-muted'>EUR</td></tr>";
                 html+="<tr><th>Brutto Kosten</th><td style='text-align:right'>"+((gp+ap)-bp).toFixed(4).replace('.',',')+"</td><td>&nbsp;</td><td class='text-muted'>EUR</td></tr>";
                 html+= "</table></div>";
                 parent.html(html);
