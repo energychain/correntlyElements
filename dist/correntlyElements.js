@@ -369,6 +369,7 @@
 $.extend({
   correntlyQLogout:function() {
     window.localStorage.removeItem("ce_qcode");
+    location.href=location.pathname;
   }
 });
 
