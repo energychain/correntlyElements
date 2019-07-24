@@ -366,6 +366,12 @@
     }
 }( jQuery ));
 
+$.extend({
+  correntlyQLogout:function() {
+    window.localStorage.removeItem("ce_qcode");
+  }
+});
+
 (function ( $ ) {
   /**
    * Ausgabe der Zählerstände eines Corrently Account als  HTML Tabelle
