@@ -832,7 +832,7 @@
             html+="<td>"+tokWh(data["1.8.1"])+"</td>";
             html+="</tr>";
             html+="<tr>";
-            html+="<td>Graustrom</td>";
+            html+="<td>Ökostrom</td>";
             html+="<td>1.8.2</td>";
             html+="<td>&nbsp;</td>";
             if(typeof data.firstReading != "undefined") {
@@ -887,11 +887,11 @@
                 html+="<tr class='bg-secondary text-light'><th>Belieferungsbeginn</th><td style='text-align:right'>"+new Date(data.firstReading.timeStamp*1).toLocaleString()+"</td><td>("+((data.timeStamp-data.firstReading.timeStamp)/86400000).toFixed(1).replace('.',',')+" Tage)</td><td>&nbsp;</td></tr>";
                 html+="<tr><td>&nbsp;Zählerstand</td><td style='text-align:right'>"+tokWh(data.firstReading["1.8.0"])+"</td><td>&nbsp;</td><td class='text-muted'>kWh</td></tr>";
                 html+="<tr><td>&nbsp;~ Grünstrom</td><td style='text-align:right'>"+tokWh(data.firstReading["1.8.1"])+"</td><td>&nbsp;</td><td class='text-muted'>kWh</td></tr>";
-                html+="<tr><td>&nbsp;~ Graustrom</td><td style='text-align:right'>"+tokWh(data.firstReading["1.8.2"])+"</td><td>&nbsp;</td><td class='text-muted'>kWh</td></tr>";
+                html+="<tr><td>&nbsp;~ Ökostrom</td><td style='text-align:right'>"+tokWh(data.firstReading["1.8.2"])+"</td><td>&nbsp;</td><td class='text-muted'>kWh</td></tr>";
                 html+="<tr class='bg-secondary text-light'><th>Aktuell</th><td style='text-align:right'>"+new Date(data.timeStamp).toLocaleString()+"</td><td>&nbsp;</td><td>&nbsp;</td></tr>";
                 html+="<tr><td>&nbsp;Zählerstand</td><td style='text-align:right'>"+tokWh(data["1.8.0"])+"</td><td>("+tokWh(data["1.8.0"]-data.firstReading["1.8.0"])+")</td><td class='text-muted'>kWh</td></tr>";
                 html+="<tr><td>&nbsp;~ Grünstrom</td><td style='text-align:right'>"+tokWh(data["1.8.1"])+"</td><td>("+tokWh(data["1.8.1"]-data.firstReading["1.8.1"])+")</td><td class='text-muted'>kWh</td></tr>";
-                html+="<tr><td>&nbsp;~ Graustrom</td><td style='text-align:right'>"+tokWh(data["1.8.2"])+"</td><td>("+tokWh(data["1.8.2"]-data.firstReading["1.8.2"])+")</td><td class='text-muted'>kWh</td></tr>";
+                html+="<tr><td>&nbsp;~ Ökostrom</td><td style='text-align:right'>"+tokWh(data["1.8.2"])+"</td><td>("+tokWh(data["1.8.2"]-data.firstReading["1.8.2"])+")</td><td class='text-muted'>kWh</td></tr>";
                 html+="<tr><td colspan='3'>&nbsp;</td></tr>";
                 html+="<tr class='bg-dark text-light'><td colspan='4'><h4>Geld</h4></td></tr>";
                 html+="<tr class='bg-secondary text-light'><th>Belieferung</th><td style='text-align:right'>"+new Date(data.timeStamp).toLocaleString()+"</td><td>&nbsp;</td><td>&nbsp;</td></tr>";
