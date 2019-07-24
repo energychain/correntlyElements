@@ -1062,17 +1062,12 @@
       $.getJSON("https://api.corrently.io/core/tarif?&zip="+q,function(data) {
             let html = "<table class='table table-condensed'>";
             html+="<tr><th>Ortsteil</th><th>Arbeitspreis (je kWh)</th><th>Grundpreis (je Monat)</th><th>&nbsp;</th></tr>";
-            for(let i=0;i<data.length;i++) {
-              if(data[i].subcity.length > 0) {
-              html+="<tr><td>"+data[i].subcity+"</td>";
-            } else {
-              html+="<tr><td>"+q+"</td>";
-            }
-              html+="<td>"+(data[i].ap/100).toFixed(4).replace('.',',')+"</td>";
-              html+="<td>"+(data[i].gp).replace('.',',')+"</td>";
-              html+="<td><a href='https://corrently.energy/stromprodukte/"+q+"/' class='btn btn-sm btn-warning'>Details</td>";
-              html+="</tr>";
-            }
+            let i=0;
+            html+="<td>"+(data[i].ap/100).toFixed(4).replace('.',',')+"</td>";
+            html+="<td>"+(data[i].gp).replace('.',',')+"</td>";
+            html+="<td><a href='https://corrently.energy/stromprodukte/"+q+"/' class='btn btn-sm btn-warning'>Details</td>";
+            html+="</tr>";
+
             html+="</table>";
             parent.html(html);
       });
