@@ -753,7 +753,9 @@
             $('#1_8_0').html(data["1.8.0"]/1000);
             $('#1_8_0').attr('title',new Date(data.timeStamp).toLocaleString());
             $('#1_8_1').html(data["1.8.1"]/1000);
+            $('#1_8_1').attr('data',data["1.8.1"]/1000);
             $('#1_8_2').html(data["1.8.2"]/1000);
+            $('#1_8_2').attr('data',data["1.8.2"]/1000);
         });
     }
 
