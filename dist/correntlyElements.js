@@ -1065,19 +1065,34 @@ $.extend({
       if(this.attr("zip") != null ) q=this.attr("zip");
       if(this.attr("data-plz") != null ) q=this.attr("data-plz");
       if(this.attr("plz") != null ) q=this.attr("plz");
+      if((""+q).length!=5) {
+        $.getJSON("https://api.corrently.io/core/location",function(data) {
+          $.getJSON("https://api.corrently.io/core/tarif?&zip="+data.zip,function(data) {
+                let html = "<table class='table table-condensed'>";
+                html+="<tr><th>Arbeitspreis (je kWh)</th><th>Grundpreis (je Monat)</th><th>&nbsp;</th></tr>";
+                let i=0;
+                html+="<td>"+(data[i].ap/100).toFixed(4).replace('.',',')+"</td>";
+                html+="<td>"+(data[i].gp).replace('.',',')+"</td>";
+                html+="<td><a href='https://corrently.energy/stromprodukte/"+q+"/index.html' class='btn btn-sm btn-warning'>Details</td>";
+                html+="</tr>";
+                html+="</table>";
+                parent.html(html);
+          });
+        });
+      } else {
+        $.getJSON("https://api.corrently.io/core/tarif?&zip="+q,function(data) {
+              let html = "<table class='table table-condensed'>";
+              html+="<tr><th>Arbeitspreis (je kWh)</th><th>Grundpreis (je Monat)</th><th>&nbsp;</th></tr>";
+              let i=0;
+              html+="<td>"+(data[i].ap/100).toFixed(4).replace('.',',')+"</td>";
+              html+="<td>"+(data[i].gp).replace('.',',')+"</td>";
+              html+="<td><a href='https://corrently.energy/stromprodukte/"+q+"/index.html' class='btn btn-sm btn-warning'>Details</td>";
+              html+="</tr>";
 
-      $.getJSON("https://api.corrently.io/core/tarif?&zip="+q,function(data) {
-            let html = "<table class='table table-condensed'>";
-            html+="<tr><th>Arbeitspreis (je kWh)</th><th>Grundpreis (je Monat)</th><th>&nbsp;</th></tr>";
-            let i=0;
-            html+="<td>"+(data[i].ap/100).toFixed(4).replace('.',',')+"</td>";
-            html+="<td>"+(data[i].gp).replace('.',',')+"</td>";
-            html+="<td><a href='https://corrently.energy/stromprodukte/"+q+"/index.html' class='btn btn-sm btn-warning'>Details</td>";
-            html+="</tr>";
-
-            html+="</table>";
-            parent.html(html);
-      });
+              html+="</table>";
+              parent.html(html);
+        });
+      }
     }
 
 }( jQuery ));
