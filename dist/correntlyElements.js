@@ -1768,6 +1768,9 @@ $.extend({
           }
         })
       });
+   },
+   metaPersist:function(obj,cb) {
+     $.post("https://api.corrently.io/core/meta",obj,cb);
    }
 });
 $(document).ready(function() {
