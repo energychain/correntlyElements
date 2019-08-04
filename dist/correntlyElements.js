@@ -1770,6 +1770,7 @@ $.extend({
       });
    },
    metaPersist:function(obj,cb) {
+     obj.UTM_SOURCE = window.location.hostname + window.location.pathname;
      $.post("https://api.corrently.io/core/meta",obj,cb);
    }
 });
