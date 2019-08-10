@@ -1098,6 +1098,14 @@ $.extend({
         $.getJSON("https://api.corrently.io/core/origin-info?origin="+origin_id,function(data) {
           $.each(data,function( index, value ) {
             if(value!=null) {
+              if(index=="DATE_MODIFY") {
+                let date = new Date(value);
+                value = date.getDate()+"."+(date.getMonth()+1)+"."+(date.getYear()+1900);
+                date+=(86400000*7);
+                $('.f_DATE_VALID').val(date.getDate()+"."+(date.getMonth()+1)+"."+(date.getYear()+1900));
+                date+=(86400000*600);
+                $('.f_DATE_END').val(date.getDate()+"."+(date.getMonth()+1)+"."+(date.getYear()+1900));
+              }
               $('.f_'+index).val(value);
             }
           });
