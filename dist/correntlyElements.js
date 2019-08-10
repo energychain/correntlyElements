@@ -1141,6 +1141,7 @@ $.extend({
                 });
               }
               $('.f_'+index).val(value);
+              $('.t_'+index).html(value);
             }
           });
         });
