@@ -1117,6 +1117,7 @@ $.extend({
                 $('.f_GSI_kwh').val(Math.round(kwh));
                 $('.f_GSI_cap').val(Math.round(cap));
                 $('.f_GSI_erz').val(Math.round(erz));
+                $('.f_GSI_eff').val(Math.round(value-erz));
 
                 for(var i=0;i<3;i++) {
                     kwh=value*0.45;
@@ -1125,6 +1126,7 @@ $.extend({
                     $('.s_gsi_'+i+'_kwh').html(Math.round(kwh));
                     $('.s_gsi_'+i+'_cap').html(Math.round(cap));
                     $('.s_gsi_'+i+'_erz').html(Math.round(erz));
+                    $('.s_gsi_'+i+'_eff').html(Math.round(value-erz));
                 }
               }
               if(index=="ADDRESS_POSTAL_CODE") {
