@@ -1099,11 +1099,14 @@ $.extend({
           $.each(data,function( index, value ) {
             if(value!=null) {
               if(index=="DATE_MODIFY") {
-                let date = new Date(value);
+                let time = new Date(value).getTime();
+                date = new Date(time);
                 value = date.getDate()+"."+(date.getMonth()+1)+"."+(date.getYear()+1900);
-                date+=(86400000*7);
+                time+=(86400000*7);
+                date = new Date(time);
                 $('.f_DATE_VALID').val(date.getDate()+"."+(date.getMonth()+1)+"."+(date.getYear()+1900));
-                date+=(86400000*600);
+                time+=(86400000*600);
+                date = new Date(time);
                 $('.f_DATE_END').val(date.getDate()+"."+(date.getMonth()+1)+"."+(date.getYear()+1900));
               }
               $('.f_'+index).val(value);
