@@ -1113,7 +1113,7 @@ $.extend({
                 $.getJSON("https://api.corrently.io/core/tarif?plz="+value,function(data2) {
                   $('.f_ADDRESS_CITY').val(data2[0].city);
                   $('.f_UF_CRM_1551661008532').val(data2[0].ap.toFixed(2).replace('.',','));
-                  $('.f_UF_CRM_1551661016710').val(data2[0].gp.toFixed(2).replace('.',','));
+                  $('.f_UF_CRM_1551661016710').val(data2[0].gp.replace('.',','));
                 });
               }
               $('.f_'+index).val(value);
