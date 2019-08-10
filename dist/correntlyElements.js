@@ -1134,6 +1134,10 @@ $.extend({
                   $('.f_ADDRESS_CITY').val(data2[0].city);
                   $('.f_UF_CRM_1551661008532').val((data2[0].ap*1).toFixed(2).replace('.',','));
                   $('.f_UF_CRM_1551661016710').val((data2[0].gp*1).toFixed(2).replace('.',','));
+                  let abschlag = (data2[0].gp*12);
+                  abschlag+=(data["UF_CRM_1551660944277"]*(data2[0].ap*0.01));
+                  abschlag/=12;
+                  $('.abschlag_netto').html(abschlag.toFixed(2).replace('.',','));
                 });
               }
               $('.f_'+index).val(value);
