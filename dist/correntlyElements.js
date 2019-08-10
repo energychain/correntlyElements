@@ -297,7 +297,7 @@
       if(this.attr("data-zip")!=null) url+"?plz="+this.attr("data-zip"); else
       if(window.localStorage.getItem("zipcode")!=null) url+"?plz="+window.localStorage.getItem("zipcode");
       const parent = this;
-      if(($('.gsiDataGiven').length==0)&&(  parent.html().length < 100)) {
+      if(((typeof $('.gsiDataGiven') == "undefined")||($('.gsiDataGiven').length==0))&&(  parent.html().length < 100)) {
         parent.html("<span class='text-muted'>wird geladen...- Einen Augenblick</span>");
       }
       const refreshGSI = function() {
@@ -353,7 +353,7 @@
           window.ce_city = data.location.city;
           window.localStorage.setItem("zipcode",data.location.zip);
           window.localStorage.setItem("city",data.location.city);
-          
+
           if(typeof cb_location != "undefined") {
             cb_location(data.location);
           }
