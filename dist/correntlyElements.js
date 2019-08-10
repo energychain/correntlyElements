@@ -1109,6 +1109,9 @@ $.extend({
                 date = new Date(time);
                 $('.f_DATE_END').val(date.getDate()+"."+(date.getMonth()+1)+"."+(date.getYear()+1900));
               }
+              if(index=="UF_CRM_1551660944277") {
+                $('.f_GSI_kwh').val(Math.round(value*0.45));
+              }
               if(index=="ADDRESS_POSTAL_CODE") {
                 $.getJSON("https://api.corrently.io/core/tarif?plz="+value,function(data2) {
                   $('.f_ADDRESS_CITY').val(data2[0].city);
