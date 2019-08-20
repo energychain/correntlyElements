@@ -1833,11 +1833,19 @@ $.extend({
      obj+="&UTM_SOURCE="+window.location.hostname + window.location.pathname;
      if(typeof $.getUrlVar != "undefined") {
        if(typeof $.getUrlVar("UTM_CONTENT") != "undefined") {
+         window.localStorage.setItem("UTM_CONTENT",$.getUrlVar("UTM_CONTENT"));
          obj+="&UTM_CONTENT="+$.getUrlVar("UTM_CONTENT");
        }
        if(typeof $.getUrlVar("UTM_MEDIUM") != "undefined") {
+         window.localStorage.setItem("UTM_MEDIUM",$.getUrlVar("UTM_MEDIUM"));
          obj+="&UTM_MEDIUM="+$.getUrlVar("UTM_MEDIUM");
        }
+     }
+     if( window.localStorage.getItem("UTM_CONTENT") != null) {
+        obj+="&UTM_CONTENT="+ window.localStorage.getItem("UTM_CONTENT");
+     }
+     if( window.localStorage.getItem("UTM_MEDIUM") != null) {
+        obj+="&UTM_MEDIUM="+ window.localStorage.getItem("UTM_MEDIUM");
      }
      $.post("https://api.corrently.io/core/meta",obj,cb);
    }
