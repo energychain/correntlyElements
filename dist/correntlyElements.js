@@ -1009,7 +1009,6 @@ $.extend({
            $('#balance_kwh').attr('title',data.result.balance_eur);
 
            if(typeof data.result.link != "undefined") {
-            window.sko_link = data.result.link;
              $.getJSON("https://api.corrently.io/core/dispatcher?account="+data.result.link,function(data) {
 
              });
