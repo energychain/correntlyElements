@@ -67,9 +67,6 @@
                 <div class="card-body" id="gsi_card">
 
                 </div>
-                <div class="card-footer text-center">
-                      API Endpunkt: <code>https://api.corrently.io/core/gsi</code><br/>
-                </div>
             </div>
         </div>
         <div class="card-deck" style="margin-bottom: 25px;">
@@ -77,7 +74,7 @@
 
             <div class="card shadow-lg">
                 <div class="card-header text-dark bg-dark">
-                    <h3 class="text-truncate text-light">Verbauch- und GrünstromIndex</h3>
+                    <h3 class="text-truncate text-light">Grünstromanteil dieses Steckers</h3>
                 </div>
                 <div class="card-body" id="reading_chart">
                     <canvas class="usageChart" width="600" height="400"  data-chart="donut" id="usageChart"></canvas>
@@ -90,6 +87,7 @@
                 <div class="card-body">
                     <div id="reading_card">
                     </div>
+                    <a id="skolink" class="btn btn-primary" target="_blank">Stromkonto</a>
                 </div>
             </div>
         </div>
@@ -125,6 +123,7 @@
               $('#reading_card').correntlyOdoMeter(data[0].account); // Zählerstand für eingegebenen Zähler
               $('#usageChart').correntlyReadingChart(data[0].account);
               $('#gsi_card').correntlyGSI(data[0].location.zip);
+              $('#skolink').attr('href',"https://www.stromkonto.net/?a="+data[0].account);
           //}
         });
 
