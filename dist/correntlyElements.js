@@ -713,7 +713,7 @@ $.extend({
     if(q == null) {
       if((typeof  $.getUrlVar('a') != "undefined ")&&(q == null)) q = $.getUrlVar('a');
       if((window.localStorage.getItem("ce_account") != null)&&(q == null)) q = window.localStorage.getItem("ce_account");
-      if(q == null) q="0xc5f16A89F132f014CD27cCCa46F911976c183536";
+      if(q == null) q="0x036b01A93E6a920aeE77f577C60Dec8E7D22Bf5d";
     }
     const parent = this;
     let html="";
@@ -744,7 +744,7 @@ $.extend({
     if(q == null) {
       if((typeof  $.getUrlVar('a') != "undefined ")&&(q == null)) q = $.getUrlVar('a');
       if((window.localStorage.getItem("ce_account") != null)&&(q == null)) q = window.localStorage.getItem("ce_account");
-      if(q == null) q="0xc5f16A89F132f014CD27cCCa46F911976c183536";
+      if(q == null) q="0x036b01A93E6a920aeE77f577C60Dec8E7D22Bf5d";
     }
     const parent = this;
     let html="";
@@ -795,7 +795,7 @@ $.extend({
       if(q == null) {
         if((typeof  $.getUrlVar('a') != "undefined ")&&(q == null)) q = $.getUrlVar('a');
         if((window.localStorage.getItem("ce_account") != null)&&(q == null)) q = window.localStorage.getItem("ce_account");
-        if(q == null) q="0x26D53FC47581E8F9f94Eadf71eFd7F57C931b9D9";
+        if(q == null) q="0x036b01A93E6a920aeE77f577C60Dec8E7D22Bf5d";
       }
       const tokWh = function(n) {
         return (n/1000).toFixed(3).replace('.',',');
@@ -879,7 +879,7 @@ $.extend({
       if(this.attr("idx") != null ) idx=this.attr("idx");
 
       if(q == null) q = $.getUrlVar('a');
-      if(q == null) q="0x26D53FC47581E8F9f94Eadf71eFd7F57C931b9D9";
+      if(q == null) q="0x036b01A93E6a920aeE77f577C60Dec8E7D22Bf5d";
       const tokWh = function(n) {
         return (n/1000).toFixed(3).replace('.',',');
       }
@@ -930,7 +930,7 @@ $.extend({
       if(this.attr("account") != null ) q=this.attr("account");
 
       if(q == null) q = $.getUrlVar('a');
-      if(q == null) q="0x26D53FC47581E8F9f94Eadf71eFd7F57C931b9D9";
+      if(q == null) q="0x036b01A93E6a920aeE77f577C60Dec8E7D22Bf5d";
       const parent = this;
       const refreshReading = function() {
          $.getJSON("https://api.corrently.io/edifact/mscons_2.2i?account="+q,function(data) {
@@ -950,7 +950,7 @@ $.extend({
       if(this.attr("account") != null ) q=this.attr("account");
 
       if(q == null) q = $.getUrlVar('a');
-      if(q == null) q="0x26D53FC47581E8F9f94Eadf71eFd7F57C931b9D9";
+      if(q == null) q="0x036b01A93E6a920aeE77f577C60Dec8E7D22Bf5d";
       const parent = this;
       const refreshReading = function() {
          $.getJSON("https://api.corrently.io/edifact/mscons_2.2i?account="+q,function(data) {

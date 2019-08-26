@@ -5,6 +5,6 @@ Jquery/Javascript Elements to easy prototype in Corrently Ecosystem
 https://elements.corrently.io/
 
 ## BuildDate
-2019/07/02
+2019/08/26
 
 # Added Keys for elementsserver
