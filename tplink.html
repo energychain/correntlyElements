@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Corrently - TP Link Kasa HS110 (EU)</title>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="/assets/css/Footer-Basic.css">
+    <link rel="stylesheet" href="/assets/css/header-1.css">
+    <link rel="stylesheet" href="/assets/css/header-2.css">
+    <link rel="stylesheet" href="/assets/css/header.css">
+    <link rel="stylesheet" href="/assets/css/Navigation-Clean.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/odometer-theme-car.css">
+</head>
+
+<body>
+    <div class="shadow-lg" style="margin-bottom: 20px;">
+        <nav class="navbar navbar-light navbar-expand-md navigation-clean" style="background-color: #ffffff;margin-bottom: 25px;">
+            <div class="container"><a class="navbar-brand" style="color: #ffa700;font-family: Roboto, sans-serif;" href="/"><img style="filter: brightness(100%) contrast(102%) saturate(100%) sepia(0%);" src="/assets/img/corrently_logo.png"></a><button data-toggle="collapse" class="navbar-toggler"
+                    data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            </div>
+        </nav>
+    </div>
+    <div class="container">
+      <div id="loggedout">
+        <div class="card-deck" style="margin-bottom: 25px;">
+            <div class="card shadow-lg">
+                <div class="card-header text-dark bg-dark">
+                    <h3 class="text-truncate text-light">TP-Link KASA Cloud Anmeldung</h3>
+                </div>
+                <div class="card-body" id="KASALoginForm">
+                  <form action="https://api.corrently.io/core/tplink" method="POST" id="loginFrm">
+                      <div class="form-group">
+                        <label for="kasa_account">Email</label>
+                        <input type="email" class="form-control" id="kasa_account" aria-describedby="emailHelp" placeholder="Email des KASA Cloud Accounts" name="kasa_account" >
+                        <small id="emailHelp" class="form-text text-muted">Ihre Email-Adresse bei <a href="https://www.tplinkcloud.com" target="_blank">TP Link Cloud</a> oder APP.</small>
+                     </div>
+                     <div class="form-group">
+                       <label for="kasa_password">Email</label>
+                       <input type="password" class="form-control" id="kasa_password" aria-describedby="passwordHelp" placeholder="Passwort des KASA Cloud Accounts" name="kasa_password" >
+                       <small id="passwordHelp" class="form-text text-muted">Passwort bei TP Link Cloud oder APP.</small>
+                    </div>
+                    <div class="form-group">
+                      <label for="zip">Postleitzahl</label>
+                      <input type="text" class="form-control" id="zip" aria-describedby="zipHelp" placeholder="Postleitzahl in Deutschland" name="zip" >
+                      <small id="zipHelp" class="form-text text-muted">Postleitzahl, die zur Berechnung des GrünstromIndex verwendet wird.</small>
+                    </div>
+                     <button type="submit" class="btn btn-primary">Anmelden</button>
+                   </form>
+                </div>
+                <div class="card-footer text-center">
+                      <strong>Tipp:</strong><br/>Setzen Sie ein Lesezeichen auf diese Seite, nach der erfolgreichen Anmeldung!
+                </div>
+            </div>
+        </div>
+      </div>
+      <div id="app">
+      </div>
+      <div id="loggedin">
+        <div class="card-deck" style="margin-bottom: 25px;">
+            <div class="card shadow-lg">
+                <div class="card-header text-dark bg-dark">
+                    <h3 class="text-truncate text-light">GrünstromIndex <span id="fortext"></span></h3>
+                </div>
+                <div class="card-body" id="gsi_card">
+
+                </div>
+                <div class="card-footer text-center">
+                      API Endpunkt: <code>https://api.corrently.io/core/gsi</code><br/>
+                </div>
+            </div>
+        </div>
+        <div class="card-deck" style="margin-bottom: 25px;">
+
+
+            <div class="card shadow-lg">
+                <div class="card-header text-dark bg-dark">
+                    <h3 class="text-truncate text-light">Verbauch- und GrünstromIndex</h3>
+                </div>
+                <div class="card-body" id="reading_chart">
+                    <canvas class="usageChart" width="600" height="400"  data-chart="donut" id="usageChart"></canvas>
+                </div>
+            </div>
+            <div class="card shadow-lg">
+                <div class="card-header text-dark bg-dark">
+                    <h3 class="text-truncate text-light">Zählerstände</h3>
+                </div>
+                <div class="card-body">
+                    <div id="reading_card">
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/assets/js/Chart.bundle.min.js"></script>
+    <script src="/dist/correntlyElements-min.js"></script>
+    <script>
+
+
+    /* Funktionaler Code für dieses Beispiel */
+    $(document).ready( function() {
+      /* Fallunterscheidung für Eingabefeld Account */
+      if($.getUrlVar("a") == null) {
+        $('#loggedout').show();
+        $('#loggedin').hide();
+        $('#loginFrm').ajaxForm(function(d) {
+          if(d.length>0) {
+            if(typeof d[0].account != "undefined") {
+              location.href="?a="+d[0].account;
+            }
+          }
+        });
+      } else {
+        $('#loggedout').hide();
+        $('#loggedin').show();
+        $.getJSON("https://api.corrently.io/core/tplink?account="+$.getUrlVar("a"),function(data) {
+              console.log(data[0]);
+          //for(let i=0;i<data.length;i++) {
+              $('#reading_card').correntlyOdoMeter(data[0].account); // Zählerstand für eingegebenen Zähler
+              $('#usageChart').correntlyReadingChart(data[0].account);
+              $('#gsi_card').correntlyGSI(data[0].location.zip);
+          //}
+        });
+
+      }
+
+    });
+    </script>
+</body>
+
+</html>
