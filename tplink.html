@@ -124,11 +124,12 @@
         $('#loggedin').show();
         $.getJSON("https://api.corrently.io/core/tplink?account="+$.getUrlVar("a"),function(data) {
               console.log(data[0]);
-          //for(let i=0;i<data.length;i++) {
-              $('#reading_card').correntlyOdoMeter(data[0].account); // Zählerstand für eingegebenen Zähler
-              $('#usageChart').correntlyReadingChart(data[0].account);
-              $('#gsi_card').correntlyGSI(data[0].location.zip);
-              $('#skolink').attr('href',"https://www.stromkonto.net/?a="+data[0].account);
+              let i = $.getUrlVar("i");
+              if(i==null) i=0;
+              $('#reading_card').correntlyOdoMeter(data[i].account); // Zählerstand für eingegebenen Zähler
+              $('#usageChart').correntlyReadingChart(data[i].account);
+              $('#gsi_card').correntlyGSI(data[i].location.zip);
+              $('#skolink').attr('href',"https://www.stromkonto.net/?a="+data[i].account);
           //}
         });
 
