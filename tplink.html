@@ -96,6 +96,14 @@
                 </div>
             </div>
         </div>
+        <div class="card shadow-lg">
+            <div class="card-header text-dark bg-dark">
+                <h3 class="text-truncate text-light">Verlauf und GrünsromIndex</h3>
+            </div>
+            <div class="card-body" id="reading_chart">
+                <canvas class="usageChart" width="800" height="400" id="usageChart2"></canvas>
+            </div>
+        </div>
       </div>
     </div>
 
@@ -128,6 +136,7 @@
               if(i==null) i=0;
               $('#reading_card').correntlyOdoMeter(data[i].account); // Zählerstand für eingegebenen Zähler
               $('#usageChart').correntlyReadingChart(data[i].account);
+              $('#usageChart2').correntlyReadingChart(data[i].account);
               $('#gsi_card').correntlyGSI(data[i].location.zip);
               $('#skolink').attr('href',"https://www.stromkonto.net/?a="+data[i].account);
           //}
