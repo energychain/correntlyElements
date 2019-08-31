@@ -89,12 +89,13 @@
                 <div class="card-header text-dark bg-dark">
                     <h3 class="text-truncate text-light">Verwaltung</h3>
                 </div>
-                <div class="card-body">--
+                <div class="card-body">
                      <h5>Zählerstände</h5>
                     <div id="reading_card">
                     </div>
                     <a id="skolink" class="btn btn-primary" target="_blank">Stromkonto</a>
                     <h5 style="margin-top:25px">Automatisch einschalten</h5>
+                    <div id="switchTxt">
                     Zu Beginn der besten <select id="bestHours">
                       <option>1</option>
                       <option>2</option>
@@ -102,8 +103,15 @@
                       <option>4</option>
                       <option>5</option>
                       <option>6</option>
+                      <option>7</option>
+                      <option>8</option>
+                      <option>9</option>
+                      <option>10</option>
+                      <option>11</option>
+                      <option>12</option>
                     </select> Stunden.
                     <button type="button" class="btn btn-primary" id="switchBtn">setzen</button>
+                  </div>
                 </div>
             </div>
         </div>
@@ -151,11 +159,8 @@
               $('#gsi_card').correntlyGSI(data[i].location.zip);
               $('#skolink').attr('href',"https://www.stromkonto.net/?a="+data[i].account);
               $('#switchBtn').click(function() {
-                /*
-                $.getJSON("https://api.corrently.io/core/tplink?account="+$.getUrlVar("a")+"&activate="+data[i].deviceMac,function(data) {
-                  console.log(data);
-                });
-                */
+                $('#switchBtn').attr('disabled','disabled');
+
                 let hours = $('#bestHours').val();
                 $.getJSON("https://api.corrently.io/core/gsi?zip="+data[i].location.zip,function(gsidata) {
 
@@ -171,7 +176,10 @@
                         gsisum_start = gsidata.forecast[j].timeStamp;
                       }
                   }
-                  console.log("Swith on:",new Date(gsisum_start));
+                  $.getJSON("https://api.corrently.io/core/tplink?account="+$.getUrlVar("a")+"&activate="+data[i].deviceMac+"&ts="+gsisum_start,function(data) {
+                    $('#switchBtn').removeAttr('disabled');
+                    $('#switchTxt').html("Gerät wird automatisch eingeschaltet nach "+new Date(gsisum_start).toLocaleString()+".");
+                  });
                 })
 
               })
