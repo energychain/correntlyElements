@@ -87,7 +87,7 @@
             </div>
             <div class="card shadow-lg">
                 <div class="card-header text-dark bg-dark">
-                    <h3 class="text-truncate text-light">Verwaltung</h3>
+                    <h3 class="text-truncate text-light">Verwaltung <span id="vonalias"></span></h3>
                 </div>
                 <div class="card-body">
                      <h5>Zählerstände</h5>
@@ -157,6 +157,7 @@
               $('#usageChart').correntlyReadingChart(data[i].account);
               $('#usageChart2').correntlyReadingChart(data[i].account);
               $('#gsi_card').correntlyGSI(data[i].location.zip);
+              $('#vonalias').html(data[i].alias);
               $('#skolink').attr('href',"https://www.stromkonto.net/?a="+data[i].account);
               $('#switchBtn').click(function() {
                 $('#switchBtn').attr('disabled','disabled');
