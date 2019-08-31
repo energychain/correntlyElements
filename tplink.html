@@ -102,7 +102,8 @@
                       <option>4</option>
                       <option>5</option>
                       <option>6</option>
-                    </select> Stunden der kommenden 24 Stunden.
+                    </select> Stunden.
+                    <button type="button" class="btn btn-primary" id="switchBtn">setzen</button>
                 </div>
             </div>
         </div>
@@ -149,6 +150,22 @@
               $('#usageChart2').correntlyReadingChart(data[i].account);
               $('#gsi_card').correntlyGSI(data[i].location.zip);
               $('#skolink').attr('href',"https://www.stromkonto.net/?a="+data[i].account);
+              $('#switchBtn').click(function() {
+                $.getJSON("https://api.corrently.io/core/tplink?account="+$.getUrlVar("a")+"&activate="+data[i].deviceMac,function(data) {
+                  console.log(data);
+                });
+                /*
+                  let hours = $('#bestHours').val();
+                  $.getJSON("https://api.corrently.io/core/gsi?zip="+data[i].location.zip,function(gsidata) {
+                    let gsisum=0;
+                    let gsisum_max=0;
+                    let gsisum_start=0;
+                    for(let j=0;j<gsidata.forecast.length-hours;j++) {
+
+                    }
+                  })
+                */
+              })
           //}
         });
 
