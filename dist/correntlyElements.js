@@ -326,15 +326,15 @@
           for(var i=0;i<data.forecast.length;i++) {
               let date = new Date(data.forecast[i].timeStamp);
               if((i==0)||(date.getHours()==0)) {
-                daterow+="<td class='small'>"+date.getDate()+"."+(date.getMonth()+1)+"</td>";
+                daterow+="<td class='small tsclass'>"+date.getDate()+"."+(date.getMonth()+1)+"</td>";
               } else daterow+="<td>&nbsp;</td>";
               let bgclass="bg-warning";
               if(data.forecast[i].gsi<48) bgclass="bg-secondary";
               if(data.forecast[i].gsi>52) bgclass="bg-success";
-              timerow+="<td  class='"+bgclass+" small' style='text-align:right'>"+date.getHours()+":00</td>";
-              idxrow+="<td  class='"+bgclass+" small' style='text-align:right'>"+data.forecast[i].gsi+"</td>";
-              barrow+="<td style='vertical-align:bottom'><div class='"+bgclass+"' title='Indexwert: "+data.forecast[i].gsi+" Punkte' style=';height:"+Math.round((data.forecast[i].gsi)*2)+"px'></div></td>";
-              inforow+="<td style='text-align:right' class='"+bgclass+" small' >"+(5-(2*(data.forecast[i].gsi/100))).toFixed(2).replace('.',',')+"</td>";
+              timerow+="<td  class='"+bgclass+" tsclass small' style='text-align:right'>"+date.getHours()+":00</td>";
+              idxrow+="<td  class='"+bgclass+" tsclass small' style='text-align:right'>"+data.forecast[i].gsi+"</td>";
+              barrow+="<td style='vertical-align:bottom' class='tsclass'><div class='"+bgclass+"' title='Indexwert: "+data.forecast[i].gsi+" Punkte' style=';height:"+Math.round((data.forecast[i].gsi)*2)+"px'></div></td>";
+              inforow+="<td style='text-align:right' class='"+bgclass+" tsclass small' >"+(5-(2*(data.forecast[i].gsi/100))).toFixed(2).replace('.',',')+"</td>";
           }
           daterow+="</tr>";
           timerow+="</tr>";
