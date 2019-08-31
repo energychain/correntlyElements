@@ -151,20 +151,29 @@
               $('#gsi_card').correntlyGSI(data[i].location.zip);
               $('#skolink').attr('href',"https://www.stromkonto.net/?a="+data[i].account);
               $('#switchBtn').click(function() {
+                /*
                 $.getJSON("https://api.corrently.io/core/tplink?account="+$.getUrlVar("a")+"&activate="+data[i].deviceMac,function(data) {
                   console.log(data);
                 });
-                /*
-                  let hours = $('#bestHours').val();
-                  $.getJSON("https://api.corrently.io/core/gsi?zip="+data[i].location.zip,function(gsidata) {
-                    let gsisum=0;
-                    let gsisum_max=0;
-                    let gsisum_start=0;
-                    for(let j=0;j<gsidata.forecast.length-hours;j++) {
-
-                    }
-                  })
                 */
+                let hours = $('#bestHours').val();
+                $.getJSON("https://api.corrently.io/core/gsi?zip="+data[i].location.zip,function(gsidata) {
+
+                  let gsisum_max=0;
+                  let gsisum_start=0;
+                  for(let j=0;j<gsidata.forecast.length-hours;j++) {
+                      let gsisum=0;
+                      for(let k=0;k<hours;k++) {
+                          gsisum+=gsidata.forecast[j+k].gsi;
+                      }
+                      if(gsisum>gsisum_max) {
+                        gsisum_max = gsisum;
+                        gsisum_start = gsidata.forecast[j].timeStamp;
+                      }
+                  }
+                  console.log("Swith on:",new Date(gsisum_start));
+                })
+
               })
           //}
         });
