@@ -351,6 +351,7 @@
           parent.attr('data-refresh',data.forecast[0].timeStamp);
           window.ce_zip=data.location.zip;
           window.ce_city = data.location.city;
+          window.ce_gsi=data.forecast;
           window.localStorage.setItem("zipcode",data.location.zip);
           window.localStorage.setItem("city",data.location.city);
 
