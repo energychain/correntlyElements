@@ -1048,7 +1048,7 @@ $.extend({
                for(let i=0;i<data.assets.length;i++) {
                   html+="<tr>";
                   html+="<td>"+data.assets[i].asset_title+"</td>";
-                  html+="<td>"+data.assets[i].shares+" kWh</td>";
+                  html+="<td style='text-align:right'>"+data.assets[i].shares+"&nbsp;kWh</td>";
                   html+="</tr>";
                }
            }
