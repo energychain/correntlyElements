@@ -1075,6 +1075,7 @@ $.extend({
          $.getJSON("https://api.corrently.io/core/depot?account="+q,function(data) {
            let html = "<table class='table depottable'>";
            html+="<tr><th>Anlage</th><th style='text-align:right'>Deine jährliche Eigenerzeugung</th></tr>";
+           let total_shares =0;
            for(let j=0;j<market.results.length;j++) {
              let shares=0;
 
@@ -1089,7 +1090,9 @@ $.extend({
              html+="<td>"+market.results[j].title+"</td>";
              html+="<td style='text-align:right'>"+shares+"&nbsp;kWh</td>";
              html+="</tr>";
+             total_shares+=1*shares;
            }
+           html+="<tr><th>Gesamt</th><th style='text-align:right'>"+total_shares+"&nbsp;kWh</th>";
            html+="</table>";
            parent.html(html);
          });
