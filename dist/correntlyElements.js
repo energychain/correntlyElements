@@ -1039,6 +1039,7 @@ $.extend({
       if(typeof window.sko_link != "undefined") {
         q= window.sko_link;
       }
+      console.log("Depot Account",q);
       const parent = this;
       const refreshReading = function() {
          $.getJSON("https://api.corrently.io/core/depot?account="+q,function(data) {
