@@ -1020,7 +1020,7 @@ $.extend({
              if(typeof data["2.8.0"] != "undefined") {
                console.log("2.8.0",data["2.8.0"]);
                $('#p_2_8_0').html((data["2.8.0"]/1000).toFixed(3).replace('.',','));
-             }             
+             }
            })
         });
       }
@@ -1042,7 +1042,7 @@ $.extend({
       const refreshReading = function() {
          $.getJSON("https://api.corrently.io/core/depot?account="+q,function(data) {
            let html = "<table class='table depottable'>";
-           html+="<tr><th>Anlage</th><th>jährliche Eigenerzeugung</th></tr>";
+           html+="<tr><th>Anlage</th><th style='text-align:right'>jährliche Eigenerzeugung</th></tr>";
            if((typeof data.assets != "undefined") && (data.assets!=null)) {
                for(let i=0;i<data.assets.length;i++) {
                   html+="<tr>";
