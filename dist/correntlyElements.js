@@ -1043,12 +1043,12 @@ $.extend({
       const refreshReading = function() {
          $.getJSON("https://api.corrently.io/core/depot?account="+q,function(data) {
            let html = "<table class='table depottable'>";
-           html+="<tr><th>Anlage</th><th>Anteile (kWh/Jahr)</th></tr>";
+           html+="<tr><th>Anlage</th><th>jährliche Erzeugung</th></tr>";
            if((typeof data.assets != "undefined") && (data.assets!=null)) {
                for(let i=0;i<data.assets.length;i++) {
                   html+="<tr>";
                   html+="<td>"+data.assets[i].asset_title+"</td>";
-                  html+="<td>"+data.assets[i].shares+"</td>";
+                  html+="<td>"+data.assets[i].shares+" kWh</td>";
                   html+="</tr>";
                }
            }
