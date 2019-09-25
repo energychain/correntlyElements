@@ -1057,6 +1057,46 @@ $.extend({
       }
       refreshReading();
       setInterval(refreshReading,60000);
+    },
+    $.fn.correntlyCommunityDepot=function(account) {
+      let q = account;
+      if(this.attr("data-account") != null ) q=this.attr("data-account");
+      if(this.attr("account") != null ) q=this.attr("account");
+
+      if(q == null) q = $.getUrlVar('a');
+      if(q == null) q="0x504ec8497EBD02369550f6586EB32b26f088F25B";
+      if(typeof window.sko_link != "undefined") {
+        q= window.sko_link;
+      }
+      console.log("Depot Account",q);
+      const parent = this;
+      const refreshReading = function() {
+        $.getJSON("https://api.corrently.io/core/market?account="+q,function(market) {
+         $.getJSON("https://api.corrently.io/core/depot?account="+q,function(data) {
+           let html = "<table class='table depottable'>";
+           html+="<tr><th>Anlage</th><th style='text-align:right'>Deine jährliche Eigenerzeugung</th></tr>";
+           for(let j=0;j<maket.results.length;j++) {
+             let shares=0;
+
+             if((typeof data.assets != "undefined") && (data.assets!=null)) {
+                 for(let i=0;i<data.assets.length;i++) {
+                    if(data.assets[i].asset_contract == market.results[j].contract) {
+                      shares=data.assets[i].shares;
+                    }
+                 }
+             }
+             html+="<tr>";
+             html+="<td>"+market.results[j].title+"</td>";
+             html+="<td style='text-align:right'>"+shares+"&nbsp;kWh</td>";
+             html+="</tr>";
+           }
+           html+="</table>";
+           parent.html(html);
+         });
+        });
+      }
+      refreshReading();
+      setInterval(refreshReading,60000);
     }
 
 }( jQuery ));
