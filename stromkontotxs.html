@@ -40,8 +40,7 @@
                 <div class="card-header text-dark bg-dark">
                     <h3 class="text-truncate text-light">Stromkonto</h3>
                 </div>
-                <div class="card-body">
-                  <div id="reading_card">
+                <div class="card-body" id="reading_card">
                     <table class="table">
                       <tr class="bg-dark text-light">
                         <th>Soll</th>
@@ -55,9 +54,6 @@
                       </tr>
                     </table>
                     Erzeugung aus eigenen Anlagen: <span id="p_2_8_0">0</span> kWh.
-                  </div>
-                  <div id="tx_dard">
-                  </div>
                 </div>
                 <div class="card-footer text-center">
                       API Endpunkt: <code>https://api.corrently.io/core/stromkonto</code><br/>
@@ -90,18 +86,36 @@
 
     <script src="/assets/js/jquery.min.js"></script>
     <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdn.ethers.io/scripts/ethers-v4.min.js"
+        charset="utf-8"
+        type="text/javascript">
+    </script>
     <script src="/dist/correntlyElements-min.js"></script>
     <script>
     /* Funktionaler Code für dieses Beispiel */
     $(document).ready( function() {
-      /* Fallunterscheidung für Eingabefeld Account */
-      if($.getUrlVar("a") == null) {
-        $('#reading_card').correntlySKOBalance("0x9d28463d51aC40662865D2462e80825D4DBB41d5"); // Beispielkonto
-        $('#reading_card').correntlySKOTxs("0x9d28463d51aC40662865D2462e80825D4DBB41d5"); // Beispielkonto
-      } else {
-        $('#reading_card').correntlySKOBalance($.getUrlVar("a") ); // Zählerstand für eingegebenes Konto
-        $('#reading_card').correntlySKOTxs("0x9d28463d51aC40662865D2462e80825D4DBB41d5"); // Beispielkonto
-      }
+      $.getJSON("./stromkonto.abi",function(abi) {
+        const wallet = ethers.Wallet.createRandom();
+        wallet.provider = new ethers.providers.JsonRpcProvider("https://node.corrently.io/", { chainId: 42 });
+        let provider = new ethers.providers.JsonRpcProvider("https://node.corrently.io/", { chainId: 42 });
+        let icontract = new ethers.Contract("0x8e93e70d8ac18dbaa38dd557acd4901f843e04e3", abi, wallet);
+
+        let Tx = icontract.interface.events.Tx;
+
+        let filter = {
+            address: "0x8e93e70d8ac18dbaa38dd557acd4901f843e04e3",
+            fromBlock: 340777,
+            toBlock: 341779,
+            topics:[Tx.topic]
+        }
+        const TxEvent = icontract.interface.events.Tx;        
+        provider.getLogs(filter).then((result) => {
+          for(var i=0;i<result.length;i++) {
+            console.log(result[i]);
+            console.log(TxEvent.decode(result[i].data));
+          }
+        });
+      })
     });
     </script>
 </body>
