@@ -56,7 +56,8 @@
                     </table>
                     Erzeugung aus eigenen Anlagen: <span id="p_2_8_0">0</span> kWh.
                   </div>
-                  <div id="tx_dard">
+                  <h4>Letzte Buchungen</h4>
+                  <div id="tx_card">
                   </div>
                 </div>
                 <div class="card-footer text-center">
@@ -97,10 +98,10 @@
       /* Fallunterscheidung für Eingabefeld Account */
       if($.getUrlVar("a") == null) {
         $('#reading_card').correntlySKOBalance("0x9d28463d51aC40662865D2462e80825D4DBB41d5"); // Beispielkonto
-        $('#reading_card').correntlySKOTxs("0x9d28463d51aC40662865D2462e80825D4DBB41d5"); // Beispielkonto
+        $('#tx_card').correntlySKOTxs("0x9d28463d51aC40662865D2462e80825D4DBB41d5"); // Beispielkonto
       } else {
         $('#reading_card').correntlySKOBalance($.getUrlVar("a") ); // Zählerstand für eingegebenes Konto
-        $('#reading_card').correntlySKOTxs("0x9d28463d51aC40662865D2462e80825D4DBB41d5"); // Beispielkonto
+        $('#tx_card').correntlySKOTxs($.getUrlVar("a"));
       }
     });
     </script>
