@@ -1050,7 +1050,7 @@ $.extend({
         $.getJSON("https://api.corrently.io/core/stromkonto-txs?a="+q+"&range=100000",function(data) {
           let html = "<table class='table txtable'>";
           html+="<tr><th>Buchungslauf</th><th>von/an</th><th style='text-align:right'>Betrag</th></tr>";
-          html+="<tr><th>"+data.lastblock+"</th><th colspan='2'>(aktueller Buchungslauf)</th></tr>";
+          html+="<tr><td><i>("+data.lastblock+")</i></td><td colspan='2'><i>aktueller Buchungslauf</i></td></tr>";
           for(let i=0;i<data.items.length;i++) {
             html+="<tr>";
             html+="<td>"+data.items[i].blockNumber+"</td>";
