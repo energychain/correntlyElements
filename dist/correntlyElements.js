@@ -1063,10 +1063,10 @@ $.extend({
 
             if(data.items[i].from == q) {
               html+="<td>"+resolver(data.items[i].to)+"</td>";
-              html+="<td style='text-align:right'>"+((data.items[i].value*(-1))/100000).toFixed(6).replace('.',',')+"</td>";
+              html+="<td style='text-align:right'>"+((data.items[i].value*(-1))/50000).toFixed(6).replace('.',',')+"</td>";
             } else {
               html+="<td>"+resolver(data.items[i].from)+"</td>";
-              html+="<td style='text-align:right'>"+(data.items[i].value/100000).toFixed(6).replace('.',',')+"</td>";
+              html+="<td style='text-align:right'>"+(data.items[i].value/50000).toFixed(6).replace('.',',')+"</td>";
             }
 
             html+="</tr>";
