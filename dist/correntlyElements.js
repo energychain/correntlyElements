@@ -1045,17 +1045,17 @@ $.extend({
       const refreshReading = function() {
         $.getJSON("https://api.corrently.io/core/stromkonto-txs?a="+q+"&range=100000",function(data) {
           let html = "<table class='table txtable'>";
-          html+="<tr><th>Buchungslauf</th><th style='text-align:right'>von/an</th><th>Betrag</th></tr>";
+          html+="<tr><th>Buchungslauf</th><th>von/an</th><th style='text-align:right'>Betrag</th></tr>";
           for(let i=0;i<data.items.length;i++) {
             html+="<tr>";
             html+="<td>"+data.items[i].blockNumber+"</td>";
 
             if(data.items[i].from == q) {
               html+="<td>"+data.items[i].to+"</td>";
-              html+="<td>"+((data.items[i].value*(-1))/100000).toFixed(6).replace('.',',')+"</td>";
+              html+="<td style='text-align:right'>"+((data.items[i].value*(-1))/100000).toFixed(6).replace('.',',')+"</td>";
             } else {
               html+="<td>"+data.items[i].from+"</td>";
-              html+="<td>"+(data.items[i].value/100000).toFixed(6).replace('.',',')+"</td>";
+              html+="<td style='text-align:right'>"+(data.items[i].value/100000).toFixed(6).replace('.',',')+"</td>";
             }
 
             html+="</tr>";
