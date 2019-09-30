@@ -1042,6 +1042,10 @@ $.extend({
         q= window.sko_link;
       }
       const parent = this;
+      const resolver = function(adr) {
+        if(window.localStorage.getItem("adr_"+adr) != null ) return window.localStorage.getItem("adr_"+adr);
+        else return adr;
+      }
       const refreshReading = function() {
         $.getJSON("https://api.corrently.io/core/stromkonto-txs?a="+q+"&range=100000",function(data) {
           let html = "<table class='table txtable'>";
@@ -1051,10 +1055,10 @@ $.extend({
             html+="<td>"+data.items[i].blockNumber+"</td>";
 
             if(data.items[i].from == q) {
-              html+="<td>"+data.items[i].to+"</td>";
+              html+="<td>"+resolver(data.items[i].to)+"</td>";
               html+="<td style='text-align:right'>"+((data.items[i].value*(-1))/100000).toFixed(6).replace('.',',')+"</td>";
             } else {
-              html+="<td>"+data.items[i].from+"</td>";
+              html+="<td>"+resolver(data.items[i].from)+"</td>";
               html+="<td style='text-align:right'>"+(data.items[i].value/100000).toFixed(6).replace('.',',')+"</td>";
             }
 
@@ -1101,8 +1105,10 @@ $.extend({
     },
     $.fn.correntlyCommunityDepot=function(account) {
       let q = account;
+      let max = 100;
       if(this.attr("data-account") != null ) q=this.attr("data-account");
       if(this.attr("account") != null ) q=this.attr("account");
+      if(this.attr("data-max") != null ) max=this.attr("data-max")*1;
 
       if(q == null) q = $.getUrlVar('a');
       if(q == null) q="0x504ec8497EBD02369550f6586EB32b26f088F25B";
@@ -1117,7 +1123,7 @@ $.extend({
            let html = "<table class='table depottable'>";
            html+="<tr><th>Anlage</th><th style='text-align:right'>jährliche Eigenerzeugung</th></tr>";
            let total_shares =0;
-           for(let j=0;j<market.results.length;j++) {
+           for(let j=0;((j<market.results.length)&&(j<max));j++) {
              let shares=0;
 
              if((typeof data.assets != "undefined") && (data.assets!=null)) {
@@ -1129,6 +1135,7 @@ $.extend({
              }
              html+="<tr>";
              html+="<td>"+market.results[j].title+"</td>";
+             window.localStorage.setItem("adr_"+market.results[j].asset,market.results[j].title);
              html+="<td style='text-align:right'>"+shares+"&nbsp;kWh</td>";
              html+="</tr>";
              total_shares+=1*shares;
