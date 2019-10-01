@@ -1157,7 +1157,7 @@ $.extend({
                  }
              }
              html+="<tr>";
-             if(prefered == "true") {
+             if(prefered) {
                html+="<td><input type='radio' checked='checked' data-id='"+market.results[j].asset+"'></td>";
              } else {
                html+="<td><input type='radio' class='asset_auto_sel' data-id='"+market.results[j].asset+"'></td>";
