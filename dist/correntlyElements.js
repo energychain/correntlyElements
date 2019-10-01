@@ -1014,13 +1014,13 @@ $.extend({
            if(typeof data.result.link != "undefined") {
              $.getJSON("https://api.corrently.io/core/dispatcher?account="+data.result.link,function(data) {
                if(typeof data.meter_contract != "undefined") {
-                 window.localStorage.setItem("adr_"+data.meter_contract,"Grünstromzähler - Bonus");
+                 window.localStorage.setItem("adr_"+data.meter_contract,"Grünstrombonus");
                }
              });
            } else {
              $.getJSON("https://api.corrently.io/core/dispatcher?account="+window.sko_link,function(data) {
                if(typeof data.meter_contract != "undefined") {
-                 window.localStorage.setItem("adr_"+data.meter_contract,"Grünstromzähler - Bonus");
+                 window.localStorage.setItem("adr_"+data.meter_contract,"Grünstrombonus");
                }
              });
            }
