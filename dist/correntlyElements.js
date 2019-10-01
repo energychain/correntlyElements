@@ -1094,10 +1094,15 @@ $.extend({
       const refreshReading = function() {
          $.getJSON("https://api.corrently.io/core/depot?account="+q,function(data) {
            let html = "<table class='table depottable'>";
-           html+="<tr><th>Anlage</th><th style='text-align:right'>jährliche Eigenerzeugung</th></tr>";
+           html+="<tr><th>Auto</th><th>Anlage</th><th style='text-align:right'>jährliche Eigenerzeugung</th></tr>";
            if((typeof data.assets != "undefined") && (data.assets!=null)) {
                for(let i=0;i<data.assets.length;i++) {
                   html+="<tr>";
+                  if(data.assets[i].prefered == "true") {
+                    html+="<td><input type='radio' class='asset_auto_sel' checked='checked' data-id='"+data.assets[i].contract+"'></td>";
+                  } else {
+                    html+="<td><input type='radio' class='asset_auto_sel' data-id='"+data.assets[i].contract+"'></td>";
+                  }
                   html+="<td>"+data.assets[i].asset_title+"</td>";
                   html+="<td style='text-align:right'>"+data.assets[i].shares+"&nbsp;kWh</td>";
                   html+="</tr>";
@@ -1105,6 +1110,13 @@ $.extend({
            }
            html+="</table>";
            parent.html(html);
+           $('.asset_auto_sel').click(function(nl) {
+              let asset = $(nl.currentElement).attr("data-id");
+              $.getJSON("https://api.corrently.io/core/depot?account="+q+"&prefered="+asset,function(data) {
+                console.log(data);
+                // force refresh ?
+              });
+           });
         });
       }
       refreshReading();
