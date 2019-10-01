@@ -1168,7 +1168,7 @@ $.extend({
              html+="</tr>";
              total_shares+=1*shares;
            }
-           html+="<tr><th>Gesamt</th><th style='text-align:right'>"+total_shares+"&nbsp;kWh</th>";
+           html+="<tr><th>&nbsp;</th><th>Gesamt</th><th style='text-align:right'>"+total_shares+"&nbsp;kWh</th>";
            html+="</table>";
            parent.html(html);
            $('.asset_auto_sel').click(function(nl) {
