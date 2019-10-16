@@ -1092,10 +1092,10 @@ $.extend({
 
             if(data.items[i].from == q) {
               html+="<td>"+resolver(data.items[i].to)+"</td>";
-              html+="<td style='text-align:right'>"+((data.items[i].value*(-1))/1000).toFixed(3).replace('.',',')+"</td>";
+              html+="<td style='text-align:right'>"+((data.items[i].value*(-1))/2000).toFixed(3).replace('.',',')+"</td>";
             } else {
               html+="<td>"+resolver(data.items[i].from)+"</td>";
-              html+="<td style='text-align:right'>"+(data.items[i].value/1000).toFixed(3).replace('.',',')+"</td>";
+              html+="<td style='text-align:right'>"+(data.items[i].value/2000).toFixed(3).replace('.',',')+"</td>";
             }
 
             html+="</tr>";
