@@ -1057,7 +1057,11 @@ $.extend({
              if(typeof data["2.8.0"] != "undefined") {
                $('#p_2_8_0').html((data["2.8.0"]/1000).toFixed(3).replace('.',','));
                if(typeof data["raw"] != "undefined") {
-                 $('#p_2_8_0').html((data["raw"]/1000).toFixed(3).replace('.',','));
+                 if(data["raw"] < 1) {
+                   $('#p_2_8_0').html((data["raw"]/1000).toFixed(6).replace('.',','));
+                 } else {
+                   $('#p_2_8_0').html((data["raw"]/1000).toFixed(3).replace('.',','));
+                 }
                }
              }
            })
