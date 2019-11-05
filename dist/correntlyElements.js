@@ -1054,17 +1054,17 @@ $.extend({
              });
            }
            $.getJSON("https://api.corrently.io/core/exd?account="+window.sko_link,function(data) {
-             if(typeof data["2.8.0"] != "undefined") {
-               $('#p_2_8_0').html((data["2.8.0"]/1000).toFixed(3).replace('.',','));
-               if(typeof data["raw"] != "undefined") {
-                 if(data["raw"] < 1) {
-                   $('#p_2_8_0').html((data["raw"]/1000).toFixed(6).replace('.',','));
+             //if(typeof data["2.8.0"] != "undefined") {
+              //$('#p_2_8_0').html((data["2.8.0"]/1000).toFixed(3).replace('.',','));
+               if(typeof data["2.8.0"] != "undefined") {
+                 if(data["2.8.0"]/1000 < 1) {
+                   $('#p_2_8_0').html((data["2.8.0"]/1000).toFixed(6).replace('.',','));
                  } else {
-                   $('#p_2_8_0').html((data["raw"]/1000).toFixed(3).replace('.',','));
+                   $('#p_2_8_0').html((data["2.8.0"]/1000).toFixed(3).replace('.',','));
                  }
                }
-             }
-           })
+            // }
+          });
         });
       }
       refreshReading();
