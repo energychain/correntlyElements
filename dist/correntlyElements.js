@@ -633,10 +633,13 @@ $.extend({
                     if(nmb<0) nmb=0;
 
                     let query="";
+
                     query+="&account="+q;
                     query+="&asset="+a;
                     query+="&amount="+nmb;
                     query+="&allocations="+allocation.join(',');
+                    if($.getUrlVar('o')!=null) query += "&o="+$.getUrlVar('o');
+                    
                     $.getJSON("https://api.corrently.io/core/transaction?"+query,function(data) {
                           html="";
                           html="<h3>Bitte Email Posteingang prüfen</h3>";
