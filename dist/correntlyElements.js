@@ -551,7 +551,7 @@ $.extend({
           $.getJSON("https://api.corrently.io/core/commissioning?account="+q, function(data) {
             for(let i=0;i<data.length;i++) {
               if(data[i].product=="0x8dd8eddF4f8133f468867c551C17ad7324B411C6") {
-                location.href="./board.html?c="+data[i].quitance+"&asset="+a;
+                location.href="./board.html?c="+data[i].quitance+"&asset="+a+"&o="+data[i].order;
               }
             }
           });
