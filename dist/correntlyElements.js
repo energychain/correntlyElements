@@ -1088,7 +1088,7 @@ $.extend({
       }
       const parent = this;
       const refreshReading = function() {
-         $.getJSON("https://api.corrently.io/core/stromkonto?account="+window.sko_link,function(data) {
+         $.getJSON("https://api.corrently.io/core/baumkonto?account="+window.sko_link,function(data) {
            if(typeof data.errorMessage != "undefined") {
              console.log("try errCB()");
              if(typeof errCB == "function") {
@@ -1100,7 +1100,7 @@ $.extend({
            $('#co2_soll').html(data.result.base_soll);
            $('#co2_bilanz').html(data.result.balance_base);
 
-         });                   
+         });
       }
       refreshReading();
       setInterval(refreshReading,60000);
