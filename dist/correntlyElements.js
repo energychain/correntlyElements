@@ -1101,6 +1101,9 @@ $.extend({
            $('#co2_haben').html(data.result.base_haben);
            $('#co2_soll').html(data.result.base_soll);
            $('#co2_bilanz').html(data.result.balance_base);
+           $('#co2_haben_kg').html((data.result.base_haben/1000).replace('.',','));
+           $('#co2_soll_kg').html((data.result.base_soll/1000).replace('.',','));
+           $('#co2_bilanz_kg').html((data.result.balance_base/1000).replace('.',','));
          });
       }
       refreshReading();
