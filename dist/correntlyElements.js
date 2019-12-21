@@ -1104,6 +1104,7 @@ $.extend({
            $('#co2_haben_kg').html((data.result.base_haben/1000).toString().replace('.',','));
            $('#co2_soll_kg').html((data.result.base_soll/1000).toString().replace('.',','));
            $('#co2_bilanz_kg').html((data.result.balance_base/1000).toString().replace('.',','));
+           $('#trees_ts').html(new Date().toLocaleString());
          });
       }
       refreshReading();
