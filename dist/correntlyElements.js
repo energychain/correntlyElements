@@ -1098,6 +1098,13 @@ $.extend({
            $('#trees_haben').html(data.result.haben);
            $('#trees_soll').html(data.result.soll);
            $('#trees_balance').html(data.result.balance);
+           if(data.result.balance_base>0) {
+              $('#co2_bilanz_kg').addClass('text-success');
+              $('#co2_bilanz_kg').removeClass('text-danger');
+           } else {
+             $('#co2_bilanz_kg').addClass('text-danger');
+             $('#co2_bilanz_kg').removeClass('text-success');
+           }
            $('#co2_haben').html(data.result.base_haben);
            $('#co2_soll').html(data.result.base_soll);
            $('#co2_bilanz').html(data.result.balance_base);
@@ -1105,7 +1112,7 @@ $.extend({
            $('#co2_soll_kg').html((data.result.base_soll/1000).toString().replace('.',','));
            $('#co2_bilanz_kg').html((data.result.balance_base/1000).toString().replace('.',','));
            $('#trees_ts').html(new Date().toLocaleString());
-           $('#trees_account').html(account); 
+           $('#trees_account').html(account);
          });
       }
       refreshReading();
