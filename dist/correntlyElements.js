@@ -1044,23 +1044,27 @@ $.extend({
            $('#balance_kwh').attr('title',data.result.balance_eur);
 
            if(typeof data.result.link != "undefined") {
-             $.getJSON("https://api.corrently.io/core/dispatcher?account="+data.result.link,function(data) {
+             $.getJSON("https://api.corrently.io/core/emission?account="+data.result.link,function(data) {
                if(typeof data.meter_contract != "undefined") {
                  window.localStorage.setItem("adr_"+data.meter_contract,"Grünstrombonus");
                }
+               /*
                $.getJSON("https://api.corrently.io/core/emission?account="+data.result.link,function(data) {
 
                })
+               */
              });
 
            } else {
-             $.getJSON("https://api.corrently.io/core/dispatcher?account="+window.sko_link,function(data) {
+             $.getJSON("https://api.corrently.io/core/emission?account="+window.sko_link,function(data) {
                if(typeof data.meter_contract != "undefined") {
                  window.localStorage.setItem("adr_"+data.meter_contract,"Grünstrombonus");
                }
+               /*
                $.getJSON("https://api.corrently.io/core/emission?account="+window.sko_link,function(data) {
 
                })
+               */
              });
            }
            $.getJSON("https://api.corrently.io/core/exd?account="+window.sko_link,function(data) {
