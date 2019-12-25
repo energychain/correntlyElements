@@ -3,5 +3,4 @@ self.addEventListener('install', event => {
     scopes: [self.registration.scope],
     origins: ['*']
   });
-  console.log("Event Install");
 });

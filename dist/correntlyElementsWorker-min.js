@@ -1,1 +1,1 @@
-self.addEventListener("install",e=>{e.registerForeignFetch({scopes:[self.registration.scope],origins:["*"]}),console.log("Event Install")});
+self.addEventListener("install",e=>{e.registerForeignFetch({scopes:[self.registration.scope],origins:["*"]})});
