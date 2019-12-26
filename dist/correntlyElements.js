@@ -325,6 +325,7 @@
           let barrow="<tr><td class='small'>&nbsp;</td>";
           let inforow="<tr><td title='Anteil der Erzeugungskosten am Arbeitspreis' class='small'>Örtlicher Energiepreis</td>";
           let co2row="<tr><td title='CO2 Fussabdruck der Erzeugung und des Transportes über Stromnetz'  class='small'>g CO2/kWh (Ökostrom)</td>"
+          let co2standardrow="<tr><td title='CO2 Fussabdruck der Erzeugung und des Transportes über Stromnetz'  class='small'>g CO2/kWh (Standard)</td>"
           let idxrow="<tr><td class='small'>&#9989;</td>";
           for(var i=0;(i<data.forecast.length)&&(i<maxcols);i++) {
               let date = new Date(data.forecast[i].timeStamp);
@@ -339,6 +340,7 @@
               barrow+="<td style='vertical-align:bottom' class='tsclass'><div class='"+bgclass+"' title='Indexwert: "+data.forecast[i].gsi+" Punkte' style=';height:"+Math.round((data.forecast[i].gsi)*2)+"px'></div></td>";
               inforow+="<td style='text-align:right' class='"+bgclass+" tsclass small' >"+(5-(2*(data.forecast[i].gsi/100))).toFixed(2).replace('.',',')+"</td>";
               co2row+="<td style='text-align:right' class='"+bgclass+" tsclass small' title='Standard Stromtarif "+(data.forecast[i].co2_g_standard)+"g/kWh'>"+(data.forecast[i].co2_g_oekostrom)+"</td>";
+              co2standardrow+="<td style='text-align:right' class='"+bgclass+" tsclass small' title='Standard Stromtarif "+(data.forecast[i].co2_g_standard)+"g/kWh'>"+(data.forecast[i].co2_g_standard)+"</td>";
           }
           daterow+="</tr>";
           timerow+="</tr>";
@@ -346,13 +348,14 @@
           inforow+="</tr>";
           idxrow+="</tr>";
           co2row+="</tr>";
+          co2standardrow+="</tr>";
           if(typeof parent.attr('noinfo') != "undefined") inforow="";
           if(typeof parent.attr('doidx') == "undefined") idxrow="";
 
           if(typeof cb_gsi != "undefined") {
             cb_gsi(document.gsi_info);
           }
-          parent.html("<table class='table table-sm table-responsive gsiDataGiven'>"+barrow+daterow+timerow+inforow+idxrow+co2row+"</table>");
+          parent.html("<table class='table table-sm table-responsive gsiDataGiven'>"+barrow+daterow+timerow+inforow+idxrow+co2row+co2standardrow+"</table>");
           parent.attr('data-refresh',data.forecast[0].timeStamp);
           window.ce_zip=data.location.zip;
           window.ce_city = data.location.city;
