@@ -1,0 +1,31 @@
+{
+  "short_name": "Corrently",
+  "name": "Corrently Elements by STROMDAO",
+  "icons": [
+    {
+      "src": "/assets/img/corrently_32x32.png",
+      "type": "image/png",
+      "sizes": "32x32"
+    },
+    {
+      "src": "/assets/img/corrently_64x64.png",
+      "type": "image/png",
+      "sizes": "64x64"
+    },
+    {
+      "src": "/assets/img/corrently_192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/assets/img/corrently_512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/index.html",
+  "background_color": "#f0f0f0",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#3367D6"
+}
