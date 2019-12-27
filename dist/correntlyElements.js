@@ -920,7 +920,7 @@ $.extend({
       const refreshReading = function() {
           $.getJSON("https://api.corrently.io/core/reading?&history=3600000&account="+q,function(data) {
             let html = "";
-            html+="FürÖkostrom:"
+            html+="Für Ökostrom:"
             html+="<h1>"+(data.co2_g_oekostrom/1000).toFixed(3).replace('.',',')+"kg</h1>";
             html+="(für konventionellen Strombezug:  "+(data.co2_g_standard/1000).toFixed(3).replace('.',',')+"kg)";
             parent.html(html);
