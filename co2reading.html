@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Corrently CO2 Zählerstände</title>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="/assets/css/Footer-Basic.css">
+    <link rel="stylesheet" href="/assets/css/header-1.css">
+    <link rel="stylesheet" href="/assets/css/header-2.css">
+    <link rel="stylesheet" href="/assets/css/header.css">
+    <link rel="stylesheet" href="/assets/css/Navigation-Clean.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+
+<body>
+    <div class="shadow-lg" style="margin-bottom: 20px;">
+        <nav class="navbar navbar-light navbar-expand-md navigation-clean" style="background-color: #ffffff;margin-bottom: 25px;">
+            <div class="container"><a class="navbar-brand" style="color: #ffa700;font-family: Roboto, sans-serif;" href="/"><img style="filter: brightness(100%) contrast(102%) saturate(100%) sepia(0%);" src="/assets/img/corrently_logo.png"></a><button data-toggle="collapse" class="navbar-toggler"
+                    data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                    <form action="./co2reading.html" method="GET">
+                    <div class="form-group text-center">
+                          <div class="input-group rounded">
+                            <div class="input-group-prepend"><span class="input-group-text">Account</span></div>
+                            <input id="account" class="form-control" type="text" name="a">
+                            <div class="input-group-append">
+                              <button
+                                  class="btn btn-warning text-center" type="submit" id="checkBtn">öffnen</button>
+                            </div>
+                          </div>
+                      </div>
+                    </form>
+            </div>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="card-deck" style="margin-bottom: 25px;">
+            <div class="card shadow-lg">
+                <div class="card-header text-dark bg-dark">
+                    <h3 class="text-truncate text-light">Zählerstände</h3>
+                </div>
+                <div class="card-body" id="reading_card">
+
+                </div>
+                <div class="card-footer text-center">
+                      API Endpunkt: <code>https://api.corrently.io/core/reading</code><br/>
+                </div>
+            </div>
+        </div>
+        <div class="card shadow-lg">
+            <div class="card-header bg-light">
+                <h3 class="text-truncate text-dark">Nutzung als Widget</h3>
+            </div>
+            <div class="card-body">
+                <strong>Benötigte Scripte  im HEAD</strong>
+                <pre><code>
+&lt;script src="https://elements.corrently.io/assets/js/jquery.min.js"&lt;/script&gt;
+&lt;script src="https://elements.corrently.io/dist/correntlyElements-min.js"&lt;/script&gt;
+                </code></pre>
+                <strong>jQuery Erweiterung</strong>
+                <pre><code>
+ $(element).correntlyCO2Reading([account]);
+                </code></pre>
+            </div>
+        </div>
+    </div>
+
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/dist/correntlyElements-min.js"></script>
+    <script>
+    /* Funktionaler Code für dieses Beispiel */
+    $(document).ready( function() {
+      /* Fallunterscheidung für Eingabefeld Account */
+      if($.getUrlVar("a") == null) {
+        $('#reading_card').correntlyCO2Reading("0x036b01A93E6a920aeE77f577C60Dec8E7D22Bf5d"); // Beispielzähler
+      } else {
+        $('#reading_card').correntlyCO2Reading($.getUrlVar("a") ); // Zählerstand für eingegebenen Zähler
+      }
+    });
+    </script>
+</body>
+
+</html>
