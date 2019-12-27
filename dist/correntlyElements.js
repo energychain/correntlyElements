@@ -920,9 +920,9 @@ $.extend({
       const refreshReading = function() {
           $.getJSON("https://api.corrently.io/core/reading?&history=3600000&account="+q,function(data) {
             let html = "";
-            html+="Bei Bezug von Ökostrom:"
-            html+="<h1>"+(data.co2_g_oekostrom/1000)+"kg</h1>";
-            html+="(für konventionellen Strombezug:  "+(data.co2_g_standard/1000)+"kg)";                        
+            html+="FürÖkostrom:"
+            html+="<h1>"+(data.co2_g_oekostrom/1000).toFixed(3).replace('.',',')+"kg</h1>";
+            html+="(für konventionellen Strombezug:  "+(data.co2_g_standard/1000).toFixed(3).replace('.',',')+"kg)";
             parent.html(html);
             if(parent == null) {
               $('#gsi_card').html(html);
