@@ -220,7 +220,13 @@
 (function ( $ ) {
   $.fn.correntlyGSIDispatch=function(zipcode) {
     let url="https://api.corrently.io/core/srcgraph";
-    if(zipcode!=null) url+="?zip="+zipcode; else
+    if(zipcode!=null) {
+      if(zipcode.length>5) {
+      url+="?account="+zipcode;   
+      } else {
+      url+="?zip="+zipcode;
+      }
+    } else
     if(this.attr("data-plz")!=null) url+"?zip="+this.attr("data-plz"); else
     if(this.attr("data-zip")!=null) url+"?zip="+this.attr("data-zip");
     const parent = this;
