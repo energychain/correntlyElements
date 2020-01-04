@@ -328,6 +328,9 @@
            },500);
         },
         success: function(data) {
+          if(typeof data.result != "undefined") {
+            data = data.result;
+          }
           document.gsi_info = data;
           if(typeof data.location != "undefined") {
             $('#fortext').html("für "+data.location.city);
