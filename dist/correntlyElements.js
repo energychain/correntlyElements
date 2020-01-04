@@ -329,15 +329,17 @@
         },
         success: function(data) {
           document.gsi_info = data;
-          $('#fortext').html("für "+data.location.city);
+          if(typeof data.location != "undefined") {
+            $('#fortext').html("für "+data.location.city);
+          }
           let maxcols=99;
           if(typeof parent.attr('maxcols') != "undefined") maxcols=1*parent.attr('maxcols');
           let daterow="<tr><td class='small'>&#128197;</td>";
           let timerow="<tr><td class='small'>&#128336;</td>";
           let barrow="<tr><td class='small'>&nbsp;</td>";
           let inforow="<tr><td title='Anteil der Erzeugungskosten am Arbeitspreis' class='small'>Örtlicher Energiepreis</td>";
-          let co2row="<tr><td title='CO2 Fussabdruck der Erzeugung und des Transportes über Stromnetz'  class='small'>g CO2/kWh (Ökostrom)</td>"
-          let co2standardrow="<tr><td title='CO2 Fussabdruck der Erzeugung und des Transportes über Stromnetz'  class='small'>g CO2/kWh (Standard)</td>"
+          let co2row="<tr><td title='CO2 Fussabdruck der Erzeugung und des Transportes über Stromnetz'  class='small lblco2oeko'>g CO2/kWh (Ökostrom)</td>"
+          let co2standardrow="<tr><td title='CO2 Fussabdruck der Erzeugung und des Transportes über Stromnetz'  class='small lblco2standard'>g CO2/kWh (Standard)</td>"
           let idxrow="<tr><td class='small'>&#9989;</td>";
           for(var i=0;(i<data.forecast.length)&&(i<maxcols);i++) {
               let date = new Date(data.forecast[i].timeStamp);
