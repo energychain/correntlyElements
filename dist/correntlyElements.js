@@ -222,7 +222,7 @@
     let url="https://api.corrently.io/core/srcgraph";
     if(zipcode!=null) {
       if(zipcode.length>5) {
-      url+="?account="+zipcode;   
+      url+="?account="+zipcode;
       } else {
       url+="?zip="+zipcode;
       }
@@ -298,7 +298,13 @@
   },
   $.fn.correntlyGSI=function(zipcode) {
       let url="https://api.corrently.io/core/gsi"
-      if(zipcode!=null) url+="?plz="+zipcode; else
+      if(zipcode!=null) {
+        if(zipcode.length>5) {
+        url+="?account="+zipcode;
+        } else {
+        url+="?zip="+zipcode;
+        }
+      } else
       if(this.attr("data-plz")!=null) url+"?plz="+this.attr("data-plz"); else
       if(this.attr("data-zip")!=null) url+"?plz="+this.attr("data-zip"); else
       if(window.localStorage.getItem("zipcode")!=null) url+"?plz="+window.localStorage.getItem("zipcode");
