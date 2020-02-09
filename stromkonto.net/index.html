@@ -206,10 +206,12 @@
                         <form id="loginfrm" method="get" action="https://api.corrently.io/token/login">
                             <div class="alert alert-success" role="alert" id="login_ok" style="display:none"><span><strong>Mail versendet.</strong> Bitte das Email Postfach prüfen, dort sollte bereits Mail mit dem Anmeldelink eingegangen sein.</span></div>
                             <div class="alert alert-danger" role="alert" id="login_fail" style="display:none"><span><strong>Fehler!</strong>&nbsp;Der Versand hat leider nicht geklappt. Bitte noch einmal probieren und unseren Service kontaktieren.</span></div><label>Ihre Corrently Email:</label><input class="form-control" type="email"
-                                placeholder="name@domain.de" name="mail">
-                            <p class="text-center" style="margin-top: 15px;"><button class="btn btn-warning" id="submitbutton" type="submit">Zugang per Mail anfordern&nbsp;</button></p>
-                            <hr>
-                            <p class="text-center" style="margin-top: 15px;"><a class="btn btn-danger" role="button" href="?a=0x7866f187f30cd52Bdbd5c4184fD3ee6168Ae0dB4">Demo Konto öffnen</a><a class="btn btn-success" role="button" href="produktauswahl.html">Neues Stromkonto einrichten</a></p>
+                                placeholder="name@domain.de" name="mail"><label>Postleitzahl</label><input class="form-control" type="text" placeholder="12345" name="zip" required="" minlength="5" maxlength="5"><label>Jahresverbrauch in Kilo-Watt-Stunden</label>
+                            <input
+                                class="form-control" type="text" placeholder="2035" name="ja" inputmode="numeric">
+                                <p class="text-center" style="margin-top: 15px;"><button class="btn btn-warning" id="submitbutton" type="submit">Zugang per Mail anfordern&nbsp;</button></p>
+                                <hr>
+                                <p class="text-center" style="margin-top: 15px;"><a class="btn btn-danger" role="button" href="?a=0x7866f187f30cd52Bdbd5c4184fD3ee6168Ae0dB4">Demo Konto öffnen</a><a class="btn btn-success" role="button" href="produktauswahl.html">Neues Stromkonto einrichten</a></p>
                         </form>
                     </div>
                 </div>
