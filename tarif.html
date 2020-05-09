@@ -73,7 +73,7 @@
     $(document).ready( function() {
       /* Fallunterscheidung für Eingabefeld Postleitzahl */
       if($.getUrlVar("p") == null) {
-        $('#reading_card').correntlyTarif("10117"); // Berlin
+        $('#reading_card').correntlyTarif(); // Berlin
       } else {
         $('#reading_card').correntlyTarif($.getUrlVar("p") ); // Zählerstand für eingegebenen Zähler
       }

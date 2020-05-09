@@ -12,5 +12,5 @@ $.extend({
    },
    getUrlVar: function(name){
      return $.getUrlVars()[name];
-   }   
+   }
 });
