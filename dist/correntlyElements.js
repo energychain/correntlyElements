@@ -1729,16 +1729,17 @@ $.extend({
         });
       }
       if((""+q).length!=5) {
+        $('.zipAsk').show();
         $.getJSON("https://api.corrently.io/core/location",function(data) {
           data.q=data.zip;
-
+          $('#zipAnswer').val(data.q)
           const doT = $.doT();
           var tempFn = doT.template(template);
           parent.html(tempFn(data));
 
           $('.tarifInfo').hide();
           $('#frmData').hide();
-          $('.zipAsk').show();
+
           const submit = function() {
             $('#btnZip').attr('disabled','disabled');
             q = $('#zipAnswer').val();
@@ -1749,6 +1750,7 @@ $.extend({
           $('#frmZIP').submit(submit);
         });
       } else {
+          $('.zipAsk').hide();
           renderTarif();
       }
     },
