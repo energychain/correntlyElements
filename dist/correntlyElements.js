@@ -129,6 +129,11 @@
                         display:true,
                         text:title
                       },
+                      plugins: {
+                         datalabels: {
+                             display:false
+                         }
+                      },
                       tooltips: {
                         callbacks: {
                            label: function (t, d) {
@@ -194,6 +199,11 @@
                     responsive: true,
                     legend: {
                       position: 'bottom',
+                    },
+                    plugins: {
+                       datalabels: {
+                           display:false
+                       }
                     },
                     title: {
                       display: true,
@@ -1353,7 +1363,7 @@ $.extend({
         template = '<form id="frm">';
         template += '<div class="form-group zipAsk">';
         template += '<div class="input-group rounded">';
-        template += '<div class="input-group-prepend"><span class="input-group-text">Postleitzahl</span></div>';
+        template += '<div class="input-group-prepend"><span class="input-group-text" style="min-width:250px">Postleitzahl</span></div>';
         template += '<input type="text" class="form-control" id="zipAnswer" name="zipcode" value="{{=it.q}}" placeholder="">';
         template += '<div class="input-group-append">';
         template += '<button class="btn btn-warning text-center" type="button" id="btnZip">weiter</button>';
@@ -1368,7 +1378,7 @@ $.extend({
         template += "</table>";
         template += "<div class='inputData' id='frmData'>";
         template += '<div class="input-group rounded">';
-        template += '<div class="input-group-prepend"><span class="input-group-text">Email</span></div>';
+        template += '<div class="input-group-prepend"><span class="input-group-text" style="min-width:250px">Email</span></div>';
         template += '<input class="form-control" type="email" inputmode="email" name="email" id="fldEmail">';
         template += '<div class="input-group-append">';
         template += '<button class="btn btn-warning text-center" type="button" id="conBtn1">weiter</button>';
@@ -1376,7 +1386,7 @@ $.extend({
 
         template += '<div id="contJA" style="display:none">';
         template += '<div class="input-group rounded">';
-        template += '<div class="input-group-prepend"><span class="input-group-text" id="txtja">Personen im Haushalt</span></div>';
+        template += '<div class="input-group-prepend"><span class="input-group-text" id="txtja" style="min-width:250px">Personen im Haushalt</span></div>';
         template += '<input class="form-control" type="number" name="UF_CRM_1551660944277" id="pe">';
         template += '<div class="input-group-append">';
         template += '<button class="btn btn-warning text-center" type="button" id="conBtn2">Analyse zeigen</button>';
