@@ -1385,7 +1385,7 @@ $.extend({
         template = '<form id="frm">';
         template += '<div class="form-group zipAsk">';
         template += '<div class="input-group rounded">';
-        template += '<label for="zipcode" class="text-primary">Postleitzahl</label>'
+        template += '<label for="zipcode" class="text-primary">Postleitzahl</label><br/>'
         // template += '<div class="input-group-prepend">';
         // template += '<span class="input-group-text" style="min-width:125px">Postleitzahl</span>';
         // template += '</div>';
@@ -1403,7 +1403,10 @@ $.extend({
         template += "</table>";
         template += "<div class='inputData' id='frmData'><input type='hidden' id='UTM_SOURCE' name='UTM_SOURCE'/>";
         template += '<div class="input-group rounded">';
-        template += '<div class="input-group-prepend"><span class="input-group-text" style="min-width:125px">Email</span></div>';
+        template += '<label for="email" class="text-primary">Email</label><br/>'
+        // template += '<div class="input-group-prepend">';
+        // template += '<span class="input-group-text" style="min-width:125px">Email</span>';
+        // template += '</div>';
         template += '<input class="form-control" type="email" inputmode="email" name="email" id="fldEmail">';
         template += '<div class="input-group-append">';
         template += '<button class="btn btn-warning text-center" type="button" id="conBtn1" style="min-width:105px">weiter</button>';
