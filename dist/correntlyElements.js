@@ -1385,7 +1385,7 @@ $.extend({
         template = '<form id="frm">';
         template += '<div class="form-group zipAsk">';
         template += '<div class="input-group rounded">';
-        template += '<div class="input-group-prepend"><span class="input-group-text" style="min-width:250px">Postleitzahl</span></div>';
+        template += '<div class="input-group-prepend"><span class="input-group-text" style="min-width:125px">Postleitzahl</span></div>';
         template += '<input type="text" class="form-control" id="zipAnswer" name="zipcode" value="{{=it.q}}" placeholder="">';
         template += '<div class="input-group-append">';
         template += '<button class="btn btn-warning text-center" style="min-width:105px" type="button" id="btnZip">weiter</button><button class="btn btn-danger text-center" type="button" style="display:none" id="changeZip"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> ändern</button>';
@@ -1400,7 +1400,7 @@ $.extend({
         template += "</table>";
         template += "<div class='inputData' id='frmData'><input type='hidden' id='UTM_SOURCE' name='UTM_SOURCE'/>";
         template += '<div class="input-group rounded">';
-        template += '<div class="input-group-prepend"><span class="input-group-text" style="min-width:250px">Email</span></div>';
+        template += '<div class="input-group-prepend"><span class="input-group-text" style="min-width:125px">Email</span></div>';
         template += '<input class="form-control" type="email" inputmode="email" name="email" id="fldEmail">';
         template += '<div class="input-group-append">';
         template += '<button class="btn btn-warning text-center" type="button" id="conBtn1" style="min-width:105px">weiter</button>';
@@ -1410,7 +1410,7 @@ $.extend({
 
         template += '<div id="contJA" style="display:none">';
         template += '<div class="input-group rounded">';
-        template += '<div class="input-group-prepend"><span class="input-group-text" id="txtja" style="min-width:250px">Personen im Haushalt</span></div>';
+        template += '<div class="input-group-prepend"><span class="input-group-text" id="txtja" style="min-width:125px">Personen im Haushalt</span></div>';
         template += '<input class="form-control" type="number" name="UF_CRM_1551660944277" id="pe">';
         template += '<div class="input-group-append">';
         template += '<button class="btn btn-warning text-center" type="button" id="conBtn2" style="min-width:105px">Analyse zeigen</button>';
