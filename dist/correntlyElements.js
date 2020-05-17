@@ -1370,14 +1370,14 @@ $.extend({
         template += '<div class="input-group-prepend"><span class="input-group-text" style="min-width:250px">Postleitzahl</span></div>';
         template += '<input type="text" class="form-control" id="zipAnswer" name="zipcode" value="{{=it.q}}" placeholder="">';
         template += '<div class="input-group-append">';
-        template += '<button class="btn btn-warning text-center" type="button" id="btnZip">weiter</button>';
+        template += '<button class="btn btn-warning text-center" type="button" id="btnZip">weiter</button><button class="btn btn-danger text-center" type="button" style="display:none" id="changeZip">ändern</button>';
         template += '</div></div>';
         template += '</div>'
         template += "<table class='table table-condensed tarifInfo'>";
         template += "<tr><th>Arbeitspreis (je kWh)</th><th>Grundpreis (je Monat)</th><th>&nbsp;</th></tr>";
         template += "<td>{{=it.eurAP}} €</td>";
         template += "<td>{{=it.eurGP}} €</td>";
-        template += "<td><button id='btnAngebot' class='btn btn-sm btn-warning'>Analyse anzeigen</button></td>";
+        template += "<td><button id='btnAngebot' class='btn btn-sm btn-warning'>Details abrufen</button></td>";
         template += "</tr>";
         template += "</table>";
         template += "<div class='inputData' id='frmData'>";
@@ -1420,7 +1420,7 @@ $.extend({
         template += '<h2>Automatische Optimierung mit Corrently</h2>';
         template += '<p>Kostenlos und vollständig automatisiert werden die Netzkomponenten des Strompreises optimiert. Viel Erzeugung in Deiner Region sorgt dafür, dass keine weiten Strecken zurücklegen muss. Die durch regionale Erzeugung von Grünstrom entstehenden Einsparungen werden bei den Corrently Stromprodukten an den Kunden zurückgegeben als GrünstromBonus.';
         template += ' Mit dem GrünstromBonus werden neue Erzeugungsanlagen gebaut, deren anteilige Erzeugung vom Jahresstrombedarf abgezogen wird.</p>';
-        template += '<p>Wird der Stromverbrauch an den GrünstromIndex angepasst, dann reduziert dies den zu zahlenden Jahresstrombedarf und schont die Umwelt.</p>';
+        template += '<p>Wird der Stromverbrauch an den <a href="https://www.gruenstromindex.de/" target="_blank">GrünstromIndex</a> angepasst, dann reduziert dies den zu zahlenden Jahresstrombedarf und schont die Umwelt.</p>';
         template += "</div>";
         template += "</div>";
       }
@@ -1672,6 +1672,25 @@ $.extend({
               $('#zipAnswer').val(q + " "+data.city);
               $('#zipAnswer').attr('readonly','readonly');
               $('#btnZip').hide();
+              $('#changeZip').show();
+              $('#changeZip').click(function() {
+                  $('#zipAnswer').removeAttr('readonly');
+                  $('#zipAnswer').val('');
+                  $('.tarifInfo').hide();
+                  $('#changeZip').hide();
+                  //$('#btnAngebot').show();
+                  $('#btnZip').show();
+
+                  const submit = function() {
+                    $('#btnZip').attr('disabled','disabled');
+                    q = $('#zipAnswer').val();
+                    renderTarif();
+                    return false;
+                  }
+                  $('#btnZip').click(submit);
+                  $('#frmZIP').submit(submit);
+                  $('#frm').submit(submit);
+              });
               $('#frmData').hide();
               $('#contJA').hide();
               $('.tarifInfo').show();
@@ -1730,7 +1749,6 @@ $.extend({
                     });
                     $('#frmData').submit( cont1 );
                     $('#btnAngebot').hide();
-
               });
         });
       }
