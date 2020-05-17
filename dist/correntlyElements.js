@@ -230,6 +230,7 @@
 (function ( $ ) {
   $.fn.correntlyGSIDispatch=function(zipcode) {
     let url="https://api.corrently.io/core/srcgraph";
+    let maxrows = 100;
     if(zipcode!=null) {
       if(zipcode.length>5) {
       url+="?account="+zipcode;
@@ -239,6 +240,7 @@
     } else
     if(this.attr("data-plz")!=null) url+"?zip="+this.attr("data-plz"); else
     if(this.attr("data-zip")!=null) url+"?zip="+this.attr("data-zip");
+    if(this.attr("maxrows")!=null) maxrows=this.attr("maxrows")*1;
     const parent = this;
     if(($('.gsiDataGiven').length==0)&&(  parent.html().length < 100)) {
       parent.html("<span class='text-muted'>wird geladen... (Berechnung kann bis zu einer Minute dauern)</span>");
@@ -266,7 +268,7 @@
         let html="<table class='table table-striped gsiDataGiven'>";
         //html+="<thead><tr class='bg-dark text-light'><th colspan='4'><h3>Energiebilanz (nur Grünstrom): <strong>"+(sum_to-sum_from)+"</strong></h3></th></tr>";
         html+="<thead><tr><th colspan='2'>Grünstrom Import</th><th colspan='2'>Grünstrom Export</th></tr></thead><tbody>";
-        for(let i=0;((i<data.sources.values.length)||(i<data.targets.values.length));i++) {
+        for(let i=0;(((i<data.sources.values.length)||(i<data.targets.values.length))&&(i<maxrows));i++) {
           html+="<tr>";
           html+="<td>";
           if(i<data.sources.values.length) html+=((data.sources.values[i].energy/sum_from)*100).toFixed(1).replace('.',',')+"%";
@@ -1372,14 +1374,14 @@ $.extend({
         template += '<div class="input-group-prepend"><span class="input-group-text" style="min-width:250px">Postleitzahl</span></div>';
         template += '<input type="text" class="form-control" id="zipAnswer" name="zipcode" value="{{=it.q}}" placeholder="">';
         template += '<div class="input-group-append">';
-        template += '<button class="btn btn-warning text-center" type="button" id="btnZip">weiter</button><button class="btn btn-danger text-center" type="button" style="display:none" id="changeZip">ändern</button>';
+        template += '<button class="btn btn-warning text-center" type="button" id="btnZip">weiter</button><button class="btn btn-danger text-center" type="button" style="display:none" id="changeZip"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> ändern</button>';
         template += '</div></div>';
         template += '</div>'
         template += "<table class='table table-condensed tarifInfo'>";
         template += "<tr><th>Arbeitspreis (je kWh)</th><th>Grundpreis (je Monat)</th><th>&nbsp;</th></tr>";
         template += "<td>{{=it.eurAP}} €</td>";
         template += "<td>{{=it.eurGP}} €</td>";
-        template += "<td><button id='btnAngebot' class='btn btn-sm btn-warning'>Details abrufen</button></td>";
+        template += "<td><button id='btnAngebot' class='btn btn-sm btn-warning float-right'>Details abrufen</button></td>";
         template += "</tr>";
         template += "</table>";
         template += "<div class='inputData' id='frmData'>";
