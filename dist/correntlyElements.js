@@ -1354,6 +1354,7 @@ $.extend({
     $.fn.correntlyTarif=function(zip, template) {
       let parent = this;
       let q = zip;
+      let cb = null;
       if((q == null)||(typeof q == 'undefined')) q = $.getUrlVar('p');
       if((q == null)||(typeof q == 'undefined')) q = $.getUrlVar('q');
       if((q == null)||(typeof q == 'undefined')) q = $.getUrlVar('zip');
@@ -1362,7 +1363,8 @@ $.extend({
       if(this.attr("zip") != null ) q=this.attr("zip");
       if(this.attr("data-plz") != null ) q=this.attr("data-plz");
       if(this.attr("plz") != null ) q=this.attr("plz");
-      console.log('q',q);
+      if(this.attr("ontarif") != null ) cb=this.attr("ontarif");
+
       if(template ==null) {
         template = '<form id="frm">';
         template += '<div class="form-group zipAsk">';
@@ -1665,6 +1667,12 @@ $.extend({
               data.eurAP = (data.ap/100).toFixed(4).replace('.',',');
               data.eurGP = (data.gp).toFixed(2).replace('.',',');
               data.q = q;
+              if(typeof window.ontarif != 'undefined') {
+                  setTimeout(function() {
+                    window.ontarif(data);
+                  },200);
+              }
+
               const doT = $.doT();
               var tempFn = doT.template(template);
               parent.html(tempFn(data));
