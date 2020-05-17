@@ -1415,8 +1415,11 @@ $.extend({
         template += '</div>';
 
         template += '<div id="contJA" style="display:none">';
+        template += '<label for="UF_CRM_1551660944277" class="text-dark">Personen im Haushalt</label><br/>'
         template += '<div class="input-group rounded">';
-        template += '<div class="input-group-prepend"><span class="input-group-text" id="txtja" style="min-width:125px">Personen im Haushalt</span></div>';
+        //template += '<div class="input-group-prepend">';
+        //template += '<span class="input-group-text" id="txtja" style="min-width:125px">Personen im Haushalt</span>';
+        //template += '</div>';
         template += '<input class="form-control" type="number" name="UF_CRM_1551660944277" id="pe">';
         template += '<div class="input-group-append">';
         template += '<button class="btn btn-warning text-center" type="button" id="conBtn2" style="min-width:105px">Analyse zeigen</button>';
