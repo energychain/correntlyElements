@@ -1385,7 +1385,10 @@ $.extend({
         template = '<form id="frm">';
         template += '<div class="form-group zipAsk">';
         template += '<div class="input-group rounded">';
-        template += '<div class="input-group-prepend"><span class="input-group-text" style="min-width:125px">Postleitzahl</span></div>';
+        template += '<label for="zipcode" class="text-primary">Postleitzahl</label>'
+        // template += '<div class="input-group-prepend">';
+        // template += '<span class="input-group-text" style="min-width:125px">Postleitzahl</span>';
+        // template += '</div>';
         template += '<input type="text" class="form-control" id="zipAnswer" name="zipcode" value="{{=it.q}}" placeholder="">';
         template += '<div class="input-group-append">';
         template += '<button class="btn btn-warning text-center" style="min-width:105px" type="button" id="btnZip">weiter</button><button class="btn btn-danger text-center" type="button" style="display:none" id="changeZip"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> ändern</button>';
