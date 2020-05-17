@@ -1411,8 +1411,9 @@ $.extend({
         template += '<div class="input-group-append">';
         template += '<button class="btn btn-warning text-center" type="button" id="conBtn1" style="min-width:105px">weiter</button>';
         template += '</div>';
-        template += '<label for="email" class="text-muted" id="disclaimer">Es wird die Zusammensetzung der individuellen Stromkosten ermittelt. Es gelten verschärfte Regeln unseres <a href="https://www.corrently.de/datenschutz.html" target="_blank">Datenschutz</a>.</label>'
         template += '</div>';
+        template += '<label for="email" class="text-muted" id="disclaimer">Es wird die Zusammensetzung der individuellen Stromkosten ermittelt. Es gelten verschärfte Regeln unseres <a href="https://www.corrently.de/datenschutz.html" target="_blank">Datenschutz</a>.</label>'
+
 
         template += '<div id="contJA" style="display:none">';
         template += '<label for="UF_CRM_1551660944277" class="text-dark">Personen im Haushalt</label><br/>'
