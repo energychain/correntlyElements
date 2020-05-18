@@ -1786,6 +1786,7 @@ $.extend({
                         }
                     });
                     $('#frmData').submit( cont1 );
+                    $('#frm').submit( cont1 );
                     $('#btnAngebot').hide();
               });
         });
@@ -1811,6 +1812,7 @@ $.extend({
           }
           $('#btnZip').click(submit);
           $('#frmZIP').submit(submit);
+          $('#frm').submit( submit );
         });
       } else {
           $('.zipAsk').hide();
