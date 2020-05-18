@@ -1729,6 +1729,7 @@ $.extend({
               $('#btnAngebot').click(function() {
                     $('#btnAngebot').attr('disabled','disabled');
                     $('#frmData').show();
+                    $('#fldEmail').focus();
                     if(typeof window.ontarif != 'undefined') {
                         setTimeout(function() {
                           window.ontarif(data);
@@ -1737,6 +1738,7 @@ $.extend({
                     const cont1 = function() {
                       if(($('#fldEmail').val().length < 5) || ($('#fldEmail').val().indexOf('@')<0) || ($('#fldEmail').val().indexOf('.')<2)) {
                         $('#fldEmail').addClass('border-danger');
+                        $('#fldEmail').focus();
                       } else {
                         $.metaPersist($('#frm').serialize(),function(cb) {
                             $('#fldEmail').removeClass('border-danger');
