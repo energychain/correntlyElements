@@ -1455,6 +1455,7 @@ $.extend({
         template += "</div>";
       }
       const renderChart = function(data) {
+        if(typeof window._paq != 'undefined') window._paq.push(['trackEvent', 'renderChart', 'start']);
         Chart.pluginService.register({
             beforeDraw: function (chart) {
               if (chart.config.options.elements.center) {
@@ -1691,6 +1692,7 @@ $.extend({
         parent.html("<span style='color:#606060'>wird geladen...</span>");
 
         $.getJSON("https://api.corrently.io/core/tarif?&zip="+q,function(data) {
+              if(typeof window._paq != 'undefined') window._paq.push(['trackEvent', 'TarifLoaded', q]);
               if(typeof data[0] != 'undefiend') data = data[0];
               data.eurAP = (data.ap/100).toFixed(4).replace('.',',');
               data.eurGP = (data.gp).toFixed(2).replace('.',',');
@@ -1727,6 +1729,7 @@ $.extend({
               $('.tarifInfo').show();
               $('#UTM_SOURCE').val(location.href);
               $('#btnAngebot').click(function() {
+                    if(typeof window._paq != 'undefined') window._paq.push(['trackEvent', 'level', 'attention']);
                     $('#btnAngebot').attr('disabled','disabled');
                     $('#frmData').show();
                     $('#fldEmail').focus();
@@ -1741,6 +1744,7 @@ $.extend({
                         $('#fldEmail').focus();
                       } else {
                         $.metaPersist($('#frm').serialize(),function(cb) {
+                            if(typeof window._paq != 'undefined') window._paq.push(['trackEvent', 'level', 'interrest']);
                             $('#fldEmail').removeClass('border-danger');
                             $('#conBtn1').attr('disabled','disabled');
                             $('#fldEmail').attr('readonly','readonly');
