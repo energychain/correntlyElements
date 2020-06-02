@@ -45,7 +45,7 @@
                     <li class="nav-item" role="presentation"></li>
                 </ul>
         </div><div class="dropleft"><button class="btn btn-warning dropdown-toggle btn-lg" data-toggle="dropdown" aria-expanded="false" type="button"><i class="fa fa-compass"></i> Inhalt</button>
-    <div role="menu" class="dropdown-menu">       
+    <div role="menu" class="dropdown-menu">
         <a role="presentation"  target="_blank" class="dropdown-item" href="https://www.corrently.de/corrently/checkout"><i class="fa fa-money"></i>&nbsp;Angebote  GrünstromBonus</a>
         <a role="presentation"  target="_blank" class="dropdown-item" href="https://www.corrently.de/corrently/das-corrently-geheimnis"><i class="fa fa-user-secret"></i>&nbsp;Das Corrently Geheimnis</a>
         <a role="presentation"  target="_blank" class="dropdown-item" href="https://www.corrently.de/corrently/wir-bauen-ein-kraftwerk"><i class="fa fa-road"></i>&nbsp;Meine Energie für morgen</a>
@@ -124,16 +124,16 @@
     </div>
     <div class="col col-sm-4">
         <canvas width="276" height="184" id="donutChart" data-chart="donut"  class="usageChart chartjs-render-monitor" data-resolution="3600000" style="display: block; width: 276px; height: 184px;"></canvas>
-        
+
         <table class="table table-striped"><tbody>
             <tr><td>Stromverbrauch</td><td><span class="usageKwh">-</span>&nbsp; kWh</td></tr>
             <tr><td>&nbsp;davon grün</td><td><span class="greenKwh" >-</span>&nbsp; kWh</td></tr>
             <tr><td>&nbsp;davon grau</td><td><span class="greyKwh" >-</span>&nbsp; kWh</td></tr>
         </tbody></table>
         <button type="button" style="float:none" onclick="$('#lastReadingTable').toggle();" class="btn btn-warning">Details</button>
-    </div>    
+    </div>
 </div>
-<div class="row" id="no_meter" style="display:none">    
+<div class="row" id="no_meter" style="display:none">
     <h3>Kein Grünstromzähler vorhanden</h3>
     <p>Mit einem intelligten Grünstromzähler kann der Bonus genauer berechnet werden und fällt garantiert höher aus, da die tatsächlichen Verbrauchszeiten berücksichtigt werden.</p>.
     <a href="https://stromdao.com/kontakt/" class="btn btn-warning">Kontakt zur <strong>STROM</strong>DAO</a>
@@ -219,7 +219,11 @@
         </div>
     </div><footer id="footer" style="margin-top:25px;padding-top:25px;">
     <div style= "background: black; text-align: center; margin: 0px; padding:10px">
-        <p style= "color:grey; font-family: raleway" id="bcstatus">(c) 2019 <a href="https://stromdao.de/"><strong>STROM</strong>DAO</a> | <a href="https://stromdao.de/impressum/">Impressum &amp; Datenschutz</a> | <a href="?logout=true">Entknüpfen / Abmelden</a> | <a href="http://corrently.blog">Blog</a> |  <a href="https://scan.corrently.io">Konsens</a> </p>
+        <p style= "color:grey; font-family: raleway" id="bcstatus">(c) 2020 <a href="https://stromdao.de/"><strong>STROM</strong>DAO</a> |
+          <a href="https://stromdao.de/impressum/" class="text-light">Impressum &amp; Datenschutz</a> |
+          <a href="?logout=true" class="text-light">Entknüpfen / Abmelden</a> |
+          <a href="http://corrently.blog" class="text-light">Blog</a> |
+          <a href="https://scan.corrently.io" class="text-light">Konsens</a> </p>
     </div>
 </footer>
 <!--Start of Tawk.to Script-->
