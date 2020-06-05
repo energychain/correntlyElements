@@ -462,13 +462,13 @@ $.extend({
   /**
    * Ausgabe der Zählerstände eines Corrently Account als  HTML Tabelle
    */
-    $.fn.correntlyLogin=function() {
+    $.fn.correntlyLogin=function(failcb) {
       let html="";
       html+='<form id="loginfrm" method="get" action="https://api.corrently.io/token/login">';
       html+='<input type="hidden" name="deliverable" value="0x59E45255CC3F33e912A0f2D7Cc36Faf4B09e7e22">';
       html+='<input type="hidden" name="target" value="'+location.href+'">';
       html+='<div class="alert alert-success" role="alert" id="login_ok" style="display:none"><span><strong>Mail versendet.</strong> Bitte das Email Postfach prüfen, dort sollte bereits eine Mail mit dem Anmeldelink eingegangen sein.</span></div>';
-      html+='<div class="alert alert-danger" role="alert" id="login_fail" style="display:none"><span><strong>Fehler!</strong>&nbsp;Der Versand hat leider nicht geklappt. Bitte noch einmal probieren und unseren Service kontaktieren.</span></div><label>Anmeldung</label><input class="form-control" type="email" placeholder="name@domain.de" name="mail">';
+      html+='<div class="alert alert-danger" role="alert" id="login_fail" style="display:none"><span><strong>Fehler!</strong>&nbsp;Der Versand hat leider nicht geklappt. Bitte noch einmal probieren und unseren Service kontaktieren.</span></div><label>Anmeldung per Email</label><input class="form-control" type="email" placeholder="name@domain.de" name="mail">';
       html+='<p class="text-center" style="margin-top: 15px;"><button class="btn btn-warning" id="submitbutton" type="submit">Zugang per Mail anfordern&nbsp;</button></p>';
       html+='</form>';
       let parent = this;
@@ -488,6 +488,9 @@ $.extend({
             } else {
               $('#login_ok').hide();
               $('#login_fail').show();
+              if(typeof failcb == 'function') {
+                failcb();
+              }
             }
           }
       });
@@ -517,7 +520,7 @@ $.extend({
       html+='<input type="hidden" name="target" value="'+location.href+'">';
       html+='<div class="alert alert-success" role="alert" id="login_ok" style="display:none"><span><strong>Mail versendet.</strong> Bitte das Email Postfach prüfen, dort sollte bereits eine Mail mit dem Anmeldelink eingegangen sein.</span></div>';
       html+='<div class="alert alert-danger" role="alert" id="login_fail" style="display:none"><span><strong>Fehler!</strong>&nbsp;Der Versand hat leider nicht geklappt. Bitte noch einmal probieren und unseren Service kontaktieren.</span></div>';
-      html+='<label>Anmeldung</label><input class="form-control" type="email" placeholder="name@domain.de" name="mail">';
+      html+='<label>Anmeldung per Email</label><input class="form-control" type="email" placeholder="name@domain.de" name="mail">';
       html+='<p class="text-center" style="margin-top: 15px;"><button class="btn btn-warning" id="submitbutton" type="submit">Zugang per Mail anfordern&nbsp;</button></p>';
       html+='<label>oder Verknüpfungscode verwenden</label><input class="form-control" type="text" placeholder="(123ABC)" value="'+qcodevalue+'" name="qcode" id="qcode">';
       html+='<p class="text-center" style="margin-top: 15px;"><button class="btn btn-warning" id="submitbutton2" type="button">verknüpfen</button></p>';
@@ -1730,6 +1733,24 @@ $.extend({
               $('#UTM_SOURCE').val(location.href);
               $('#btnAngebot').click(function() {
                     if(typeof window._paq != 'undefined') window._paq.push(['trackEvent', 'level', 'attention']);
+
+                    if(typeof gtag != 'undefined') {
+                       const gtag_report_conversion = function(url) {
+                        var callback = function () {
+                          if (typeof(url) != 'undefined') {
+                            window.location = url;
+                          }
+                        };
+                        gtag('event', 'conversion', {
+                            'send_to': 'AW-824211645/50oDCMbKtdEBEL3xgYkD',
+                            'event_callback': callback
+                        });
+                        return false;
+                      }
+                      setTimeout(function() {
+                        gtag_report_conversion();
+                      },20);
+                    }
                     $('#btnAngebot').attr('disabled','disabled');
                     $('#frmData').show();
                     $('#fldEmail').focus();
