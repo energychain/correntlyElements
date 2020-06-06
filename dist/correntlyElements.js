@@ -1403,7 +1403,7 @@ $.extend({
         template += "<td>{{=it.eurGP}} €</td>";
         template += "</tr>";
         template += "</table>";
-        template += "<span class='float-left text-dark'>Monatliche Kosten ermitteln</span> <button id='btnAngebot' style='min-width:105px' class='btn btn-sm btn-warning float-right'><i class='fa fa-bar-chart' aria-hidden='true'></i> Details</button>";
+        template += "<span class='float-left text-dark' id='mcost'>Monatliche Kosten ermitteln</span> <button id='btnAngebot' style='min-width:105px' class='btn btn-sm btn-warning float-right'><i class='fa fa-bar-chart' aria-hidden='true'></i> Details</button>";
         template += "<div class='inputData' id='frmData'><input type='hidden' id='UTM_SOURCE' name='UTM_SOURCE'/>";
         template += '<label for="email" class="text-dark">Email</label><br/>'
         template += '<div class="input-group rounded">';
@@ -1815,6 +1815,7 @@ $.extend({
                     $('#frmData').submit( cont1 );
                     $('#frm').submit( cont1 );
                     $('#btnAngebot').hide();
+                    $('#mcost').hide();
               });
         });
       }
