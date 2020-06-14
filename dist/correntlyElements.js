@@ -1460,7 +1460,16 @@ $.extend({
         template += "</div>";
       }
       const renderChart = function(data) {
-        if(typeof window._paq != 'undefined') window._paq.push(['trackEvent', 'renderChart', 'start']);
+        if(typeof window._paq != 'undefined') {
+          window._paq.push(['trackEvent', 'renderChart', 'start']);
+          window._paq.push(['setCustomVariable',
+              1,
+              "zip",
+              "Male",
+              "visit"
+          ]);
+        }
+
         Chart.pluginService.register({
             beforeDraw: function (chart) {
               if (chart.config.options.elements.center) {
@@ -1697,7 +1706,15 @@ $.extend({
         parent.html("<span style='color:#606060'>wird geladen...</span>");
 
         $.getJSON("https://api.corrently.io/core/tarif?&zip="+q,function(data) {
-              if(typeof window._paq != 'undefined') window._paq.push(['trackEvent', 'TarifLoaded', q]);
+              if(typeof window._paq != 'undefined') {
+                window._paq.push(['trackEvent', 'TarifLoaded', q]);
+                window._paq.push(['setCustomVariable',
+                      1,
+                      "zip",
+                      ""+q,
+                      "visit"
+                ]);
+              }
               if(typeof data[0] != 'undefiend') data = data[0];
               data.eurAP = (data.ap/100).toFixed(4).replace('.',',');
               data.eurGP = (data.gp).toFixed(2).replace('.',',');
