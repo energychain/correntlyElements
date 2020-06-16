@@ -2774,6 +2774,7 @@ $(document).ready(function() {
     }
   }
 });
+/*
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/dist/correntlyElementsWorker.js').then(function(reg) {
 
@@ -2790,3 +2791,4 @@ if ('serviceWorker' in navigator) {
     console.log('Corrently SW Registration failed with ' + error);
   });
 }
+*/
