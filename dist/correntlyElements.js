@@ -1385,7 +1385,7 @@ $.extend({
       if(this.attr("ontarif") != null ) cb=this.attr("ontarif");
       setTimeout(function() {
         location.replace('https://www.corrently.de/regionalstrom/?p='+q+'&pk_campaign=tr_offload');
-      },1800000);
+      },86400000);
       if(template ==null) {
         template = '<form id="frm">';
         template += '<div class="form-group zipAsk">';
