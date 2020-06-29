@@ -1560,7 +1560,7 @@ $.extend({
           ]
         };
 
-        let ust =  data.ap - (data.ap / 1.19);
+        let ust =  data.ap - (data.ap / 1.16);
         let ast = data.ap - (ust +  19.06);
 
         let outerD = {
@@ -1651,7 +1651,7 @@ $.extend({
             			}
               }
           });
-          let ustGP = data.gp - (data.gp / 1.19);
+          let ustGP = data.gp - (data.gp / 1.16);
           let dsoGP = data.gp - ustGP - 1.5;
 
           let gpD = {
