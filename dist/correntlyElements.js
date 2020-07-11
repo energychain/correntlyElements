@@ -575,7 +575,7 @@ $.extend({
           let html="<table class='table table-condensed'>";
           html+="<tr>";
           html+="<th>Bezeichnung</th>";
-          html+="<th>Emitent</th>";
+          html+="<th>Emittent</th>";
           html+="<th>Erzeugung bis<br/><span class='text-muted'>Vertrag gültig bis mindestens</span></th>";
           html+="<th colspan='2'>GrünstromBonus<br/><span class='text-muted'>für die Erzeugung von 1 kWh/Jahr</span></th><th>&nbsp;</th>";
           html+="</tr>";
@@ -695,7 +695,7 @@ $.extend({
                     query+="&amount="+nmb;
                     query+="&allocations="+allocation.join(',');
                     if($.getUrlVar('o')!=null) query += "&o="+$.getUrlVar('o');
-                    
+
                     $.getJSON("https://api.corrently.io/core/transaction?"+query,function(data) {
                           html="";
                           html="<h3>Bitte Email Posteingang prüfen</h3>";
