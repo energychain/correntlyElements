@@ -1,6 +1,6 @@
 {
   "name": "correntlyelements",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Jquery/Javascript Elements to easy protype in Corrently Ecosystem",
   "keywords": [
     "stromdao",
@@ -9,6 +9,10 @@
     "jquery",
     "blockchain"
   ],
+  "funding": {
+	 "type": "corporation",
+	 "url": "https://www.stromdao.de/crowdfunding/info"
+ 	},
   "homepage": "https://elements.corrently.io/",
   "bugs": {
     "url": "https://github.com/energychain/correntlyElements/issues"
