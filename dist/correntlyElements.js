@@ -220,6 +220,82 @@
       };
       refreshReading();
       setInterval(refreshReading,60000);
+    },
+    $.fn.correntlyHKNChart=function(zip) {
+      let q = zip;
+      if(this.attr("data-zip") != null ) q=this.attr("data-zip");
+      if(this.attr("data-plz") != null ) q=this.attr("data-plz");
+
+
+      if(q == null) q = $.getUrlVar('q');
+      if(q == null) q="69256";
+
+      const parent = this;
+      let ctx=this;
+
+      const refreshReading = function() {
+          $.getJSON("https://api.corrently.io/core/srcgraph?zip="+q,function(data) {
+              let donut_data = [];
+              let labels = [];
+              let sum = 0;
+              let sources = [];
+              for(let i=0;i<data.sources.values.length;i++) {
+                sum+=data.sources.values[i].energy;
+                sources.push(data.sources.values[i]);
+              }
+
+              function compare(a, b) {
+                  if (a.energy > b.energy) return 1;
+                  if (b.energy > a.energy) return -1;
+
+                  return 0;
+              }
+
+              sources.sort(compare);
+
+              for(let i=0;((i<5) &&( i<sources.length));i++) {
+                labels.push(sources.city);
+                donut_data.push(sources.energy);
+              }
+
+              let myChart = new Chart(ctx, {
+                  type: 'doughnut',
+                  data: {
+                    datasets: [{
+                        label: 'Herkunft',
+                        data: donut_data,
+                        backgroundColor: [
+                          '#5cb85c',
+                          '#a0a0a0',
+                        ]
+                    }],
+                    labels: labels
+                  },
+                  options: {
+                    responsive: true,
+                    legend: {
+                      position: 'bottom',
+                    },
+                    plugins: {
+                       datalabels: {
+                           display:false
+                       }
+                    },
+                    title: {
+                      display: true,
+                      text: long_title
+                    },
+                    animation: {
+                      animateScale: true,
+                      animateRotate: true
+                    }
+                  }
+              });
+
+          });
+      };
+      refreshReading();
+      setInterval(refreshReading,3600000);
     }
     /**
     *  Ausgabe der Zählerstände eines Corrently Account als MSCONS Nachricht (in einem Code Block)
