@@ -254,8 +254,8 @@
               sources.sort(compare);
 
               for(let i=0;((i<5) &&( i<sources.length));i++) {
-                labels.push(sources.city);
-                donut_data.push(sources.energy);
+                labels.push(sources[i].city);
+                donut_data.push(sources[i].energy);
               }
               console.log("Labels",labels);
               console.log("Data",donut_data);
