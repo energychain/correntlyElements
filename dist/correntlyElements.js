@@ -266,7 +266,7 @@
                         data: donut_data,
                         backgroundColor: [
                           '#5cb85c',
-                          '#a0a0a0',
+                          '#a0a0a0'
                         ]
                     }],
                     labels: labels
@@ -283,7 +283,7 @@
                     },
                     title: {
                       display: true,
-                      text: long_title
+                      text: 'Von hier kommt aktuell unser regionaler Ökostrom'
                     },
                     animation: {
                       animateScale: true,
