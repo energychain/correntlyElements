@@ -245,8 +245,8 @@
               }
 
               function compare(a, b) {
-                  if (a.energy > b.energy) return 1;
-                  if (b.energy > a.energy) return -1;
+                  if (a.energy < b.energy) return 1;
+                  if (b.energy < a.energy) return -1;
 
                   return 0;
               }
