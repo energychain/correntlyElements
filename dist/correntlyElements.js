@@ -277,8 +277,8 @@
                           '#006C32',
                           '#FFA700',
                           '#2A834A',
-                          '#E5E5E5',
-                          '#7F7F7F'
+                          '#B7A99A',
+                          '#D6FADC'
                         ]
                     }],
                     labels: labels
