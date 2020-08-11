@@ -265,8 +265,11 @@
                         label: 'Herkunft',
                         data: donut_data,
                         backgroundColor: [
-                          '#5cb85c',
-                          '#a0a0a0'
+                          '#006C32',
+                          '#FFA700',
+                          '#2A834A',
+                          '#FFF6F4',
+                          '#7F7F7F'
                         ]
                     }],
                     labels: labels
@@ -278,7 +281,7 @@
                     },
                     plugins: {
                        datalabels: {
-                           display:true
+                           display:false
                        }
                     },
                     title: {
