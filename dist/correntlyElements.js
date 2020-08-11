@@ -257,8 +257,7 @@
                 labels.push(sources[i].city);
                 donut_data.push(sources[i].energy);
               }
-              console.log("Labels",labels);
-              console.log("Data",donut_data);
+
               let myChart = new Chart(ctx, {
                   type: 'doughnut',
                   data: {
@@ -275,11 +274,11 @@
                   options: {
                     responsive: true,
                     legend: {
-                      position: 'bottom',
+                      position: 'left',
                     },
                     plugins: {
                        datalabels: {
-                           display:false
+                           display:true
                        }
                     },
                     title: {
