@@ -255,7 +255,7 @@
 
               for(let i=0;((i<5) &&( i<sources.length));i++) {
                 labels.push(sources[i].city);
-                donut_data.push(sources[i].energy);
+                donut_data.push(Math.round((sources[i].energy/sum)*100));
               }
 
               let myChart = new Chart(ctx, {
