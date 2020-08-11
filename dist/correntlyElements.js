@@ -275,10 +275,10 @@
                         data: donut_data,
                         backgroundColor: [
                           '#006C32',
+                          '#D38200',
+                          '#318B4E',
                           '#FFA700',
-                          '#2A834A',
-                          '#B7A99A',
-                          '#D6FADC'
+                          '#54AC6C'
                         ]
                     }],
                     labels: labels
