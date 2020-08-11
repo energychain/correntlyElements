@@ -291,6 +291,15 @@
                     animation: {
                       animateScale: true,
                       animateRotate: true
+                    },
+                    tooltips: {
+                          enabled: true,
+                          mode: 'single',
+                          callbacks: {
+                            label: function(tooltipItems, data) {
+                              return data.datasets[0].data[tooltipItems.index] + '%';
+                            }
+                          }
                     }
                   }
               });
