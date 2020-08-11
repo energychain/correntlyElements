@@ -257,7 +257,8 @@
                 labels.push(sources.city);
                 donut_data.push(sources.energy);
               }
-
+              console.log("Labels",labels);
+              console.log("Data",donut_data);
               let myChart = new Chart(ctx, {
                   type: 'doughnut',
                   data: {
