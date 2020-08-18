@@ -77,7 +77,6 @@
               }
               previous_ts = data.history[i].timeStamp;
             }
-            console.log(data_9_99_0);
             if(typeof data_1_8_0[data_1_8_0.length-1] != "undefined") {
               ctx.attr("data-to",data_1_8_0[data_1_8_0.length-1].x);
             } else return;
