@@ -55,7 +55,7 @@
             }
 
             data.history.sort(function(a,b) {
-              return a.timeStamp - b.timeStamp;
+              return b.timeStamp - a.timeStamp;
             });
 
             for(var i=1;i<data.history.length;i++) {
