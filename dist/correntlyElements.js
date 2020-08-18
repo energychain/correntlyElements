@@ -55,12 +55,11 @@
             }
 
             data.history.sort(function(a,b) {
-              console.log("History",a.timeStamp,b.timeStamp);
               return a.timeStamp - b.timeStamp;
             });
 
             for(var i=1;i<data.history.length;i++) {
-              if(previous_ts<data.history[i].timeStamp) {
+              if(previous_ts<=data.history[i].timeStamp) {
                 if((data.history[i]["1.8.0"]!=null)&&(data.history[i]["1.8.0"]-data.history[i-1]["1.8.0"]>0)) {
                   data_1_8_0.push({
                     y:Math.round((((data.history[i]["1.8.0"]-data.history[i-1]["1.8.0"]))/((data.history[i].timeStamp-data.history[i-1].timeStamp)/3600000))),
