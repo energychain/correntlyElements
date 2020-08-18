@@ -67,7 +67,7 @@
                   })
                 }
                 if(data.history[i]["9.99.0"] != null) {
-                  data_9_99_0.push( {
+                    data_9_99_0.push( {
                     y:data.history[i]["9.99.0"]*1,
                     x:data.history[i].timeStamp*1
                   });
@@ -77,6 +77,7 @@
               }
               previous_ts = data.history[i].timeStamp;
             }
+            console.log(data_9_99_0);
             if(typeof data_1_8_0[data_1_8_0.length-1] != "undefined") {
               ctx.attr("data-to",data_1_8_0[data_1_8_0.length-1].x);
             } else return;
