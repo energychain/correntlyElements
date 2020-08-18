@@ -11,7 +11,7 @@
       if(this.attr("account") != null ) q=this.attr("account");
 
       if(q == null) q = $.getUrlVar('a');
-      if(q == null) q="0x26D53FC47581E8F9f94Eadf71eFd7F57C931b9D9";
+      if(q == null) q="0xD02DbB0b8F2A4Bfe54DD997Cd47922Fa2352F7fD";
       const tokWh = function(n) {
         return (n/1000).toFixed(3).replace('.',',');
       }
@@ -908,7 +908,7 @@ $.extend({
     if(q == null) {
       if((typeof  $.getUrlVar('a') != "undefined ")&&(q == null)) q = $.getUrlVar('a');
       if((window.localStorage.getItem("ce_account") != null)&&(q == null)) q = window.localStorage.getItem("ce_account");
-      if(q == null) q="0x036b01A93E6a920aeE77f577C60Dec8E7D22Bf5d";
+      if(q == null) q="0xD02DbB0b8F2A4Bfe54DD997Cd47922Fa2352F7fD";
     }
     const parent = this;
     let html="";
