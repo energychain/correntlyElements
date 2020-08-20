@@ -101,6 +101,14 @@
             $('.usageKwh').html((totalConsumption/1000).toFixed(3).replace('.',','));
             $('.greenKwh').html((l1/1000).toFixed(3).replace('.',','));
             $('.greyKwh').html((l2/1000).toFixed(3).replace('.',','));
+
+            //tmp disabled
+            $('.greenKwh').attr('title',(l1/1000).toFixed(3).replace('.',','));
+            $('.greyKwh').attr('title',(l2/1000).toFixed(3).replace('.',','));
+            $('.greenKwh').html('nicht verfügbar');
+            $('.greyKwh').html('nicht verfügbar');
+
+
             $('.totalReading').html((data["1.8.0"]/1000).toFixed(3).replace('.',','));
             $('.greenReading').html((data["1.8.1"]/1000).toFixed(3).replace('.',','));
             $('.greyReading').html((data["1.8.2"]/1000).toFixed(3).replace('.',','));
