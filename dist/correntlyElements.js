@@ -105,7 +105,7 @@
             //tmp disabled
             $('.greenKwh').attr('title',(l1/1000).toFixed(3).replace('.',','));
             $('.greyKwh').attr('title',(l2/1000).toFixed(3).replace('.',','));
-            if((l1+l2)*1.1 > totalConsumption) {
+            if((l1+l2) > (totalConsumption*1.15)) {
               $('.greenKwh').html('nicht verfügbar');
               $('.greyKwh').html('nicht verfügbar');
             }
