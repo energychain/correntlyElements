@@ -1416,7 +1416,7 @@ $.extend({
            html+="</table>";
            parent.html(html);
            $('.asset_auto_sel').click(function(nl) {
-              let asset = $(nl.currentElement).attr("data-id");
+              let asset = nl.currentTarget.dataset.id;
               $.getJSON("https://api.corrently.io/core/depot?account="+q+"&prefered="+asset,function(data) {
                 // force refresh ?
               });
