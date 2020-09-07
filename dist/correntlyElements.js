@@ -1404,9 +1404,9 @@ $.extend({
                for(let i=0;i<data.assets.length;i++) {
                   html+="<tr>";
                   if(data.assets[i].prefered == "true") {
-                    html+="<td><input type='radio' class='asset_auto_sel' checked='checked' data-id='"+data.assets[i].contract+"'></td>";
+                    html+="<td><input type='radio' class='asset_auto_sel' checked='checked' data-id='"+data.assets[i].account+"'></td>";
                   } else {
-                    html+="<td><input type='radio' class='asset_auto_sel' data-id='"+data.assets[i].contract+"'></td>";
+                    html+="<td><input type='radio' class='asset_auto_sel' data-id='"+data.assets[i].account+"'></td>";
                   }
                   html+="<td>"+data.assets[i].asset_title+"</td>";
                   html+="<td style='text-align:right'>"+data.assets[i].shares+"&nbsp;kWh</td>";
