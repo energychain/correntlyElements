@@ -587,7 +587,7 @@ $.extend({
       let parent = this;
       parent.html(html);
       $('#loginfrm').ajaxForm(function(dl) {
-          $('#submitbutton').removeAttr('disabled');
+            $('#submitbutton').removeAttr('disabled');
           if(dl.err==null) {
             if(typeof cb_login_ok != "undefined") {
               cb_login_ok();
@@ -2903,6 +2903,9 @@ $(document).ready(function() {
       window.localStorage.setItem("ce_qcode",$.getUrlVar("qcode"));
     }
   }
+  $('#printBtn').click(function() {
+   window.print();
+  })
 });
 /*
 if ('serviceWorker' in navigator) {
