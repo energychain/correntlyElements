@@ -1235,11 +1235,11 @@ $.extend({
            $('#balance_eur').html(data.result.balance_eur.toFixed(2).replace('.',','));
            $('#balance_eur').attr('title',data.result.balance_eur);
 
-           $('#soll_kwh').html((data.result.soll_eur/0.02).toFixed(3).replace('.',','));
+           $('#soll_kwh').html((data.result.soll_kwh).toFixed(3).replace('.',','));
            $('#soll_kwh').attr('title',data.result.soll_eur);
-           $('#haben_kwh').html((data.result.haben_eur/0.02).toFixed(3).replace('.',','));
+           $('#haben_kwh').html((data.result.haben_kwh).toFixed(3).replace('.',','));
            $('#haben_kwh').attr('title',data.result.haben_eur);
-           $('#balance_kwh').html((data.result.balance_eur/0.02).toFixed(3).replace('.',','));
+           $('#balance_kwh').html((data.result.balance_kwh).toFixed(3).replace('.',','));
            $('#balance_kwh').attr('title',data.result.balance_eur);
 
            if(typeof data.result.link != "undefined") {
