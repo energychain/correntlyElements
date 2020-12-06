@@ -436,7 +436,7 @@
     });
   },
   $.fn.correntlyGSI=function(zipcode) {
-      let url="https://api.corrently.io/core/gsi"
+      let url="https://corrently.de/api/stromdao/gsi"
       if(zipcode!=null) {
         if(zipcode.length>5) {
         url+="?account="+zipcode;
@@ -452,6 +452,20 @@
       const parent = this;
       if(((typeof $('.gsiDataGiven') == "undefined")||($('.gsiDataGiven').length==0))&&(  parent.html().length < 100)) {
         parent.html("<span class='text-muted'>wird geladen...- Einen Augenblick</span>");
+      }
+      if(url.indexOf("?")>0) {
+        url+="&";
+      } else {
+        url+="?";
+      }
+      if(typeof Matomo !== 'undefined') {
+          url+="key="+Matomo.getTracker().getVisitorId();
+      } else {
+        if(window.localStorage.getItem("uuid")==null) {
+          let uuid = "cel_"+Math.round(Math.random()*1000)+"_"+new Date().getTime();
+          window.localStorage.setItem("uuid",uuid);
+        }
+        url+='key='+window.localStorage.getItem("uuid");
       }
       const refreshGSI = function() {
         if(parent.attr('data-refresh')!=null) {
