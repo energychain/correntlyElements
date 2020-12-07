@@ -413,7 +413,6 @@
         }
         html+="</tbody></table>";
         html+="<p class='text-muted' style='align:center'>";
-        console.log(sum_from,sum_to);
         if(sum_from>sum_to) {
           if(sum_to>0) {
           if((sum_to+sum_from)>0) {
@@ -529,14 +528,30 @@
           if(typeof cb_gsi != "undefined") {
             cb_gsi(document.gsi_info);
           }
-          parent.html("<table class='table table-sm table-responsive gsiDataGiven'>"+barrow+daterow+timerow+inforow+idxrow+co2row+co2standardrow+"</table>");
+          let modalHtml = '<div class="modal fade" role="dialog" tabindex="-1" id="nagModalGSI"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header" style="background-color:#3c6f2f;"><h4 class="modal-title" style="color:#ffffff">Information zu regionalem Ökostrom</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div><div class="modal-body">';
+html+='<p>Alle zwei Wochen frisch der Corrently Newsletter von der <strong>STROM</strong>DAO</p>';
+html+='<form method="POST" id="pushM" action="https://corrently.de/api/stromdao/push">';
+html+='<input type="hidden" name="name" value="GSI.de Newsletter">';
+html+='<div class="input-group">';
+html+='<div class="input-group-prepend"><span class="input-group-text">Email</span></div><input class="form-control" type="email" name="email"/>';
+html+='<div class="input-group-append"><button class="btn btn-primary" type="submit">anmelden</button></div>';
+html+='</div>';
+html+='</form>';
+html+='</div></div><div class="modal-footer text-muted">Durch Anmeldung willigen Sie ein, dass wir Ihre Email verarbeiten und elektronisch speichern dürfen. Dies können Sie jeder Zeit per Mail an kontakt@stromdao.de widerrufen.</div></div></div></div>';
+
+          parent.html("<table class='table table-sm table-responsive gsiDataGiven'>"+barrow+daterow+timerow+inforow+idxrow+co2row+co2standardrow+"</table>"+modalHtml);
           parent.attr('data-refresh',data.forecast[0].timeStamp);
           window.ce_zip=data.location.zip;
           window.ce_city = data.location.city;
           window.ce_gsi=data.forecast;
           window.localStorage.setItem("zipcode",data.location.zip);
           window.localStorage.setItem("city",data.location.city);
-
+          setTimeout(function() {
+            $('#pushM').ajaxForm(function() {
+              $('#nagModalGSI').modal('hide');
+            });
+            $('#nagModalGSI').modal();
+          },10000);
           if(typeof cb_location != "undefined") {
             cb_location(data.location);
           }
