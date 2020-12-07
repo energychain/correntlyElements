@@ -529,15 +529,15 @@
             cb_gsi(document.gsi_info);
           }
           let modalHtml = '<div class="modal fade" role="dialog" tabindex="-1" id="nagModalGSI"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header" style="background-color:#3c6f2f;"><h4 class="modal-title" style="color:#ffffff">Information zu regionalem Ökostrom</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div><div class="modal-body">';
-html+='<p>Alle zwei Wochen frisch der Corrently Newsletter von der <strong>STROM</strong>DAO</p>';
-html+='<form method="POST" id="pushM" action="https://corrently.de/api/stromdao/push">';
-html+='<input type="hidden" name="name" value="GSI.de Newsletter">';
-html+='<div class="input-group">';
-html+='<div class="input-group-prepend"><span class="input-group-text">Email</span></div><input class="form-control" type="email" name="email"/>';
-html+='<div class="input-group-append"><button class="btn btn-primary" type="submit">anmelden</button></div>';
-html+='</div>';
-html+='</form>';
-html+='</div></div><div class="modal-footer text-muted">Durch Anmeldung willigen Sie ein, dass wir Ihre Email verarbeiten und elektronisch speichern dürfen. Dies können Sie jeder Zeit per Mail an kontakt@stromdao.de widerrufen.</div></div></div></div>';
+          modalHtml+='<p>Alle zwei Wochen frisch der Corrently Newsletter von der <strong>STROM</strong>DAO</p>';
+          modalHtml+='<form method="POST" id="pushM" action="https://corrently.de/api/stromdao/push">';
+          modalHtml+='<input type="hidden" name="name" value="GSI.de Newsletter">';
+          modalHtml+='<div class="input-group">';
+          modalHtml+='<div class="input-group-prepend"><span class="input-group-text">Email</span></div><input class="form-control" type="email" name="email"/>';
+          modalHtml+='<div class="input-group-append"><button class="btn btn-primary" type="submit">anmelden</button></div>';
+          modalHtml+='</div>';
+          modalHtml+='</form>';
+          modalHtml+='</div></div><div class="modal-footer text-muted">Durch Anmeldung willigen Sie ein, dass wir Ihre Email verarbeiten und elektronisch speichern dürfen. Dies können Sie jeder Zeit per Mail an kontakt@stromdao.de widerrufen.</div></div></div></div>';
 
           parent.html("<table class='table table-sm table-responsive gsiDataGiven'>"+barrow+daterow+timerow+inforow+idxrow+co2row+co2standardrow+"</table>"+modalHtml);
           parent.attr('data-refresh',data.forecast[0].timeStamp);
