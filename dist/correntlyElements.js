@@ -533,7 +533,7 @@
           modalHtml+='<form method="POST" id="pushM" action="https://corrently.de/api/stromdao/push">';
           modalHtml+='<input type="hidden" name="name" value="GSI.de Newsletter">';
           modalHtml+='<div class="input-group">';
-          modalHtml+='<div class="input-group-prepend"><span class="input-group-text">Email</span></div><input class="form-control" type="email" name="email"/>';
+          modalHtml+='<div class="input-group-prepend"><span class="input-group-text">Email</span></div><input class="form-control" type="email" name="email" required/>';
           modalHtml+='<div class="input-group-append"><button class="btn btn-primary" type="submit">anmelden</button></div>';
           modalHtml+='</div>';
           modalHtml+='</form>';
