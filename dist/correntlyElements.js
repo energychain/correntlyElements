@@ -761,6 +761,7 @@ $.extend({
 
           $.getJSON("https://api.corrently.io/core/stromkonto?account="+q,function(data) {
             let balance_eur = data.result.balance_eur;
+            let balance_kwh = data.result.balance_kwh;
               $.getJSON("https://api.corrently.io/core/market",function(data) {
                   let html="";
                   let cnt_sel=0;
@@ -783,7 +784,7 @@ $.extend({
                       html+="</div>";
                       html+="</div>";
                       if(balance_kwh>data.results[i].cori) {
-                        selectable_fields+=Math.floor(balance_kwh/(data.results[i].cori));
+                        selectable_fields+=Math.floor(balance_kwh/data.results[i].cori*1);
                       }
                     }
                   }
