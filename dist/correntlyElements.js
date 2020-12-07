@@ -782,8 +782,8 @@ $.extend({
                       }
                       html+="</div>";
                       html+="</div>";
-                      if(balance_eur>0) {
-                        selectable_fields+=Math.floor(balance_eur/(data.results[i].cori*0.02));
+                      if(balance_kwh>data.results[i].cori) {
+                        selectable_fields+=Math.floor(balance_kwh/(data.results[i].cori));
                       }
                     }
                   }
