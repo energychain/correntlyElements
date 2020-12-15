@@ -1336,7 +1336,11 @@ $.extend({
       }
       const parent = this;
       const refreshReading = function() {
-         $.getJSON("https://api.corrently.io/core/baumkonto?account="+window.sko_link,function(data) {
+         $.getJSON("https://api.corrently.io/core/baumkonto?account="+window.sko_link,function(result) {
+           let data = {
+             result:result
+           }
+
            if(typeof data.errorMessage != "undefined") {
              console.log("try errCB()");
              if(typeof errCB == "function") {
