@@ -1441,7 +1441,7 @@ $.extend({
       const refreshReading = function() {
          $.getJSON("https://api.corrently.io/core/depot?account="+q,function(data) {
            let html = "<table class='table depottable'>";
-           html+="<tr><th>Auto</th><th>Anlage</th><th style='text-align:right'>jährliche Eigenerzeugung</th></tr>";
+           html+="<tr><th>Anlage</th><th style='text-align:right'>jährliche Eigenerzeugung</th></tr>";
            if((typeof data.assets != "undefined") && (data.assets!=null)) {
                for(let i=0;i<data.assets.length;i++) {
                   html+="<tr>";
