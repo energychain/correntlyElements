@@ -248,24 +248,15 @@
       let ctx=this;
 
       const refreshReading = function() {
-          $.getJSON("https://api.corrently.io/core/srcgraph?zip="+q,function(data) {
+          $.getJSON("https://api.corrently.io/v2.0/gsi/dispatch?zip="+q,function(data) {
               let donut_data = [];
               let labels = [];
               let sum = 0;
               let sources = [];
               let unify = {};
-              for(let i=0;i<data.sources.values.length;i++) {
-                sum+=data.sources.values[i].energy;
-                if(typeof unify[data.sources.values[i].city] == "undefined") {
-                  sources.push(data.sources.values[i]);
-                  unify[data.sources.values[i].city] = data.sources.values[i];
-                } else {
-                  for(let j=0;j<sources.length;j++) {
-                    if(sources[j].city == data.sources.values[i].city) {
-                      sources[j].energy += data.sources.values[i].energy;
-                    }
-                  }
-                }
+              for(let i=0;i<data.dispatch_from.length;i++) {
+                sum+=data.dispatch_from.energy;
+                sources.push(data.dispatch_from);
               }
 
               function compare(a, b) {
@@ -277,7 +268,7 @@
               sources.sort(compare);
 
               for(let i=0;((i<5) &&( i<sources.length));i++) {
-                labels.push(sources[i].city);
+                labels.push(sources[i].location.prettyLabel);
                 donut_data.push(Math.round((sources[i].energy/sum)*100));
               }
 
@@ -342,7 +333,7 @@
 
 (function ( $ ) {
   $.fn.correntlyGSIDispatch=function(zipcode) {
-    let url="https://api.corrently.io/core/srcgraph";
+    let url="https://api.corrently.io/v2.0/gsi/dispatch";
     let maxrows = 100;
     let nolink = false;
     if(zipcode!=null) {
@@ -370,20 +361,19 @@
           }
           return 0;
         }
-        data.sources.values = data.sources.values.sort(compare).reverse();
-        data.targets.values = data.targets.values.sort(compare).reverse();
+
         let sum_from = 0;
         let sum_to = 0;
-        for(let i=0;i<data.sources.values.length;i++) {
-          sum_from+=data.sources.values[i].energy;
+        for(let i=0;i<data.dispatch_from.values.length;i++) {
+          sum_from+=data.dispatch_from.energy;
         }
-        for(let i=0;i<data.targets.values.length;i++) {
-          sum_to+=data.targets.values[i].energy;
+        for(let i=0;i<data.dispatch_to.values.length;i++) {
+          sum_to+=data.dispatch_to.energy;
         }
         let html="<table class='table table-striped gsiDataGiven'>";
         //html+="<thead><tr class='bg-dark text-light'><th colspan='4'><h3>Energiebilanz (nur Grünstrom): <strong>"+(sum_to-sum_from)+"</strong></h3></th></tr>";
         html+="<thead><tr><th colspan='2'>Grünstrom Import</th><th colspan='2'>Grünstrom Export</th></tr></thead><tbody>";
-        for(let i=0;(((i<data.sources.values.length)||(i<data.targets.values.length))&&(i<maxrows));i++) {
+        for(let i=0;(((i<data.sources.length)||(i<data.targets.length))&&(i<maxrows));i++) {
           html+="<tr>";
           html+="<td>";
           if(i<data.sources.values.length) html+=((data.sources.values[i].energy/sum_from)*100).toFixed(1).replace('.',',')+"%";
