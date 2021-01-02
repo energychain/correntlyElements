@@ -255,7 +255,7 @@
               let sources = [];
               let unify = {};
               for(let i=0;i<data.dispatch_from.length;i++) {
-                sum+=data.dispatch_from.energy;
+                sum+=data.dispatch_from[i].energy;
                 sources.push(data.dispatch_from[i]);
               }
               /*
