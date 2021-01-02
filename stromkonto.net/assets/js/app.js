@@ -4,6 +4,7 @@ console.log("* Schön, Dich hier zu sehen!        *");
 console.log("* Schau doch mal auf GitHub vorbei: *");
 console.log("* https://github.com/energychain    *");
 console.log("-------------------------------------");
+  location.replace("https://corrently.de/service/stromkonto.html");
   if($.getUrlVar("logout")!=null) {
    window.localStorage.clear();   
    location.href="?c=reset";

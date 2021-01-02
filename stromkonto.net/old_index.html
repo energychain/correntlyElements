@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Corrently Stromkonto</title>
+    <meta property="og:image" content="assets/img/corrently_logo.png">
+    <meta property="og:type" content="website">
+    <meta name="author" content="Corrently Corp ">
+    <meta name="keywords" content="Stromkonto, STROMDAO, Blockchain, Corrently">
+    <meta name="description" content="Stromkonto der STROMDAO">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/Corrently%2032x32.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/Corrently%2032x32.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="assets/img/Corrently%2064x64.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="assets/img/Corrently%2064x64.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="assets/img/Corrently%2064x64.png">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/Corrently-IoT-Card-1.css">
+    <link rel="stylesheet" href="assets/css/Corrently-IoT-Card.css">
+    <link rel="stylesheet" href="assets/css/Corrently-Navbar.css">
+    <link rel="stylesheet" href="assets/css/Footer-Dark.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-41810193-9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-41810193-9');
+</script>
+<link rel="manifest" href="/manifest.json" />
+<link rel="shortcut icon"  type="image/x-icon"  href="/favicon.ico">
+
+</head>
+
+<body style="margin: 0 0 145px 0">
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean shadow-lg">
+        <div class="container"><a class="navbar-brand" href="https://corrently.de/"><img class="img-fluid" alt="" src="assets/img/Corrently%20Logo.png" style="max-height: 80px;">&nbsp;</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item"></li>
+                    <li class="nav-item"></li>
+                    <li class="nav-item"></li>
+                </ul>
+            </div><div class="dropleft"><button class="btn btn-warning dropdown-toggle btn-lg" data-toggle="dropdown" aria-expanded="false" type="button"><i class="fa fa-compass"></i> Inhalt</button>
+    <div role="menu" class="dropdown-menu">       
+        <a role="presentation"  target="_blank" class="dropdown-item" href="https://www.corrently.de/corrently/checkout"><i class="fa fa-money"></i>&nbsp;Angebote  GrünstromBonus</a>
+        <a role="presentation"  target="_blank" class="dropdown-item" href="https://www.corrently.de/corrently/das-corrently-geheimnis"><i class="fa fa-user-secret"></i>&nbsp;Das Corrently Geheimnis</a>
+        <a role="presentation"  target="_blank" class="dropdown-item" href="https://www.corrently.de/corrently/wir-bauen-ein-kraftwerk"><i class="fa fa-road"></i>&nbsp;Meine Energie für morgen</a>
+         <div class="dropdown-divider"></div>
+        <a role="presentation" class="dropdown-item" href="https://stromdao.de/impressum/" target="_blank">Impressum und Datenschutz</a>
+        <a role="presentation" class="dropdown-item" href="https://stromdao.de/" target="_blank"><strong>STROM</strong>DAO</a>
+        <a role="presentation" class="dropdown-item" href="https://stromdao.de/kontakt" target="_blank">Kontakt</a>
+    </div>
+</div>
+        </div>
+    </nav>
+    <div class="alert alert-danger" role="alert"><span><strong>HINWEIS:</strong>&nbsp;<br>Das Stromkonto wird aktuell auf eine andere Technologie migriert. Es werden die Werte/Daten vom 30.11.2020 angezeigt. Die Gutschriften des GrünstromBonus und die Erzeugung laufen selbstverständlich ohne Unterbrechung weiter.<br>Gerne geben wir telefonisch Auskunft über den aktuellen Stand eines Stromkontos: 06226-9680090. Vielen Dank!&nbsp;&nbsp;</span></div>
+    <div class="container" id="app_container" style="margin-bottom: 25px;margin-top: 25px;">
+        <div class="row" style="margin-bottom: 25px;">
+            <div class="col">
+                <div class="card shadow-lg">
+                    <div class="card-header bg-dark text-light">
+                        <h3>Vorhersage GrünstromIndex</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="gsi_vorhersage" noinfo="true" noco2="true"></div>
+                    </div>
+                    <div class="card-footer">
+                        <p class="text-center" id="woher"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 25px;">
+            <div class="col">
+                <div class="card shadow-lg">
+                    <div class="card-header bg-dark text-light">
+                        <h3>Corrently GrünstromBonus</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="stromkonto_overview"></div>
+                        <div class="row">
+                            <div class="col" id="soll">
+                                <p class="text-secondary">Gesammelt</p>
+                                <h1><span id="haben_kwh">-&nbsp;</span><span class="text-muted">kWh</span></h1><button class="btn btn-success btn-sm" id="checkout" type="button">GrünstromBonus kaufen (100 kWh = 12,00€)</button>
+                            </div>
+                            <div class="col" id="soll">
+                                <p class="text-secondary">Bereits Eingelöst</p>
+                                <h1><span id="soll_kwh">-&nbsp;</span><span class="text-muted">kWh</span></h1><a class="btn btn-danger btn-sm" role="button" id="no_tarif" href="https://corrently.energy/" target="_blank" style="display:none">Tarif nicht hinterlegt</a>
+                            </div>
+                            <div class="col" id="soll">
+                                <p class="text-secondary">Verfügbar</p>
+                                <h1><span id="balance_kwh">-&nbsp;</span><span class="text-muted">kWh</span></h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <p class="text-center text-muted">Eigenerzeugung aus Corrently Anlagen:&nbsp;<span id="p_2_8_0">-</span><span>&nbsp;kWh</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 25px;">
+            <div class="col">
+                <div class="card shadow-lg">
+                    <div class="card-header bg-dark text-light">
+                        <h3>Corrently Erzeugungs Marktplatz</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="market"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 25px;">
+            <div class="col">
+                <div class="card shadow-lg">
+                    <div class="card-header bg-dark text-light">
+                        <h3>Corrently GrünstromZähler</h3>
+                    </div>
+                    <div class="card-body"><div class="row" id="has_meter">
+    <div class="col col-sm-8">
+        <canvas class="usageChart" width="600" height="400"  data-chart="line" id="usageChart"></canvas>
+    </div>
+    <div class="col col-sm-4">
+        <canvas width="276" height="184" id="donutChart" data-chart="donut"  class="usageChart chartjs-render-monitor" data-resolution="3600000" style="display: block; width: 276px; height: 184px;"></canvas>
+        
+        <table class="table table-striped"><tbody>
+            <tr><td>Stromverbrauch</td><td><span class="usageKwh">-</span>&nbsp; kWh</td></tr>
+            <tr><td>&nbsp;davon grün</td><td><span class="greenKwh" >-</span>&nbsp; kWh</td></tr>
+            <tr><td>&nbsp;davon grau</td><td><span class="greyKwh" >-</span>&nbsp; kWh</td></tr>
+        </tbody></table>
+        <button type="button" style="float:none" onclick="$('#lastReadingTable').toggle();" class="btn btn-warning">Details</button>
+    </div>    
+</div>
+<div class="row" id="no_meter" style="display:none">    
+    <h3>Kein Grünstromzähler vorhanden</h3>
+    <p>Mit einem intelligten Grünstromzähler kann der Bonus genauer berechnet werden und fällt garantiert höher aus, da die tatsächlichen Verbrauchszeiten berücksichtigt werden.</p>.
+    <a href="https://stromdao.com/kontakt/" class="btn btn-warning">Kontakt zur <strong>STROM</strong>DAO</a>
+</div>
+                        <div id="lastReadingTable" style="display: none;margin-top: 5px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 25px;">
+            <div class="col">
+                <div class="card shadow-lg">
+                    <div class="card-header bg-dark text-light">
+                        <h3>Bestand Corrently Erzeugung</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="deport_overview"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 25px;">
+            <div class="col">
+                <div class="card shadow-lg">
+                    <div class="card-header bg-dark text-light">
+                        <h3>Letzte Transaktionen</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="txs"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 25px;">
+            <div class="col">
+                <div class="card shadow-lg">
+                    <div class="card-header bg-dark text-light">
+                        <h3>CO2 Kompensation&nbsp;</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <p>Gepflanzte Bäume</p>
+                                <h1 id="tree_haben"></h1>
+                                <h1 id="trees_balance">-</h1>
+                                <p class="text-muted">Die Bäume, die wir im Rahmen der Klimaneutralität pflanzen, pflegen wir so lange, bis sie garantiert die zu kompensierende Menge CO2 aufgenommen und langfristig im Holz gebunden haben. Dafür stehen unsere Forstingenieure vor Ort und die Wissenschaftler des<a href="https://www.crowtherlab.com/"> Crowther Lab der ETH Zürich</a>, die unser Projekt begleiten.</p>
+                            </div>
+                            <div class="col">
+                                <p>CO2 kompensiert (kg)&nbsp;</p>
+                                <h1 id="co2_haben_kg">-</h1>
+                                <p>Persönliche CO2 Bilanz (kg)</p>
+                                <h1 id="co2_bilanz_kg">-</h1>
+                                <p class="text-muted">Dein Corrently Stromprodukt ist CO2-neutral bei der Erzeugung. Zusätzlich kompensiert werden die durch längere Übertragungswege entstandenen Netzverluste.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" id="login_container" style="margin-top: 25px;">
+        <div class="row" style="margin-bottom: 25px;">
+            <div class="col">
+                <div class="card shadow-lg">
+                    <div class="card-header bg-dark text-light">
+                        <h3>Anmeldung zu Ihrem Stromkonto</h3>
+                    </div>
+                    <div class="card-body">
+                        <form id="loginfrm" method="get" action="https://api.corrently.io/token/login">
+                            <div class="alert alert-success" role="alert" id="login_ok" style="display:none"><span><strong>Mail versendet.</strong> Bitte das Email Postfach prüfen, dort sollte bereits Mail mit dem Anmeldelink eingegangen sein.</span></div>
+                            <div class="alert alert-danger" role="alert" id="login_fail" style="display:none"><span><strong>Fehler!</strong>&nbsp;Der Versand hat leider nicht geklappt. Bitte noch einmal probieren und unseren Service kontaktieren.</span></div><label>Ihre Corrently Email:</label><input class="form-control" type="email" placeholder="name@domain.de" name="mail"><label>Name</label><input class="form-control" type="text" placeholder="Max Mustermann" name="name" required="" minlength="5" maxlength="5"><label>Postleitzahl</label><input class="form-control" type="text" placeholder="12345" name="zip" required="" minlength="5" maxlength="5"><label>Jahresverbrauch in Kilo-Watt-Stunden</label><input class="form-control" type="text" placeholder="2035" name="ja" inputmode="numeric">
+                            <p class="text-center" style="margin-top: 15px;"><button class="btn btn-warning" id="submitbutton" type="submit">Zugang per Mail anfordern&nbsp;</button></p>
+                            <hr>
+                            <p class="text-center" style="margin-top: 15px;"><a class="btn btn-danger" role="button" href="?a=0x7866f187f30cd52Bdbd5c4184fD3ee6168Ae0dB4">Demo Konto öffnen</a><a class="btn btn-success" role="button" href="produktauswahl.html">Neues Stromkonto einrichten</a></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><footer id="footer" style="margin-top:25px;padding-top:25px;">
+    <div style= "background: black; text-align: center; margin: 0px; padding:10px">
+        <p style= "color:grey; font-family: raleway" id="bcstatus">(c) 2020 <a href="https://stromdao.de/" class="text-light"><strong>STROM</strong>DAO</a> | <a href="https://stromdao.de/impressum/" class="text-light">Impressum &amp; Datenschutz</a> | <a href="?logout=true" class="text-light">Entknüpfen / Abmelden</a> | <a href="http://corrently.blog" class="text-light">Blog</a> |  <a href="https://scan.corrently.io" class="text-light">Konsens</a> </p>
+    </div>
+</footer>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/5c531a0c51410568a1098486/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/board.js"></script>
+    <script src="https://elements.corrently.io/assets/js/Chart.bundle.min.js"></script>
+    <script src="https://elements.corrently.io/dist/correntlyElements-min.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+</body>
+
+</html>
