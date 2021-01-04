@@ -327,37 +327,38 @@
                     }
                   }
               });
+              if(typeof google !== 'undefined') {
+                let base_location=data.sources.values[0].location;
+                var heatMapData = [];
 
-              let base_location=data.sources.values[0].location;
-              var heatMapData = [];
+                for(let i=0;i<data.dispatch_from.length;i++) {
+                  heatMapData.push({
+                    location: new google.maps.LatLng(data.dispatch_from[i].coordinates[0], data.dispatch_from[i].coordinates[1]) ,
+                    weight:data.dispatch_from[i].energy*1000
+                  });
+                }
 
-              for(let i=0;i<data.dispatch_from.length;i++) {
-                heatMapData.push({
-                  location: new google.maps.LatLng(data.dispatch_from[i].coordinates[0], data.dispatch_from[i].coordinates[1]) ,
-                  weight:data.dispatch_from[i].energy*1000
+                var center = new google.maps.LatLng(data.center.coordinates[0], data.center.coordinates[1]);
+
+                map = new google.maps.Map(document.getElementById('map'), {
+                  center: center,
+                  zoom: 10,
+                  mapTypeId: 'roadmap'
                 });
+
+                var heatmap = new google.maps.visualization.HeatmapLayer({
+                  data: heatMapData
+                });
+
+                var marker = new google.maps.Marker({
+                  position: center,
+                  title: 'Home'
+                });
+
+                heatmap.setMap(map);
+                heatmap.set('radius', 60);
+                marker.setMap(map);
               }
-
-              var center = new google.maps.LatLng(data.center.coordinates[0], data.center.coordinates[1]);
-
-              map = new google.maps.Map(document.getElementById('map'), {
-                center: center,
-                zoom: 10,
-                mapTypeId: 'roadmap'
-              });
-
-              var heatmap = new google.maps.visualization.HeatmapLayer({
-                data: heatMapData
-              });
-
-              var marker = new google.maps.Marker({
-                position: center,
-                title: 'Home'
-              });
-
-              heatmap.setMap(map);
-              heatmap.set('radius', 60);
-              marker.setMap(map);
           });
       };
       refreshReading();
