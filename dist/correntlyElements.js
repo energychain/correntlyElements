@@ -251,9 +251,14 @@
           $.getJSON("https://api.corrently.io/v2.0/gsi/dispatch?zip="+q,function(data) {
               let html = '<table class="table table-condensed">';
               html+="<tr><th>Energieträger</th><th style='text-align:right;align:right'>Anteil</th></tr>"
+              let chartdata = [];
               for (let [key, value] of Object.entries(data.postmix)) {
                 if(key == 'Kl�rgas') key='Klärgas';
                 html+="<tr><td>"+key+"</td><td align='right'>"+(value*100).toFixed(1).replace('.',',')+"%</td></tr>";
+                chartdata.push({
+                  key:key,
+                  value:value
+                });
               }
               html+="</table>"
               $('#esrctable').html(html);
@@ -266,18 +271,18 @@
                 sum+=data.dispatch_from[i].energy;
                 sources.push(data.dispatch_from[i]);
               }
-              /*
+
               function compare(a, b) {
-                  if (a.energy < b.energy) return 1;
-                  if (b.energy < a.energy) return -1;
+                  if (a.value < b.value) return 1;
+                  if (b.value < a.value) return -1;
                   return 0;
               }
 
-              sources.sort(compare);
-              */
-              for(let i=0;((i<5) &&( i<sources.length));i++) {
-                labels.push(sources[i].location.prettyLabel);
-                donut_data.push(Math.round((sources[i].energy/sum)*100));
+              chartdata.sort(compare);
+
+              for(let i=0;((i<5) &&( i<chartdata.length));i++) {
+                labels.push(chartdata[i].key);
+                donut_data.push(Math.round(chartdata[i].value)*100);
               }
 
               let myChart = new Chart(ctx, {
@@ -341,8 +346,8 @@
 
                 map = new google.maps.Map(document.getElementById('map'), {
                   center: center,
-                  zoom: 10,
-                  mapTypeId: 'roadmap'
+                  zoom: 11,
+                  mapTypeId: 'hybrid'
                 });
 
                 var heatmap = new google.maps.visualization.HeatmapLayer({
