@@ -332,12 +332,12 @@
 
                 for(let i=0;i<data.dispatch_from.length;i++) {
                   heatMapData.push({
-                    location: new google.maps.LatLng(data.dispatch_from[i].location.coordinates[0], data.dispatch_from[i].location.coordinates[1]) ,
+                    location: new google.maps.LatLng(data.dispatch_from[i].location.coordinates[1], data.dispatch_from[i].location.coordinates[0]) ,
                     weight:data.dispatch_from[i].energy*1000
                   });
                 }
 
-                var center = new google.maps.LatLng(data.center.coordinates[0], data.center.coordinates[1]);
+                var center = new google.maps.LatLng(data.center.coordinates[1], data.center.coordinates[0]);
 
                 map = new google.maps.Map(document.getElementById('map'), {
                   center: center,
