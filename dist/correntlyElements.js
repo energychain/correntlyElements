@@ -282,7 +282,7 @@
 
               for(let i=0;((i<5) &&( i<chartdata.length));i++) {
                 labels.push(chartdata[i].key);
-                donut_data.push(Math.round(chartdata[i].value)*100);
+                donut_data.push(Math.round(chartdata[i].value*100));
               }
               console.log('donut_data',donut_data);
               console.log('donut_labels',labels);
