@@ -314,7 +314,7 @@
                     },
                     title: {
                       display: true,
-                      text: 'Von hier kommt aktuell unser regionaler Ökostrom:',
+                      text: 'Aktueller Ökostrommix',
                       fontSize: '32',
                       fontColor: '#000000'
                     },
