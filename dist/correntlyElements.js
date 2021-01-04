@@ -328,7 +328,6 @@
                   }
               });
               if(typeof google !== 'undefined') {
-                let base_location=data.sources.values[0].location;
                 var heatMapData = [];
 
                 for(let i=0;i<data.dispatch_from.length;i++) {
