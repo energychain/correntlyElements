@@ -333,6 +333,7 @@
                   }
               });
               if(typeof google !== 'undefined') {
+                console.log("Cleared to draw headmap");
                 var heatMapData = [];
 
                 for(let i=0;i<data.dispatch_from.length;i++) {
