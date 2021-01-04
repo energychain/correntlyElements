@@ -284,7 +284,8 @@
                 labels.push(chartdata[i].key);
                 donut_data.push(Math.round(chartdata[i].value)*100);
               }
-
+              console.log('donut_data',donut_data);
+              console.log('donut_labels',labels);
               let myChart = new Chart(ctx, {
                   type: 'doughnut',
                   data: {
