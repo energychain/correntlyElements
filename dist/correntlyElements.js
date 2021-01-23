@@ -277,7 +277,8 @@
                 }
                 history_categories.push(categorie);
               }
-              console.log(history_categories);
+              window.gsi_history_categories = history_categories;
+              window.gsi_history_labels = history_labels;
 
               $('#esrctable').html(html);
               let donut_data = [];
